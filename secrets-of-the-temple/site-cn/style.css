@@ -1,0 +1,63 @@
+/* Secrets of the Temple — 中文版 */
+:root {
+  --bg: #fdfaf3;
+  --text: #2c2416;
+  --sidebar-bg: #f5efe0;
+  --border: #d4c8b0;
+  --accent: #8b6914;
+  --link: #6b4e0a;
+  --card-bg: #fffdf7;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.9;
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  width: 280px; min-width: 280px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  position: sticky; top: 0; height: 100vh;
+  overflow-y: auto;
+  font-size: 0.875rem;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+.sidebar h2 { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent); }
+.sidebar a.home-link { display: block; margin-bottom: 0.75rem; color: var(--link); text-decoration: none; }
+.sidebar a.home-link:hover { text-decoration: underline; }
+.sidebar .part-label { font-size: 0.8rem; color: var(--accent); margin: 1rem 0 0.4rem; font-weight: bold; }
+.sidebar ul { list-style: none; }
+.sidebar ul li a { display: block; padding: 0.3rem 0.5rem; color: var(--text); text-decoration: none; border-radius: 3px; }
+.sidebar ul li a:hover { background: rgba(139,105,20,0.1); }
+.sidebar ul li a.active { background: rgba(139,105,20,0.15); font-weight: bold; color: var(--accent); }
+.main { flex: 1; max-width: 800px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+.main h1 { font-size: 2rem; color: var(--accent); margin-bottom: 0.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.75rem; }
+.main h1 .ch-num { display: block; font-size: 0.85rem; color: #8b8b7a; letter-spacing: 0.1em; margin-bottom: 0.3rem; font-weight: normal; }
+.main .part-info { font-size: 0.85rem; color: #8b8b7a; margin-bottom: 1.5rem; }
+.main p { text-indent: 2em; margin: 0.6em 0; }
+.chapter-nav { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--border); }
+.chapter-nav a { color: var(--link); text-decoration: none; }
+.chapter-nav a:hover { text-decoration: underline; }
+/* Homepage */
+.homepage .main { max-width: 800px; }
+.homepage h1 { text-align: center; border-bottom: none; margin-bottom: 0.5rem; }
+.homepage .subtitle { text-align: center; font-size: 1.1rem; color: #8b8b7a; margin-bottom: 2rem; }
+.homepage .intro { text-align: center; font-size: 0.95rem; color: #6b6050; margin-bottom: 2.5rem; line-height: 1.7; max-width: 600px; margin-left: auto; margin-right: auto; }
+.chapter-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+.chapter-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.25rem; box-shadow: var(--card-shadow); text-decoration: none; color: var(--text); display: block; }
+.chapter-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.chapter-card .card-num { font-size: 0.75rem; color: var(--accent); }
+.chapter-card .card-title { font-size: 1.15rem; font-weight: bold; margin: 0.2rem 0; }
+.chapter-card .card-part { font-size: 0.8rem; color: #8b8b7a; }
+@media (max-width: 768px) {
+  body { flex-direction: column; }
+  .sidebar { width: 100%; min-width: 0; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); padding: 1rem; }
+  .main { padding: 1.5rem 1rem; }
+  .main h1 { font-size: 1.5rem; }
+}

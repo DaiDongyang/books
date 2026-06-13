@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Books — 中英双语书库</title>
+<style>
+  :root {
+    --bg: #fdfaf3;
+    --text: #2c2416;
+    --accent: #8b6914;
+    --border: #d4c8b0;
+    --card-bg: #fffdf7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8b8b7a;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+  }
+  .book-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .book-card h2 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .book-card .author {
+    color: #6b6050;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  .book-card .desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  .book-card .links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .book-card .links a {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+  }
+  .book-card .links a:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<h1>📚 中英双语书库</h1>
+<div class="subtitle">Bilingual Book Collection · 学习金融知识，学习英语</div>
+
+<div class="book-card">
+  <h2>Secrets of the Temple</h2>
+  <div class="author">William Greider 著 · 神殿的秘密</div>
+  <div class="desc">
+    美联储如何掌管国家 — 一部关于美国联邦储备系统的经典著作。
+    深入揭示美联储从创建到1980年代的完整历史，涵盖货币政策、通货膨胀、
+    华尔街与华盛顿的权力博弈。
+  </div>
+  <div class="links">
+    <a href="secrets-of-the-temple/site/index.html">📖 中英双语版</a>
+    <a href="secrets-of-the-temple/site-cn/index.html">🇨🇳 全中文版</a>
+    <a href="secrets-of-the-temple/Secrets_of_the_Temple_Chinese.epub">📥 下载 EPUB</a>
+  </div>
+</div>
+
+<footer>
+  Powered by GitHub Pages · <a href="https://github.com/daidongyang/books" style="color:#aaa;">daidongyang/books</a>
+</footer>
+
+</body>
+</html>
