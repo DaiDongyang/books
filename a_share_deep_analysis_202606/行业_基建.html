@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏗️ 基建行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>🏗️ 基建行业 · 2 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_银行.html">🏦 银行</a><a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_科技.html">💻 科技</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_新能源.html">🔋 新能源</a><a class="同行链接" href="行业_材料.html">⛏️ 材料</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a><a class="同行链接" href="行业_农业.html">🐷 农业</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>40. 大秦铁路 (601006) — 中国"西煤东运"第一通道，PE:10.5, PB:0.6, ROE:1.44</h4><strong>因果链1：煤炭运量与宏观经济的直接映射</strong>
+大秦铁路（大同-秦皇岛）是中国最主要的"西煤东运"专线铁路，年运量约4-4.2亿吨（占全国铁路煤运量的20%+） → 煤炭运量与火电发电量的相关系数约0.85 → 火电发电量=全社会用电量×(65-70%) → 全社会用电量增速取决于GDP增速（电力弹性系数约1.0-1.2） → 所以大秦铁路的运量本质上是"中国经济增长的影子指标"。若中国GDP从5%降至4% → 用电量增速从6%降至4% → 火电发电量从2%降至1% → 大秦线运量从4.2亿吨降至4.0亿吨 → 但铁路运价（吨公里约0.15元）由发改委核定（稳定性极高） → 量降但价稳 → 利润下降幅度相对有限。大秦铁路的利润稳定性在交运行业中名列前茅。
+<p>
+<strong>因果链2：蒙华铁路竞争与"运煤干线"生态变迁</strong>
+蒙华铁路（浩吉铁路，2019年投运，年运力2亿吨）是直接挑战大秦铁路线路垄断地位的新竞争者→ 蒙华运煤从蒙古/陕北至华中（两湖一江）→ 但大秦的核心腹地是晋北/蒙西至环渤海港口（下水转海运至东部沿海电厂）→ 两者的服务港口/市场存在地理差异：大秦重点是沿海市场、蒙华重点内陆市场 → 不完全竞争：大秦的护城河来自港口基础设施（秦皇岛港/曹妃甸港的装船配套）→ 纯铁路竞争很难完全替代整个物流链。但蒙华的低价（运价较大秦低5-8元/吨）仍可能拉低大秦的新合约运价或降低其议价能力。
+<p>
+<strong>因果链3：高分红+PB破净的"格雷厄姆集结号"</strong>
+大秦铁路持续分红25年（分红率约55-60%）→ 2024年股息率约5.5-6% → 叠加PB仅0.6倍（股价低于净资产40%） → 在格雷厄姆框架中属于"净流动资产价值型机会"（Net-Net的一种变体） → 意味着假设大秦铁路立即清算，股东可获得每股净资产的0.6倍 → 反映市场对煤炭运输长期结构性衰退的折价定价。这一折价的修复需要三个条件：①中国GDP增速稳定在4%以上（防止运量继续下滑）；②蒙华铁路未引发大规模价格战；③煤炭"保供"政策持续（确保量的基本盘）。这些条件在当前宏观环境下不是必然成立的。
+<p>
+<strong>格雷厄姆评价：</strong> PE 10.5<15（通过），PB 0.6<1（通过），股息率5-6%优秀。格雷厄姆打分：4/5（唯一的扣分项：长期煤炭运输需求的下行趋势无法回避）。</div><div class="链条面板"><h4>42. 中国建筑 (601668) — PE:3.51, PB:0.39, ROE:2.77，全球最大建筑商</h4><strong>因果链1：房地产下行对"房建业务"的直接冲击</strong>
+中国建筑的房建业务（占收入约60%）涵盖住宅+商业+公共建筑 → 房地产新开工面积从2021年19亿平米降至2024年7亿平米（-63%） → 中国建筑的新签房建合同额从2021年约2.8万亿降至2024年约2.2万亿（-21%）→ 下降幅度小于地产新开工跌幅，因为基建/保障房/城市更新项目部分替代了商品房建设 → 但房建业务的毛利率（约7-8%）远低于基建（约10-12%）→ 收入结构向基建倾斜间接拉低了综合毛利率。核心关注指标：房屋新开工面积何时触底回稳（三年复合增速由负转正）是中国建筑利润复苏的必要条件。
+<p>
+<strong>因果链2：PPP项目投资的风险暴露——"隐形债务"的灰犀牛</strong>
+中国建筑通过PPP/EPC模式参与基础设施投资 → 2020年前签约了大量PPP项目（约5000-6000亿元）→ 地方政府财政压力加大 → 部分PPP项目的回款周期从3年延长至5-7年 → 应收账款周转天数从60天延长至120-150天 → 应收账款减值风险积累 → 但中国建筑的客户主要是省/市级政府平台，实质违约风险较低（PPP项目多为有收益的经营性项目）→ 在报表上体现为大额合同资产（约3000-4000亿元）。投资者面临的挑战：无法区分"正常的期限延长"和"潜在的坏账风险"→ 这是中国建筑PE仅3.5倍的核心原因——市场对或有坏账风险的深度不确定性给予了极高的折价。
+<p>
+<strong>因果链3：极低PB——"折价来自资产风险vs市场悲观"的尖锐论战</strong>
+PB 0.39 = 每1元中国建筑股票背后代表2.56元的净资产 → 市场以6折不到的价格交易该资产 → 对比其他中字头基建央企（中国中铁PB 0.31、中国铁建PB 0.31、中国交建PB 0.33、中国电建PB 0.57）——整个建筑央企板块PB都在0.3-0.6倍区间 → 暗示市场认为这些企业净资产的相当部分已被高风险应收账款/PPP资产/低效固定资产"污染"。即：如果剔除资产端的潜在损失，调整后的净资产可能只有账面的一半。这一"隐藏减值"（Hidden Impairment）究竟是多少？分析的典型做法：按3-5年应收账款账龄结构分析，以及PPP项目的内部收益率（IRR）是否低于融资成本。假设10-15%的净资产减值压力 → 调整PB约0.45-0.5倍，仍然极度便宜。
+<p>
+<strong>因果链4：国企价值重估（"中特估"）的政策催化</strong>
+国家提出"中国特色估值体系"（2022年）→ 国资委要求央企提升ROE和估值（2024年新考核指标：增加市值管理权重）→ 中国建筑推出回购/增持/提高分红率的措施（2024年分红率从18%提升至25%）→ 股息率从2.5%提升至4.5-5% → 但仍远低于行业平均6-7% → 因为净利润被减值准备和折旧压低了。
+<p>
+<strong>格雷厄姆评价：</strong> PE 3.51（极低），PB 0.39（极低），有吸引力。但ROE 2.77%太差，且杠杆率（资产负债率约75%）太高，不符合格雷厄姆关于"保守财务结构"的要求。格雷厄姆打分：3/5（估值极端的吸引力vs.资产质量的不确定性打成平手）。</div><div class="链条面板"><h4>43-48. 其他建筑/工程央企</h4><strong>中国中铁 (601390) — 铁路+公路+城轨为主的基建巨头</strong>
+新签合同额约3万亿（2024年）→ 铁路（25%）/公路（20%）/城轨（15%）/市政（25%）/房建（15%） → 与财政策略高度绑定：特别国债（超长期国债）发行规模从1万亿增至3万亿 → 基建投资资金来源充足 → 中国中铁的基建订单增速从2%提升至8-10%。但预付款比例下降导致垫资压力加大。格雷厄姆打分：3/5（PE+PB双低）。
+<p>
+<strong>中国铁建 (601186) — PE:4.89, PB:0.31, ROE:1.38</strong>
+"一带一路"受益标的——中东/东南亚/非洲的铁路/公路基础设施EPC总包 → 海外收入占比约15-20%（在建筑央企中最高） → 沙特NEOM未来城/中泰铁路/印尼雅万高铁等大项目提供结构性增长。但海外EPC的毛利率（15%）高于国内（8%），但回款风险也大（欠发达国家的政府违约风险）。PB 0.31倍意味着市场认为其净资产中约70%存在潜在减值风险——这若属实，则是极度悲观假设（可能需要基建投资长期降速才能触发）。格雷厄姆打分：3/5。
+<p>
+<strong>中国交建 (601800) — 港口/桥梁/高速公路/疏浚</strong>
+全球最大港口设计建设商 → 港珠澳大桥/深中通道的核心承建方 → 高速公路运营资产（持有约50条高速公路权益）→ 运营利润约占总利润的25-30% → 高速公路运营业务提供相对稳定的利润基础（经营性现金流可预测性强）→ 使中国交建的估值在建筑央企中相对有支撑。格雷厄姆打分：2/5。
+<p>
+<strong>中国电建 (601669) — PE:10.66, PB:0.57, ROE:1.31</strong>
+水电/风电/光伏/抽水蓄能的设计施工一体化龙头 → 抽水蓄能是典型增量：中国规划2025年抽水蓄能装机6200万千瓦，2030年1.2亿千瓦，中国电建在该领域的市占率约80% → 将成为未来5年最确定的增长来源。但电力运营（持有约20GW的新能源电站）长期目标是轻资产运营转型，但短期仍以EPC工程为主。格雷厄姆打分：2/5。
+<p>
+<strong>中国中冶 (601618) — PE:8.46, PB:0.54, ROE:1.59</strong>
+冶金工程（钢铁产能建设+钢厂改造）+ 矿产资源开发（镍矿/铜矿/锌矿） → 钢铁行业产能改造需求（向短流程电炉转型、碳减排技术改造）提供冶金工程的结构性需求 → 矿产资源（巴布亚新几内亚瑞木镍钴矿）为公司贡献约10%利润 → 镍价受锂电正极材料需求影响（高镍三元电池vs.磷酸铁锂的路线之争）。格雷厄姆打分：2/5。
+<p>
+<strong>中国能建 (601868) — PE:20.38, PB:0.99, ROE:1.25</strong>
+电力工程（火力发电+新能源+电网设计施工） → 中国能建与中国电建是"电力系统双子星"（能建偏火电/送变电，电建偏水电/新能源）→ 2024-2026年火电建设回暖（因为电力保供压力，煤电新增核准加速）→ 中国能建的火电EPC业务短期受益。但PB 0.99为建筑央企中最高（市场最不悲观），对应的是其电力运营资产的更透明估值。格雷厄姆打分：2/5。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_中国建筑.html">
+            <span class="摘要名称">中国建筑</span>
+            <span class="摘要代码">601668</span>
+            <span class="摘要简述">建筑工程 ｜ PE仅3.51+PB仅0.39 · 全球最大建筑企业</span>
+        </a><a class="公司摘要" href="公司_中国中车.html">
+            <span class="摘要名称">中国中车</span>
+            <span class="摘要代码">601766</span>
+            <span class="摘要简述">轨道交通装备 ｜ 南北车合并泡沫 · 从高点跌85%</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⛏️ 材料行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>⛏️ 材料行业 · 5 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_银行.html">🏦 银行</a><a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_科技.html">💻 科技</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_新能源.html">🔋 新能源</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_基建.html">🏗️ 基建</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a><a class="同行链接" href="行业_农业.html">🐷 农业</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>（一）金融行业（沪深300中约24%，上证综指中约28%）</h4><div class="表格容器"><table>
+<thead><tr><th>特征</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td></tr>
+<tr><td><strong>周期类型</strong></td><td>顺周期（与宏观经济同步）</td></tr>
+<tr><td><strong>核心驱动因素</strong></td><td>利率政策（净息差）、信贷增速、资产质量、资本市场活跃度</td></tr>
+</tbody></table></div>
+<p>
+<li><strong>货币政策</strong>：</li>
+   - <strong>降息</strong> → 银行净息差压缩 → 利润承压（当前阶段的主要逆风）
+   - <strong>降准</strong> → 释放流动性 → 信贷扩张空间增大 → 正面
+   - <strong>LPR下行</strong> → 贷款利率下降快于存款利率 → 净息差缩小
+<p>
+<li><strong>经济周期</strong>：</li>
+   - 经济上行 → 信贷需求旺盛 + 不良率下降 → 银行盈利改善
+   - 经济下行 → 信贷需求萎缩 + 不良率上升 → 银行盈利恶化
+<p>
+<li><strong>地产风险暴露</strong>：</li>
+   - 银行对房地产的贷款敞口直接影响资产质量预期
+   - 2021年后地产风险是压制银行估值的核心因素之一
+<p>
+<li><strong>资本市场</strong>：</li>
+   - 券商盈利高度依赖市场成交量和IPO活动
+   - 保险公司的投资收益与股市表现高度相关</div><div class="链条面板"><h4>（五）有色金属/原材料（紫金矿业等）</h4><div class="表格容器"><table>
+<thead><tr><th>特征</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td></tr>
+<tr><td><strong>周期类型</strong></td><td>强周期（全球宏观周期驱动）</td></tr>
+<tr><td><strong>核心驱动因素</strong></td><td>美元指数、美国利率、全球PMI、地缘政治</td></tr>
+</tbody></table></div>
+<p>
+<li><strong>美元与利率</strong>：</li>
+   - 美元走弱 → 以美元计价的大宗商品价格上涨 → 正面
+   - 美联储降息 → 持有黄金的机会成本下降 → 金价上涨
+   - 全球加息周期 → 压制工业金属（铜、铝）需求
+<p>
+<li><strong>全球制造业PMI</strong>：</li>
+   - 全球PMI上行 → 铜、铝等工业金属需求增加
+   - 全球PMI下行 → 工业金属价格承压
+<p>
+<li><strong>地缘政治</strong>：</li>
+   - 地缘冲突 → 避险需求推升金价
+   - 制裁/贸易限制 → 供应链重构 → 部分金属溢价
+<p>
+<li><strong>紫金矿业的特殊性</strong>：</li>
+   - 同时暴露于铜（工业金属）和金（贵金属）
+   - 铜受工业周期驱动，金受避险/实际利率驱动
+   - 两者在不同宏观环境下有对冲效果</div><div class="链条面板"><h4>4.3 股票 vs 黄金</h4><div class="表格容器"><table>
+<thead><tr><th>经济周期阶段</th><th>A股表现</th><th>黄金表现</th><th>相对优势</th></tr></thead>
+<tbody>
+<tr><td>------------</td><td>---------</td><td>---------</td><td>---------</td></tr>
+<tr><td><strong>复苏期</strong></td><td>强劲（盈利改善+估值扩张）</td><td>平淡（风险偏好上升，资金流出黄金）</td><td>A股 > 黄金</td></tr>
+<tr><td><strong>过热期</strong></td><td>中后期承压（通胀侵蚀+紧缩预期）</td><td>中后期走强（通胀对冲需求）</td><td>黄金 > A股（后期）</td></tr>
+<tr><td><strong>滞胀期</strong></td><td>表现最差（盈利下滑+高利率）</td><td>表现最好（实际利率下降+避险）</td><td>黄金 >> A股</td></tr>
+<tr><td><strong>衰退期</strong></td><td>前期承压，后期因宽松预期反弹</td><td>前期走强，后期因流动性危机可能下跌</td><td>取决于衰退类型</td></tr>
+</tbody></table></div>
+<p>
+<strong>在当前宏观环境的应用</strong>：
+<li>如果判断全球处于"类滞胀"环境（通胀高于央行目标+经济增长放缓），黄金相对A股的优势会更明显</li>
+<li>如果判断中国进入"弱复苏"（低通胀+政策宽松+经济缓慢改善），A股相对黄金的优势更显著</li>
+<li>紫金矿业（沪深300第6大成分股）因为金铜双敞口，在黄金上涨和工业金属上涨两种情景下都能受益</li></div><div class="链条面板"><h4>45. 金山办公（688111）—— PE约50-70x, PB约10-15x, ROE约10-12%</h4>金山办公（WPS Office）是中国最大的办公软件公司，核心产品WPS Office在国内市占率约40-50%（仅次于Microsoft Office）。传导路径为：信创政策要求党政机关和央国企采购国产办公软件 → WPS在信创市场中占据约90%以上份额（微软因制裁无法进入信创市场）→ 信创带动的WPS机构授权收入从2020年的约10亿增至2025年的约30-40亿 → 占WPS总收入的约30-35%。这一信创红利预计持续到2027-2028年（信创替换高峰）。
+<p>
+WPS的个人用户基础约4-5亿月活，但付费率仅约5-6%（约2000-3000万付费用户），相比Microsoft 365的约15-20%付费率有显著提升空间。传导路径为：WPS从免费+广告模式转向订阅（会员/WPS会员）→ 广告收入下降（用户反感广告）→ 会员收入增长 → WPS会员年费约89-198元/年 → 每提升1%的付费转化率意味着约6-8亿增量收入。AI功能（WPS AI，智能写作、PPT生成）是拉动付费转化率提升的关键：WPS AI会员定价高于普通会员（约300元/年），且吸引了对AI办公工具感兴趣的新用户。
+<p>
+金山办公通过WPS AI（基于大模型的智能文档、表格、PPT生成功能）大幅提升产品力。传导路径为：AI办公功能（一键生成PPT、AI写作、智能数据处理）→ 提升WPS在"易用性"上对Microsoft Office的相对竞争力 → 吸引更多企业付费用户（特别是中小企业和个人专业用户）→ 缩小与微软Office在功能体验上的差距 → 可能的国际化扩张（WPS在东南亚/非洲/拉美的用户基础持续扩大）。PE 50-70倍的高估值主要源自市场对WPS AI大规模用户基础变现和国际化潜力的长期定价，但高PB（10-15x）在格雷厄姆框架下属于极度高估。</div><div class="链条面板"><h4>1.2 对金融股的特殊调整</h4>格雷厄姆的原始标准专为工业企业设计。银行靠杠杆经营（资产负债率90%+），市净率普遍低于1倍，股息率高。如果严格套用原始标准，95%的A股都会被淘汰——不是因为它们都不好，而是<strong>中国经济结构决定了金融行业集中了最多符合"低估"特征的公司</strong>。
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>标准</th><th>金融股调整标准</th><th>满分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-------------</td><td>------</td></tr>
+<tr><td>PE</td><td>< 10倍 = 1分</td><td>1</td></tr>
+<tr><td>PB</td><td>< 1.0倍 = 1分</td><td>1</td></tr>
+<tr><td>股息率</td><td>> 4% = 1分</td><td>1</td></tr>
+<tr><td>ROE</td><td>> 2%（银行）/ > 10%（保险券商）= 1分</td><td>1</td></tr>
+<tr><td>10年连续盈利</td><td>Yes = 1分</td><td>1</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5分</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>股票 vs 黄金</h4><pre><code>黄金定价的三个核心变量：
+<li>美国实际利率（TIPS收益率）= 名义利率 - 通胀预期</li>
+   实际利率↓（降息或通胀↑）→黄金↑
+   
+<li>美元指数（DXY）</li>
+   美元↓→以美元计价的黄金↑
+   
+<li>全球风险偏好/地缘政治</li>
+   避险情绪↑→黄金↑
+<p>
+A股与黄金的相关性逻辑：
+<li>在经济"好"的时候（复苏期）：A股↑ + 黄金↓（资金从避险资产流向风险资产）</li>
+  → 负相关
+<li>在经济"坏"的时候（滞胀/危机）：A股↓ + 黄金↑ </li>
+  → 负相关
+<li>在流动性泛滥的时候（QE）：A股↑ + 黄金↑（都受益于流动性）</li>
+  → 正相关
+<li>结论：A股与黄金的相关性不稳定，取决于当前的主导因素。</li>
+</code></pre>
+<p>
+<strong>A股中受益于黄金上涨的标的</strong>：
+<li>紫金矿业（铜+金双敞口，黄金每涨10%，净利润约增15-20%）</li>
+<li>山东黄金（纯金矿，黄金每涨10%，净利润约增25-30%）</li>
+<li>中金黄金（金矿+冶炼）</li></div><div class="链条面板"><h4>三、建设银行（601939）——住房金融龙头的估值修复</h4><strong>上市时间：</strong> 2007年9月
+<strong>当前PE（TTM）：</strong> 7.82-7.99倍
+<strong>当前PB：</strong> 0.72-0.74倍
+<strong>2025年涨幅：</strong> +12.87%
+<p>
+建行的核心优势在于住房金融领域的传统龙头地位。在"中特估"行情中，建行受益逻辑与工行类似：高股息（2025年中期分红超500亿元）、低估值、央企市值管理考核。
+<p>
+建行2025年表现相对稳健但不及农行（+52.66%）和工行（+21.54%），主要原因是其住房贷款占比较高（约35%），市场对其在房地产市场调整中的资产质量有所担忧。但2025年建行不良率持续改善，营收增速转正，利润增速+1.0%。</div><div class="链条面板"><h4>七、兴业银行（601166）——从"同业之王"到绿色金融转型</h4><strong>上市时间：</strong> 2007年2月
+<strong>2015年高点股价：</strong> 约20元（前复权，PE~7倍，PB~1.3倍）
+<strong>历史最低PE：</strong> 3.43倍（2023年11月）
+<strong>当前PE：</strong> 5.01-5.70倍
+<strong>当前PB：</strong> 0.42-0.50倍</div><div class="链条面板"><h4>中金公司（601995）</h4>中金公司是中国历史最悠久、最国际化的投资银行，PE约11.6倍，PB约1.6倍，ROE约3.4%（TTM，年化约6-8%）。
+<p>
+中金公司是中国投行费率最高的券商，专注于大型国企、央企和新经济龙头企业的IPO、配股、并购等高端投行业务。单笔IPO的保荐承销费可能高达1-5亿元。当IPO市场开放度提高（如大型央企回A上市、大型科技公司港股IPO），中金公司是最大的受益者之一。但当IPO收紧，投行收入锐减的速度也快于同行，因为中金的小项目储备相对较少。
+<p>
+中金公司是中国券商中跨境业务能力最强的，设有香港、纽约、伦敦、新加坡等分支。当中国企业赴海外上市的通道畅通（如中美审计监管合作稳定），中金公司的国际投行收入约占总收入的20-30%，远高于同行。但当中美关系紧张导致中概股退市风险上升，国际业务收入受直接影响。
+<p>
+中金财富的代销和投顾业务定位高净值人群（500万以上），AUM约5000-6000亿元。服务高净值客户的费率较高（管理费约0.5-1%），因此中金财富的人均创收能力远高于同行的零售业务。高净值客户的资产配置相对稳定（在市场下跌时也不会大量赎回），因此收入稳定性优于同行。
+<p>
+<strong>格雷厄姆评分：PE约11.6 < 15（得1分），PB约1.6 > 1.5（得0分），股息率约1.5-2%（得0分），连续盈利20年以上（得1分），ROE约6-8%（得1分）。综合评分：3/5。</strong></div><div class="链条面板"><h4>主题六：黄金相关性——科技股vs黄金的"跷跷板"</h4><li>科技股是"长期久期资产"——其当前估值中，约70-80%来自5年之后的远期现金流折现。这意味着科技股对实际利率极度敏感。</li>
+<li>黄金同样对实际利率敏感——但方向相反：实际利率上升，黄金持有成本增加，金价下跌；实际利率下降，黄金持有成本降低，金价上涨。</li>
+<li>实际利率≈名义利率−通胀预期。当实际利率上升时（如美联储加息），科技股和金价同时承压；当实际利率下降时（如美联储降息），两者同时受益。</li>
+<li>但某些场景下两者负相关特别突出：<strong>"美联储宽松但经济不衰退"</strong>（如2024年软着陆预期）→科技股大涨+金价盘整/小跌；<strong>"经济恐慌"</strong>（如2025年某月美国衰退指标上升）→黄金大涨+科技股承压。</li>
+<p>
+<strong>总结：</strong> 科技板块与黄金的负相关性在中性宏观经济环境下约为-0.3至-0.4，但在极端尾部风险事件中（全球衰退、地缘冲突）负相关性会大幅增强，成为有效的"危机对冲组合"——但这不是一种稳定的套利关系。</div><div class="链条面板"><h4>1. 贵州茅台 (600519) -- "液体黄金"的周期之痛</h4><strong>估值现状</strong>: PE 22.3倍（TTM），PB 7.09倍，ROE 32.53%，2025年营收1,688亿元（-1.21%），净利润823亿元（-4.53%），为上市以来首次营收下滑。
+<p>
+贵州茅台的销售结构中，政务与商务宴请占比历来显著。中国房地产市场自2021年见顶后持续下行，2025年全国商品房销售面积约9.5亿平方米，较高峰期（2021年约18亿平方米）缩水近半。这一变化的宏观传导机制如下：房地产销售萎缩 → 地方政府土地出让金收入从2021年约8.7万亿元骤降至2025年约4万亿元 → 地方财政进入紧缩周期 → 各级政府和事业单位的接待经费被大幅压缩 → 以茅台为代表的高端白酒政务消费场景减少。这一链条在2024-2025年尤为明显，地方财政"过紧日子"政策使茅台在公务宴请中的出现频率显著下降。虽然茅台近年大力拓展直销渠道（i茅台平台），但该平台的营收在2025年同比下降34.9%至130亿元，反映批价倒挂环境下消费者通过官方平台购买的动力减弱，也说明地产财政收缩对消费需求的传导已经扩散到零售终端。
+<p>
+中国消费者信心指数在2024-2025年持续处于历史低位（约85-88点，远低于100的荣枯线），这一宏观情绪的变化通过"礼品消费"管道直接传导至茅台。茅台作为中国商务礼品市场的"硬通货"，其需求与企业和个人的送礼意愿高度正相关。消费者信心下降 → 企业缩减商务送礼预算 → 飞天茅台礼品需求走弱 → 批发价从2024年约2,400元/瓶跌至2025年低点约1,600元/瓶 → 经销商（黄牛）持有库存的预期收益转负 → 抛售库存加速价格下跌 → 倒挂压力下经销商减少回款 → 茅台被迫在2025年Q4主动停止向渠道发货。这一链条在2025年呈现典型的"库存螺旋"：茅台2025年Q4营收同比暴跌19.35%，净利润暴跌30.34%，本质上不是终端消费突然消失，而是渠道库存从"正向补库"转向"负向去库"带来的需求真空。2026年Q1茅台营收恢复增长+6.34%，净利润+1.47%，说明去库存最剧烈的阶段已经过去。
+<p>
+人民币兑美元在2024-2026年经历阶段性贬值（从约7.0贬至约7.3），理论上使中国出口品的美元标价更具竞争力。茅台海外收入约48.5亿元（仅占营收约2.9%），海外销售以华人聚居区和亚洲市场为主，欧美主流消费群体对白酒的接受度有限。即使人民币贬值带来约6-7%的海外定价优势，由于市场渗透天花板和品类认知限制，这一因子对茅台的边际影响可以忽略不计。
+<p>
+中国货币政策在2024-2026年处于宽松周期，LPR从4.2%降至约3.0%，银行理财收益率从3.5%降至约2.0%，十年期国债收益率跌破2.0%。在这一环境下，茅台老酒和生肖酒的"收藏投资"属性被放大——当传统金融资产的预期回报率下降，茅台被称为"液体黄金"的叙事得到强化。但这一效应在2025年明显减弱：随着茅台批价从2,400元跌至1,600元，收藏投资的"赚钱记忆"被打破，老酒价格指数出现历史性下跌，投机性需求反成抛售压力。只有当批价企稳且其他资产收益率持续低迷时，这一因果链才会重新发挥作用。
+<p>
+<strong>格雷厄姆评估</strong>: PE 22.3倍超过15倍上限，PB 7.09倍远超1.5倍安全线。作为超级品牌消费品，茅台的高估值反映的是品牌护城河和确定性溢价，而非格雷厄姆式"廉价股"特征。评分: 1/5。
+<p>
+<strong>资产关联</strong>: 与黄金存在弱正相关（均为"存储价值"叙事），与房地产存在间接相关（通过财政效应和财富效应），与比特币无直接关联。</div><div class="链条面板"><h4>能源 / 材料 / 工业 / 基础设施 / 公用事业 板块深度分析</h4><blockquote>本部分覆盖 CSI 300 与 SSE Composite 中能源、材料、工业制造、基建工程、公用事业五大板块共计58家核心成分股。</blockquote>
+<blockquote>写作方式：以<strong>因果链穿透式分析</strong>为核心，利率、USD/CNY汇率、房地产、地缘政治、行业周期等宏观变量如何逐层传导至每一家公司盈利。</blockquote></div><div class="链条面板"><h4>2. 中国石化 (600028) — PE:8.84, PB:0.73, ROE:2.04，下游炼化+化工龙头</h4><strong>因果链1：原油价格与炼化毛利率的反直觉关系（核心变量）</strong>
+这是投资者最常误解的因果链。中石化是炼化为主（占利润70%）而非石油开采：国际油价下跌（布伦特从90跌至70美元）→ 炼厂原料（原油）成本同步下降 → 但成品油价格受发改委调价机制保护（40美元地板价、130美元天花板机制，中间区间按22个工作日平均变化调整）→ 成品油价格下降幅度通常小于原油成本下降幅度 → 裂解价差（Crack Spread）扩大 → 炼化毛利提升。因此，<strong>原油价格下跌反而利好中石化</strong>，与中石油完全相反。——这一关键差异是"多空配对交易"（做多中石化+做空中石油对冲油价风险）的基础逻辑。
+<p>
+<strong>因果链2：化工周期与产能投放的致命交互</strong>
+中石化化工板块（乙烯、丙烯、PX、PTA、聚烯烃）占利润约15-20% → 2019-2022年全球大化工产能扩张潮（中国民营大炼化+美国页岩气乙烷裂解+中东低成本产能）→ 化工品价格从历史中枢下跌30-40% → 聚烯烃-石脑油价差从500美元/吨收窄至200-300美元/吨 → 中石化化工板块从盈利50亿转为亏损约100亿元 → 拖累整体净利润。该周期底部何时结束？需观察民营大炼化产能利用率开始下降、关停高成本产能。这对中石化化工的转折点极为关键。
+<p>
+<strong>因果链3：电动车渗透率与成品油需求峰值</strong>
+中国新能源车渗透率从2020年5%升至2026年预计55%+ → 每百万辆燃油车替代 = 减少约300万吨成品油消费 → 中石化国内成品油销量2022年已达峰（约1.8亿吨）→ 此后每年递减2-4% → 加油站网络资产价值面临重估（加盟商投诉销量下降）。中石化的应对：加油站→加能站转型（增加充电桩/换电/氢能），但充电桩坪效（每个充电桩日周转率约3-4次）远低于加油站（日均加油量15-20吨），单位土地面积的能源销售价值下降60-70%。
+<p>
+<strong>因果链4：USD/CNY的双向影响</strong>
+美元升值（CNY贬值）→ 中石化进口原油人民币成本上升（尽管以美元结算的原油在全球市场降价，但换汇成本提高可能抵消部分收益）→ 炼化理论原料成本变动被汇率对冲。另一方面，中石化出口化工品（PX、MEG等）→ 人民币贬值使出口产品更便宜 → 出口竞争力提升 → 外销量增加。净效果取决于进口原油规模（约2.5亿吨/年）vs 出口化工品规模的比值（约500万吨），进口端影响远大于出口端，因此人民币贬值对中石化<strong>净利空</strong>。
+<p>
+<strong>格雷厄姆评价：</strong> PE 8.84＜15（通过），PB 0.73＜1.5（通过），ROE 2.04%偏低但反映周期性低谷而非结构性亏损。股息率约5%。格雷厄姆打分：4/5。问题在于长期成长性：电动车替代将结构性侵蚀需求，化工产能过剩周期尚未出清。</div><div class="链条面板"><h4>21. 紫金矿业 (601899) — 铜金双轮驱动，CSI300第6权重，PE~15-18, PB~3-4, ROE~10-15</h4><strong>因果链1：Fed降息周期下的黄金+铜双受益——紫金独特的"对冲优势"</strong>
+美联储开始降息（2024年9月首次降息50bp，2025-2026年预计再降150-200bp）→ 实际利率（名义利率减通胀预期）下行 → 持有黄金的机会成本降低 → 黄金ETF净流入回升 → 金价突破2500美元/盎司并向3000美元迈进 → 紫金矿业黄金业务（约占总毛利25-30%）受益。与此同时，降息刺激经济复苏预期 → 全球制造业PMI回升至50以上 → 铜的新增需求（电网/新能源/数据中心）同比增长3-5% → 铜供需从过剩（2024年约20万吨）转为缺口（2025年约10万吨） → LME铜价从8500美元/吨涨至10500美元/吨 → 紫金铜业务（约占总毛利40-45%）毛利率从45%扩大至55%+ → 金和铜的双重上行进一步被人民币贬值（USD/CNY从6.9走弱至7.3）放大（海外资产以美元计价、国内以人民币折算→汇兑收益增加）。紫金的独特之处在于：<strong>在通胀环境中（金涨）、在增长环境中（铜涨）、在衰退环境中（美元走弱→金涨）</strong> ——三个宏观经济场景中至少有两个对其有利，属于"反脆弱"资产。
+<p>
+<strong>因果链2：铜矿"供给悬崖"的长期结构性逻辑</strong>
+全球铜矿资本支出从2015年约1000亿美元降至2023年约650亿美元（长期投资不足）→ 现有大型铜矿（必和必拓Escondida、Freeport Grasberg、智利Codelco）的矿石品位从0.8%持续下降至0.4-0.5% → 每吨铜的现金成本上升15-20% → 新矿建设周期5-8年（2015年低谷资本开支=2023年后才有新矿投产）→ 形成"2025-2030年铜供给刚性缺口" → 市场对这一缺口的定价（forward curve从contango转为backwardation）→ 紫金矿业现有矿山（卡莫阿-卡库拉DRC、巨龙铜业西藏）的现金成本在4000-5500美元/吨 → 在铜价8000-10000美元/吨的环境中，每吨净利润高达3500-4500美元 → 卡莫阿二期（年产能45万吨）、三期（年产能增至60万吨）逐步达产 → 紫金2024-2028年铜产量CAGR约15% → 成为全球前五大铜生产商。这是<strong>紫金矿业估值故事中最扎实的环节</strong>——全球铜供给拐点的确定性极高（通过3-5年产能爬坡可验证）。
+<p>
+<strong>因果链3：刚果金（DRC）和塞尔维亚的地缘政治风险——"高回报区域"的三重考量</strong>
+紫金的核心增量资产卡莫阿-卡库拉铜矿位于刚果金（DRC）：东部的武装叛军（M23运动）活跃 → 但卡莫阿在南部科卢韦齐，距离冲突区域800km+,安全风险有限 → 但刚果金政府的政策风险值得关注：2023年刚果金审查采矿合同（FMI/FQM合同重新谈判）→ 虽然紫金的合同（按照卢本巴希公约条款）相对稳健，但"资源民族主义"的尾部风险不能被忽略。塞尔维亚的佩吉铜金矿：塞国政府环保压力 → 2022年曾吊销力拓的贾达尔锂项目许可 → 同理佩吉项目面临环保组织抗议 → 扩展产能审批进度可能滞后。这些地缘政治风险在牛市中被忽视、但在市场下跌时会成为显著的估值折价因子——紫金历史上PE波动区间为8-25倍，地缘政治是估值弹性的主要抑制因素之一。
+<p>
+<strong>因果链4：人民币汇率波动的"镜像"效应</strong>
+USD/CNY从6.3升至7.3（人民币贬值约15%） → 紫金矿业海外资产（卡莫阿卡库拉、塞尔维亚博尔、哥伦比亚武里蒂卡金矿）的美元现金流以人民币折算时直接增加15% → 同时，紫金的美元计价债务（约50亿美元）的折算减值效果（负债端缩水）轻微抵消该收益 → 但净效果为正。汇率对紫金的独特意义：<strong>它是一个"天然的人民币贬值对冲标的"</strong>，在人民币下行周期中，持有紫金的资产价值被动膨胀，这一逻辑与纯粹的黄金投资（通过黄金ETF）或铜期货投资（通过LME）完全不同。
+<p>
+<strong>格雷厄姆评价：</strong> PE 15-18倍在周期顶峰偏高、周期谷底合理，PB 3-4倍超过1.5倍标准。ROE 10-15%在A股中属于中上。打分：2/5。格雷厄姆不会喜欢"资源周期股+海外政治风险"的商业模式。
+<p>
+<strong>黄金相关性：</strong> 强正相关（0.6-0.7）。紫金的黄金业务占比约25-30%，叠加铜的金价协同效应（金铜矿伴生的成本优势），使紫金成为沪港通中"黄金除ETF外最佳的A股代表"。
+<p>
+<strong>房地产相关性：</strong> 正向。房地产/基建用铜约占中国铜消费的20-25%，房地产投资每下降10%，铜需求下降约2-3%。但新能源车+数据中心+电网建设正在稀释这种关联：在2025年，铜消费中房地产相关的占比已从2019年的30%降至20%，趋势持续降低。</div><div class="链条面板"><h4>23-31. 其他材料/矿业公司</h4><strong>宝钢股份 (600019) — PE:13.78, PB:0.55, ROE:1.02</strong>
+中国最大钢铁企业（产能约5000万吨/年）→ 钢铁是"宏观经济的晴雨表"——当房地产减速（用钢量下降约40-50%）+ 基础设施增速放缓 + 制造业用钢（汽车/家电）增长不足以对冲 → 热轧卷板（HRC）价格从2021年6000元/吨降至2024年3800元/吨 → 全行业进入微利/亏损状态。宝钢的特殊之处：高端取向硅钢（变压器用）和汽车板（高强钢/镀锌板）占比较高的产品结构 → 整体毛利率比行业平均高3-5个百分点 → 在周期低谷中仍能维持正利润。因果链：电网投资（特高压/配网升级）→ 取向硅钢需求年增10-15% → 宝钢取向硅钢产能约100万吨/年（占国内约60%）→ 单吨利润约3000-4000元/吨 → 是宝钢利润的"压舱石"。格雷厄姆打分：3/5（PE<15 OK，PB0.55极低，但ROE太差）。
+<p>
+<strong>中国铝业 (601600) — PE:10.22, PB:1.62, ROE:4.12</strong>
+电解铝行业的因果链：云南水电供给（云南电解铝产能占全国的30%+） → 若云南枯水期限电（每2-3年发生一次）→ 停产产能100-200万吨 → 铝供给收缩 → 沪铝价格跳涨5-10% → 中国铝业在广西/内蒙/山东的不受限产能享受价格上涨带来的利润收益。另一方面，中国铝业氧化铝自给率约100%（完全自给），电铝一体化后高成本冶炼产能占比在下降。格雷厄姆打分：2/5。
+<p>
+<strong>海螺水泥 (600585) — PE:16.45, PB:0.50, ROE:0.76</strong>
+水泥是"房地产投资的最直接传感器"——房地产新开工（2021年19亿平米→2024年7亿平米，-63%）→ 水泥需求从24亿吨降至17-18亿吨（-25~30%）→ 海螺水泥的产能利用率从85%降至65% → 单位产品固定成本（折旧+人工）从50元/吨摊升至65元/吨 → 净利率从18%降至3% → 但海螺水泥的护城河在于：吨成本约为同行最低（石灰石矿自给率高+长江流域水运优势+非自有矿山的低勘探成本）→ 在行业亏损线（水泥价格300元/吨平衡线）附近时海螺仍有35-40元/吨的利润 → 使海螺在周期底部仍能保持净现金流正数，而半数同行（尤其是中小粉磨站）已在现金亏损状态下运营。<strong>等待行业协同减产（主动关停20-30%的产能）是水泥股利润复苏的关键条件</strong>，但这一过程在地方财政保护的干扰下可能需3-5年。格雷厄姆打分：3/5（PB 0.5极度便宜，PE 16.4略高但反映的是周期的底部利润）。
+<p>
+<strong>中国巨石 (600176) — PE:39.21, PB:6.3, ROE:4.0</strong>
+玻纤（玻璃纤维）是建筑/汽车/风电的通用材料 → 玻纤价格从2022年高点6000元/吨跌至2024年4000元/吨（-33%）→ 巨石成本控制系统良好（天然气+电耗的能源成本优化、池窑大型化降低折旧）→ 在同行亏损时仍能维持5-8%净利率 → 但当前库存水平仍偏高（约2个月产销比），行业走出低谷需等风电/光伏安装需求（如玻纤增强叶片）的明确上行拐点。格雷厄姆打分：1/5。
+<p>
+<strong>北方稀土 (600111) — PE:51.19, PB:7.48, ROE:3.65</strong>
+稀土价格（中国定价+全球采购）的核心变量：中国工信部每年公布稀土开采总量控制指标 → 指标增速从2021-2022年的20%放缓至2024年的5-10% → 但稀土需求（尤其是钕铁硼永磁用于新能源车/风电/机器人）增长15-20% → 价格修复逻辑存在 → 但市场对稀土的"战略资源垄断"叙事已经审美疲劳，讲故事很难跑赢实际供需。格雷厄姆打分：0/5（太贵了）。
+<p>
+<strong>巨化股份 (600160) — PE:26.87, PB:6.12, ROE:5.58</strong>
+氟化工（制冷剂HFCs/PFAS）→ 2024年HFCs配额（根据《基加利修正案》管控）正式实施 → HFCs产能受到全球配额约束 → 供给受限 + 需求（空调/冷链）季节性增长 → HFCs价格上涨带动利润修复。另一条线：巨化布局含氟高分子（FEP/PFA/PTFE）→ 数据中心液冷方案（由于AI计算功耗增长，冷却需求增速100%+）是潜在的增量驱动力。格雷厄姆打分：1/5。
+<p>
+<strong>厦门钨业 (600549) — PE:28.12, PB:7.05, ROE:6.24</strong>
+中国钨业龙头：钨精矿定价取决于中国供给配额（中国占全球80%产量）→ 硬质合金（90%钨消费领域）与制造业PMI高度相关 → 制造业投资加速时刀具消耗增加 → 厦门钨业硬质合金业务受益。同时厦门钨业是少数涉足稀土+钴酸锂（消费电子电池正极）的多金属企业。格雷厄姆打分：1/5。
+<p>
+<strong>合盛硅业 (603260) — PE:195.0, PB:2.05, ROE:0.26</strong>
+有机硅（硅橡胶/硅树脂）+工业硅（金属硅）龙头 → 工业硅价格从2021年3万元/吨高点暴跌至2024年1.2万元/吨 → 合盛因为主产区在新疆（低成本煤炭+电力优势，0.25元/kWh电价）→ 成本约9000-10000元/吨 → 虽盈利但已极薄。公司还布局了光伏硅片产能（计划60GW）→ 但光伏全产业链的过剩使该新业务进展缓慢。格雷厄姆打分：0/5（PE极高）。
+<p>
+<strong>铜陵有色 (000630) — PE:18.96, PB:2.76, ROE:3.59</strong>
+铜冶炼企业——与紫金矿业这种"矿+冶炼"一体化不同，铜陵有色以铜精矿冶炼加工为主（加工费TC/RC为核心利润来源）→ TC/RC从2022年约80美元/吨的高点降至2024年约10-20美元/吨的历史低位（铜精矿供给紧张+中国冶炼产能扩张）→ 冶炼端利润急剧萎缩。铜陵有色正向上游矿山延伸（厄瓜多尔米拉多铜矿产能提升），但占比尚小。格雷厄姆打分：1/5。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_紫金矿业.html">
+            <span class="摘要名称">紫金矿业</span>
+            <span class="摘要代码">601899</span>
+            <span class="摘要简述">铜金矿业 ｜ 十年涨十倍 · 铜金双周期驱动</span>
+        </a><a class="公司摘要" href="公司_万华化学.html">
+            <span class="摘要名称">万华化学</span>
+            <span class="摘要代码">600309</span>
+            <span class="摘要简述">化工新材料 ｜ PB处于历史5.8%分位 · 全球MDI龙头</span>
+        </a><a class="公司摘要" href="公司_海螺水泥.html">
+            <span class="摘要名称">海螺水泥</span>
+            <span class="摘要代码">600585</span>
+            <span class="摘要简述">水泥建材 ｜ 反直觉周期逻辑案例 · 现金储备超600亿</span>
+        </a><a class="公司摘要" href="公司_天齐锂业.html">
+            <span class="摘要名称">天齐锂业</span>
+            <span class="摘要代码">002466</span>
+            <span class="摘要简述">锂矿开采 ｜ 全球最低成本锂矿 · PE不到15倍</span>
+        </a><a class="公司摘要" href="公司_华友钴业.html">
+            <span class="摘要名称">华友钴业</span>
+            <span class="摘要代码">603799</span>
+            <span class="摘要简述">钴镍冶炼 ｜ PE仅10倍 · 周期底部</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

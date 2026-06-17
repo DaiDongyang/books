@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💻 科技行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>💻 科技行业 · 12 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_银行.html">🏦 银行</a><a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_新能源.html">🔋 新能源</a><a class="同行链接" href="行业_材料.html">⛏️ 材料</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_基建.html">🏗️ 基建</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a><a class="同行链接" href="行业_农业.html">🐷 农业</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>（二）信息技术/AI算力（沪深300中约14.5% + 通信服务4.4%）</h4><div class="表格容器"><table>
+<thead><tr><th>特征</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td></tr>
+<tr><td><strong>周期类型</strong></td><td>强成长周期（与科技资本开支高度相关）</td></tr>
+<tr><td><strong>核心驱动因素</strong></td><td>全球AI资本开支、国产替代政策、半导体周期</td></tr>
+</tbody></table></div>
+<p>
+<li><strong>地缘政治</strong>：</li>
+   - 中美科技脱钩 → 国产替代加速，但也可能面临技术封锁导致的供应链中断
+   - 台海局势 → 半导体供应链稳定性风险
+<p>
+<li><strong>风险提示</strong>：</li>
+   - 如果AI资本开支周期见顶（可能在2027-2028年），当前高权重科技股可能面临类似金融和消费股此前经历的权重回调</div><div class="链条面板"><h4>二、AI算力 / 光通信板块</h4>这一板块是2023-2025年A股表现最强的细分赛道。核心驱动力是美国四大云厂商（微软、谷歌、亚马逊、Meta）的AI基础设施资本开支从2023年的约1500亿美元飙升至2025年的约3000亿美元。光模块作为数据中心内部互联的关键组件，成为这场AI军备竞赛的"卖铲人"。</div><div class="链条面板"><h4>6. 中芯国际 (688981) — 中国最大晶圆代工企业</h4><strong>因果链一：美国设备出口管制 → 无法购买ASML EUV光刻机 → 工艺制程卡在7nm/14nm → 无法与台积电3nm竞争 → 毛利率持续承压（核心负面逻辑）</strong>
+<p>
+这是理解中芯国际最重要的一条因果链。晶圆代工是"设备驱动的产业"——每代制程的突破必须依赖相应等级的半导体设备。荷兰ASML是全球唯一能生产EUV（极紫外光刻）设备的企业，用于7nm以下制程。美国通过《瓦森纳协定》和直接出口管制，2020年起系统性地阻止ASML向中芯国际交付EUV光刻机。其后果是：
+<p>
+<li>中芯国际的先进制程卡在14nm（2024年N+2工艺等效7nm量产率极低，产能不到3000片/月，不具备商业价值）</li>
+<li>台积电已量产3nm，2025年2nm试产——制程差距从2019年的2代拉大到2025年的3-4代</li>
+<li>没有EUV，中芯国际永远无法进入5nm/3nm节点，永远被锁定在中低端代工市场</li>
+<p>
+这一因果链的直接财务后果：中芯国际的毛利率长期维持在20-30%（2024年约22%），而台积电毛利率超过55%。ROE仅有0.9%，连资本成本（about 8-10%）都无法覆盖。中芯国际实际上是在"破坏价值"——每投入1元资本仅创造不到1分钱的净利润。
+<p>
+<strong>因果链二：中国政府巨额补贴 → 资本开支由政府资金支持 → 产能扩张持续 → 收入增长但利润稀薄（"国家战略vs商业逻辑"的悖论）</strong>
+<p>
+中芯国际每年资本开支约80-100亿美元（2024年约90亿），其中相当比例来自政府补贴和国有银行低息贷款。北京、上海、深圳三地政府各补贴建设了12英寸晶圆厂（中芯京城、中芯东方、中芯深圳），总投资超过1500亿元人民币。这意味着：中芯国际的持续经营不依赖自身盈利能力，而是政府"不计成本也要建立自主半导体产能"的战略意志。
+<p>
+但这一逻辑也有天花板：中国地方政府的财政压力正在增大（房地产下行→土地出让金减少→地方财政吃紧），对半导体产业的补贴力度可能被迫缩减。2025年已有迹象显示，多地政府对半导体项目的审批趋于谨慎。
+<p>
+<strong>地产相关性：</strong> 间接相关。地方政府补贴能力受土地出让收入影响。2024年中国土地出让金同比下降约15-20%，可能影响对中芯国际的后续资金支持力度。</div><div class="链条面板"><h4>7. 北方华创 (002371) — 半导体设备龙头</h4>这是北方华创最核心也是最确定的一条逻辑。美国2022年10月对中国半导体产业实施"史上最严"出口管制，将半导体设备（刻蚀、沉积、清洗、离子注入、检测等）列入对华禁运清单。中国晶圆厂别无选择，只能在国内寻找替代供应商。北方华创作为中国品类最全的半导体设备厂商（刻蚀机、薄膜沉积设备、清洗设备、热处理设备、离子注入机等），成为直接受益者。
+<p>
+因果链的数据体现：北方华创新增订单在2023-2024年保持50%以上的同比增长率，其中来自国内晶圆厂的订单占比从2020年的60%上升至2024年的85%以上。2024年公司收入约300亿元，其中约60%来自成熟制程（28nm及以上）设备，40%来自先进制程（14nm及以下）设备。
+<p>
+虽然订单增长确定，但北方华创在技术层面仍面临严峻挑战。在刻蚀领域（核心品类），北方华创的介质刻蚀设备覆盖14nm逻辑工艺，但在5nm及以下制程所需的原子层刻蚀（ALE）领域尚未突破；在薄膜沉积领域，北方华创的ALD（原子层沉积）设备在3nm节点的覆盖率不足30%。这意味着：中国晶圆厂在建设先进制程（5nm以下）生产线时，仍然高度依赖进口设备。北方华创的收入天花板由"中国晶圆厂的制程水平"决定——如果中国企业永远卡在7nm/14nm，那北方华创的产品也永远不需要达到5nm水平，这反而是一种"稳定的平衡"。
+<p>
+<strong>格雷厄姆评估：失败。</strong> PE 74倍、PB 12倍，远超标淮。ROE仅4.25%，低于银行存款利率。评分：0/5。</div><div class="链条面板"><h4>9. 澜起科技 (688008) — 内存接口芯片</h4>澜起科技是全球最大的DDR内存接口芯片供应商（市占率约45-50%），与Rambus形成双头垄断。每一代DDR内存升级，接口芯片的复杂度、单价和毛利率都会大幅提升：DDR4接口芯片单价约1-2美元/颗，DDR5约5-8美元/颗，DDR6预计将超过15美元/颗。2024年DDR5在全球PC/服务器中的渗透率约40%，预计2026年达到80%以上。这一渗透率提升是澜起科技最确定的收入增长驱动力。
+<p>
+AI服务器（训练+推理）对内存容量的需求远超传统通用服务器。一台英伟达DGX H100服务器需要2TB DDR5内存，是传统服务器（128-256GB）的8-16倍。这意味着AI服务器所消耗的内存接口芯片数量是传统服务器的10倍左右。随着AI服务器出货量从2023年的约50万台增至2025年的约200万台，内存接口芯片的总可寻址市场（TAM）在两年内扩张了约3-4倍。</div><div class="链条面板"><h4>11. 紫光国微 (002049) — FPGA/安全芯片</h4>紫光国微是中国最大的FPGA（现场可编程门阵列）供应商。FPGA在通信基站、国防装备、工业控制、数据中心加速等领域有不可替代的应用（灵活可编程、低延迟、可重构）。美国2022年升级对华FPGA出口管制后，赛灵思（AMD旗下）高端FPGA（Virtex/Zynq系列）对中国禁运，中国关键基础设施领域被要求在2025-2027年前全面替换进口FPGA。紫光国微是这一替代进程的最大受益者——其FPGA产品线（Titan系列、Logos系列）覆盖从128K到4M逻辑单元，在通信基站基带处理方案中的替代率从2022年的20%升至2024年的45%。这一替换的刚性需求为紫光国微提供了至少3年的可预见收入增长。
+<p>
+紫光国微的另一大业务是安全芯片（智能卡、SIM卡、eSIM芯片、数字人民币硬钱包），在中国市场份额超过40%。这一业务的增长取决于"数字人民币推广速度"（2025年数字人民币交易规模预计达2万亿元人民币，对应安全芯片需求约3-4亿颗）和"物联网eSIM渗透率"（2025年全球eSIM连接数突破30亿，年增长约25%），均为政策驱动型需求，增速稳定但天花板较低（约5-10%年增长率）。安全芯片的毛利率约40-45%，远高于FPGA的约30%，构成公司稳定的利润基础。
+<p>
+紫光国微旗下国微电子的特种IC业务（军用/航空航天级FPGA、存储器、总线接口芯片）受益于中国国防信息化建设加速。特种IC的毛利率可达60-70%（远高于民品的30-40%），且客户粘性极高（军工产品验证周期长达2-3年，一旦进入供应链几乎不可替换）。2024年特种IC收入占比约30%，贡献了公司约50%的净利润。这是一个可预测性较高、利润丰厚但市场容量有限的细分领域（年市场规模约50-80亿元）。
+<p>
+<strong>格雷厄姆评估：失败。</strong> PE 48.74倍、PB 4.68倍。但PE 49倍是半导体板块中相对较低的，且特种IC业务的"护城河"极高（军工FPGA门槛极高，几乎没有国内竞争对手）。ROE仅2.4%是致命问题——说明资产利用效率极低，大量资金沉淀在存货和应收账款中。评分：0/5。</div><div class="链条面板"><h4>12. 瑞芯微 (603893) — AIoT SoC芯片</h4>瑞芯微是国内领先的消费电子/工业SoC（系统级芯片）设计公司，产品主要用于平板电脑、智能音箱、AI摄像头、工业HMI（人机界面）等场景。2024-2025年的核心逻辑是"AI端侧推理芯片化"——将AI推理能力从云端下沉到边缘设备，需要SoC集成NPU（神经网络处理单元）。瑞芯微的RK3588系列芯片集成了6 TOPS AI算力的NPU，已在AI摄像头、智能门禁、扫地机器人等产品中形成了差异化优势。</div><div class="链条面板"><h4>13. 瑞芯微 (603893) — AIoT SoC芯片</h4>瑞芯微是国内领先的消费电子/工业SoC（系统级芯片）设计公司，产品主要用于平板电脑、智能音箱、AI摄像头、工业HMI（人机界面）、ARM PC等场景。2024-2025年的核心逻辑是"AI端侧推理芯片化"——将AI推理能力从云端下沉到边缘设备，需要SoC集成NPU（神经网络处理单元）。瑞芯微的RK3588系列芯片集成了6 TOPS AI算力（NPU），在AI摄像头（人脸识别+行为分析一体化）、智能门禁（实时身份验证）、扫地机器人（SLAM导航+避障）等产品中形成了差异化优势。RK3588的单价约15-25美元，是传统ARM SoC（RK3328系列，约3-5美元）的3-5倍，ASP提升直接拉动毛利率从约35%向40%以上迈进。
+<p>
+瑞芯微正在布局ARM架构PC/笔记本处理器（RK3568/RK3588 PC版），如果ARM PC（苹果Mac系列、高通X Elite系列、联发科ARM PC芯片）的浪潮在全球范围扩大，瑞芯微有可能获得国产ARM PC SoC的份额。但这一市场目前由高通、联发科、苹果主导，瑞芯微想要突破需要持续的研发投入和生态建设（兼容Windows ARM、Linux ARM），预计2026-2027年才可能贡献有意义的收入。
+<p>
+<strong>格雷厄姆评估：失败。</strong> PE 55倍、PB 15倍。ROE 7.23%虽然显著高于板块平均水平，但远不能满足格雷厄姆标准。评分：0/5。</div><div class="链条面板"><h4>14. 圣邦股份 (300661) — 模拟芯片</h4>圣邦股份是中国最大的模拟芯片设计公司（产品线最全，料号超过4000个，覆盖运放、比较器、ADC/DAC、电源管理、接口芯片等品类）。模拟芯片市场是全球半导体中最大的细分市场之一（年市场规模约800-1000亿美元），长期被TI（德州仪器）、ADI（亚德诺）、Maxim等美国大厂垄断（全球市占率合计超60%）。在"自主可控"政策推动下，中国中小电子制造商正在系统性地将模拟芯片供应商从TI/ADI切换至圣邦股份。这是一个长期的、渐进式的替代过程——因为模拟芯片是"非标品"，每个型号都需要客户单独验证，切换成本较高、周期长达6-12个月。
+<p>
+圣邦的核心问题在于：其产品集中在低端模拟芯片（信号链和电源管理的低附加值品类），平均单价仅约0.1-0.3美元/颗，而TI/ADI的高端模拟芯片（如高精度ADC/DAC、隔离放大器）单价可达5-50美元/颗且毛利率超过70%。圣邦在高端领域的突破甚微，导致其整体毛利率长期停滞在35-38%（TI模拟芯片毛利率约65-70%）。
+<p>
+2023年全球模拟芯片经历了严重的去库存周期（下游客户从"过度备货"转为"砍单去库存"），整个模拟芯片市场规模同比下降约15%以上。2024年下半年去库存基本结束，客户订单恢复正常化。这一周期性复苏是圣邦短期收入恢复的最大驱动力，但159倍PE已经完全透支了这一复苏——即便2024-2025年收入恢复30%增长，当前定价也对应着2026年超过80倍PE。
+<p>
+<strong>格雷厄姆评估：完全失败。</strong> PE 160倍、PB 15倍、ROE 2.3%。三重打击。没有任何安全边际，完全依赖"国产替代"的长期故事支撑。评分：0/5。</div><div class="链条面板"><h4>15. 长电科技 (600584) — 芯片封测代工</h4>长电科技是中国最大、全球第三大芯片封测（封装测试）企业（市占率约10-12%，仅次于日月光、安靠）。传统封装的价格约0.02-0.05美元/颗，而先进封装（Chiplet/2.5D/3D封装、HBM堆叠封装、Fan-out等）的价格在0.5-5美元/颗，单价提升10-100倍。AI芯片（如英伟达的H100/B200 GPU+Chiplet封装）大量使用先进封装技术，对封装企业的技术能力要求大幅提升。
+<p>
+长电科技的挑战在于：先进封装的技术壁垒极高，与台积电的CoWoS、三星的I-Cube等先进封装平台相比，长电科技的XDFOI平台在良率和性能方面仍有较大差距。目前长电的收入来源仍以传统封装为主（占约70%），先进封装占比小，导致利润率偏低（毛利率约15-18%）。
+<p>
+ROE仅1.01%，说明公司为股东创造的价值接近于零。这与192倍PE的中芯国际如出一辙——都是"国家战略驱动、商业价值稀薄"的典型。</div><div class="链条面板"><h4>16. 通富微电 (002156) — 先进封装</h4>通富微电与AMD有深度绑定关系（AMD持股通富微电约5%）。AMD向通富微电大量转移CPU/GPU封装订单，使得通富微电成为AMD在中国最大的封装合作伙伴。AMD在AI服务器CPU（EPYC系列）和GPU（MI300/MI325系列）领域的市场份额持续提升（2024年AMD在服务器CPU市场占有率约25%，AI GPU市场占有率约5%并呈上升趋势），直接带动通富微电的封装订单增长。通富微电为AMD提供的封装服务包括FC-BGA（倒装球栅阵列）、FC-CSP（倒装芯片级封装）等，覆盖桌面CPU、服务器CPU和部分AI加速器。2024年通富微电来自AMD的收入占总收入约40-50%。
+<p>
+随着国产AI芯片（寒武纪思元系列、海光DCU、比特大陆算丰系列）在国内数据中心部署加速，这些芯片同样需要先进封装技术（2.5D/3D Chiplet封装）。通富微电依托为AMD提供封装积累的技术能力，在国内AI芯片封装市场占据有利地位。但国内AI芯片的总量远小于AMD/英伟达，且目前国产AI芯片出货量有限，这一增长逻辑尚处于"故事"阶段而非"实质性收入贡献"。
+<p>
+<strong>格雷厄姆评估：失败。</strong> 估值超过价值投资可接受范围。长电科技、通富微电、华天科技这三家封测企业的ROE都低于2%，本质上是"半导体代工中的代工"——利润率最低的环节。评分：0/5。</div><div class="链条面板"><h4>17. 华天科技 (002185) — 封装测试</h4>华天科技是中国传统封测龙头之一（与长电科技、通富微电并称"封测三雄"），但在先进封装领域布局相对滞后。其客户以国内中小型芯片设计公司（Fabless）为主——这些公司设计的大多是中低端芯片（MCU、电源管理IC、驱动IC、消费电子SoC），只需要传统封装（QFP、SOP、BGA等），对先进封装需求有限。受益于国产芯片生态的整体扩张（国产设计公司数量从2021年约3000家增至2025年约5000家），华天科技的封装代工需求稳步增长。
+<p>
+华天科技在近年开始布局先进封装（Fan-out晶圆级封装、FC-CSP、SIP系统级封装等），产品单价从传统封装的约0.02-0.1美元/颗提升至先进封装的约0.3-1美元/颗。但先进封装在总产能中的占比仍然很低（约15-20%），且华天的先进封装技术与台积电CoWoS、日月光FoWLP相比仍有较大差距。短期来看，华天科技的收入增长更多来自于"量"（封装颗数）而非"价"（封装单价）的提升，利润率提升空间有限。
+<p>
+<strong>格雷厄姆评估：失败。</strong> 与长电科技、通富微电同为"低ROE封测三雄"，缺乏格雷厄姆所看重的盈利质量。评分：0/5。</div><div class="链条面板"><h4>18. 芯原股份 (688521) — 芯片设计服务</h4>芯原股份是中国最大的芯片设计服务平台（提供设计IP授权和设计服务），被称为"无晶圆厂芯片设计公司的设计部门"。随着中国半导体产业"去美国化"进程加速，大量新成立的芯片设计公司（尤其在AI、IoT、汽车电子领域）缺乏经验和设计能力储备，倾向于将芯片设计外包给芯原这样的一站式服务平台。芯原拥有超过50种处理器IP（CPU、GPU、NPU、VPU、DSP等）和超过1800个IP模块，可以快速为客户提供从规格定义到GDSII（版图文件）的全流程设计服务。
+<p>
+芯原是中国RISC-V（开源指令集架构）生态的核心推动者，拥有RISC-V处理器IP和完整的开发工具链。随着中国加大对开源技术的投入（减少对ARM/x86授权的依赖），RISC-V在中国IoT/AI领域的渗透率快速提升——从2022年的约5%升至2025年的约20%。芯原预计2026年来自RISC-V相关IP授权和设计服务的收入占比将达到15-20%以上。但RISC-V目前主要应用于IoT MCU等低端场景，在AI训练等高算力场景的替代仍需5-10年。
+<p>
+芯原股份持续亏损的核心原因是研发费用率极高（2024年约45%），远超行业平均水平（设计服务公司通常约15-25%）。高研发投入扩张产品线（尤其在AI IP领域）是主动战略选择，但也意味着公司短期无法实现正盈利。芯原依赖科创板融资和银行负债维持运营，如果中国资本市场融资环境收紧（IPO审核趋严格、再融资受限），公司面临流动性风险。2025年A股再融资收紧期间，芯原股价大幅波动——市场对"亏损企业"的耐心并非无限。
+<p>
+<strong>格雷厄姆评估：彻底失败。</strong> 亏损企业。PB 42倍对应负资产回报率，属于最危险的价值陷阱。在格雷厄姆看来，一个持续亏损、依赖融资生存的公司不应进入任何谨慎投资者的备选名单。评分：0/5。</div><div class="链条面板"><h4>20. 华润微 (688396) — 功率半导体</h4>华润微是中国最大的功率半导体制造企业（IDM模式，即设计+制造一体），产品涵盖MOSFET、IGBT、SiC MOSFET、二极管等。新能源汽车（电动车的逆变器使用IGBT/SiC MOSFET，OBC使用高压MOSFET，DC-DC转换器使用低压功率器件）和光伏/储能（逆变器使用IGBT）是其主要增长驱动力。
+<p>
+2024年中国新能源汽车渗透率超过50%（约1200万辆），对IGBT/SiC的需求同比增长约30-40%；2024年全球光伏新增装机约550GW，中国贡献约250GW，对IGBT模块的需求稳定增长。华润微的12英寸功率半导体产线（重庆）在2024年实现产能爬坡，月产能从2023年的1万片提升至2024年的3万片。
+<p>
+功率半导体是"大宗商品型"产品——不同供应商的产品在性能上趋于同质化（MOSFET、IGBT的设计和工艺相对成熟），客户采购决策主要基于价格而非技术差异化。这导致功率器件市场长期处于激烈的价格竞争中。以IGBT单管为例，2022-2024年平均价格从约4-6美元/颗降至约2.5-3.5美元/颗，降幅约40%。华润微虽然出货量增长，但ASP持续下降，导致收入增长（约15-20%/年）远快于利润增长（约0-5%/年），ROE仅1.43%。
+<p>
+<strong>因果链三：SiC（碳化硅）升级 → SiC MOSFET替代Si IGBT趋势 → 华润微布局SiC → 长期产品结构升级</strong>
+<p>
+SiC（碳化硅）是功率半导体的下一代关键材料：SiC MOSFET的击穿电压更高、开关频率更快、热导率更好，正在800V高压电动汽车平台中大规模替代传统Si IGBT。华润微在SiC MOSFET领域有布局（2024年SiC MOSFET收入约5-8亿元，占总收入约5%），但份额远不及全球龙头意法半导体、英飞凌和Wolfspeed。SiC是一个高壁垒、高增长市场，但华润微能否在SiC时代与国际巨头抗衡，目前尚不确定——SiC衬底和晶圆制造的技术难度远超传统硅基功率器件。
+<p>
+<strong>格雷厄姆评估：失败。</strong> PE 72倍、ROE 1.4%。华润微的营收有"新能源汽车+光伏"的硬需求支撑，但大宗商品化的盈利模式导致利润稀薄，ROE长期低于2%。评分：0/5。</div><div class="链条面板"><h4>27. TCL科技 (000100) — 面板+光伏</h4><strong>核心财务指标：</strong> PE 15.54倍（全板块最低！） / PB 1.59倍（接近价值区！） / ROE 2.47%
+<p>
+TCL科技控股华星光电（CSOT），与京东方形成中国LCD面板双寡头。华星光电聚焦TV大尺寸面板和IT中小尺寸面板，在LCD赛道与京东方正面竞争。面板周期逻辑：需求回暖（TV/IT换机）+供给收缩（韩国产能退出）→面板价格上涨→利润弹性。
+<p>
+TCL科技收购中环股份（现TCL中环）后进入了硅片/电池光伏制造领域。2023-2024年中国光伏产能严重过剩（硅片产能约为全球需求的2.5倍），硅片价格从2022年的最高约8元/片暴跌至2024年的约1.5元/片，导致整个光伏产业链全面亏损。TCL中环2024年亏损数十亿元，严重拖累TCL科技合并报表。如果没有光伏业务，TCL科技2024年应是盈利的。
+<p>
+<strong>格雷厄姆评估：板块中"最接近合格"的标的！</strong> PE 15.54倍几乎符合格雷厄姆PE<15的标准（略微超标0.5倍）。PB 1.59倍同样接近1.5倍标准（超标0.09倍）。唯一明显偏离的是ROE 2.47%（远低于15%标准）。但如果剔除光伏业务的拖累（周期性亏损），TCL科技的面板业务ROE约为5-7%，仍低于格雷厄姆标准但已大幅改善。
+<p>
+对于"放宽版格雷厄姆"投资者（ROE标准降至10%），TCL科技是科技板块中为数不多的"可以看一眼"的公司。评分：2/5（科技板块中的最高分）。</div><div class="链条面板"><h4>主题二：中美科技博弈——板块的"系统性风险因子"</h4><strong>第三层：资本市场切割。</strong> 美国对中国科技企业的投资限制（如2021年Foreign Company Accountability Act、2024年限制美国基金投资中国AI/半导体）导致外资持续流出，压低整个板块的估值中枢。</div><div class="链条面板"><h4>主题五：地产与科技板块的"间接关联"</h4>科技板块与房地产行业的直接相关性趋近于零——AI芯片公司的收入不依赖于楼盘销售，光模块出口商不受首付比例影响。但"间接关联"确实存在，且不可忽视：
+<p>
+<li><strong>居民财富效应</strong>：中国居民家庭财富中约60-70%集中在房地产。房价下跌意味着居民信心下降、消费支出萎缩。这间接影响消费电子（立讯精密、京东方、瑞芯微）的终端需求。但这一传导路径较长、时滞约2-3个季度，且消费电子公司通常以全球市场为主，中国市场只是其中一部分。</li>
+<p>
+<li><strong>资金"挤出效应"</strong>：2020-2021年地产繁荣时期，大量资金从房地产流入股市（通过信托、理财产品、炒房者抛售房产进入股市），科技板块收益溢出。2022-2024年地产下行，部分资金流出股市进入存款或海外资产，科技板块失去了一部分"流动性溢价"。</li></div><div class="链条面板"><h4>主题六：黄金相关性——科技股vs黄金的"跷跷板"</h4><li>科技股是"长期久期资产"——其当前估值中，约70-80%来自5年之后的远期现金流折现。这意味着科技股对实际利率极度敏感。</li>
+<li>黄金同样对实际利率敏感——但方向相反：实际利率上升，黄金持有成本增加，金价下跌；实际利率下降，黄金持有成本降低，金价上涨。</li>
+<li>实际利率≈名义利率−通胀预期。当实际利率上升时（如美联储加息），科技股和金价同时承压；当实际利率下降时（如美联储降息），两者同时受益。</li>
+<li>但某些场景下两者负相关特别突出：<strong>"美联储宽松但经济不衰退"</strong>（如2024年软着陆预期）→科技股大涨+金价盘整/小跌；<strong>"经济恐慌"</strong>（如2025年某月美国衰退指标上升）→黄金大涨+科技股承压。</li>
+<p>
+<strong>总结：</strong> 科技板块与黄金的负相关性在中性宏观经济环境下约为-0.3至-0.4，但在极端尾部风险事件中（全球衰退、地缘冲突）负相关性会大幅增强，成为有效的"危机对冲组合"——但这不是一种稳定的套利关系。</div><div class="链条面板"><h4>13. 迈瑞医疗 (300760) -- 医疗设备国产替代的确定性叙事</h4><strong>估值现状</strong>: PE 22.1倍，PB 4.32倍，ROE 21.58%。2025年净利润约81亿元（-30%，高基数效应）。
+<p>
+中国政府在2024-2026年推动"医疗设备更新改造"专项政策（类似于家电以旧换新），由中央财政专项拨款支持县级医院和基层医疗机构采购监护仪、呼吸机、超声等设备。迈瑞医疗作为国内最大的医疗器械制造商，在这一政策中直接受益。因果链为：国务院推动设备更新政策 → 卫生健康委下达采购指南 → 各级医院获得财政拨款/专项债资金 → 迈瑞参加招标采购 → 中标获取订单 → 确认收入 → 现金流改善。但这一因果链面临政策节奏风险：2025年设备更新政策集中释放后，2026年的增量订单可能边际减少，导致收入增速放缓（2025年Q4收入增速已开始放缓）。
+<p>
+迈瑞医疗海外收入占比约40%（估算），且以美元计价。公司已在全球设立约50个子公司，正在推进本地化生产以规避贸易壁垒。因果链为：迈瑞产品性价比优于国际同行（价格约为飞利浦/GE同类的50-70%） → 发展中国家（印度、巴西、俄罗斯等）采购需求增长 → 海外收入增速（+15-20%）快于国内（+8-10%） → 海外收入占比持续提升 → 但美元计价收入在人民币贬值时产生汇兑收益。同时，本地化产能（如印度工厂）可以降低关税成本，但需要前期资本投入，短期侵蚀利润。
+<p>
+迈瑞医疗所处的医疗器械行业面临"国产替代"的长期政策红利。中国政府鼓励医院优先采购国产设备，对进口设备设置审批延长限制。因果链为：政策推动国产替代，三级医院对国产设备的接受度逐步提高，迈瑞的监护仪、麻醉机、超声等主力产品在三级医院的渗透率从约20%提升至约40%，采购量增长，收入持续增长。但这一替代过程不是线性的：三级医院的采购决策周期长（通常1-2年），且国际巨头（飞利浦、GE、西门子）也在通过降价和本地化生产反击。
+<p>
+<strong>格雷厄姆评估</strong>: PE 22.1倍和PB 4.32倍均超标。迈瑞是高质量公司（ROE>20%，资产负债率仅27.4%），但估值偏高。在格雷厄姆框架中，迈瑞属于"好公司但不够便宜"——安全边际不足。评分: 1/5。</div><div class="链条面板"><h4>20. 万泰生物 (603392) -- HPV疫苗国产替代的先发劣势</h4>万泰生物是中国首家获批国产HPV疫苗的企业（2019年获批二价HPV疫苗）。但随后的竞争格局恶化超预期：沃森生物的二价HPV疫苗（2022年获批）和更多企业的进入，使政府采购报价从约329元/针降至仅约30-40元/针（降价约90%）。因果链为：国产HPV疫苗获批 → 多厂商竞争 → 国家免疫规划采购压价 → 二价HPV疫苗单价暴跌至成本线附近 → 万泰该产品线从盈利转为亏损。这是一个"先发优势被后发竞争和集采压价摧毁"的典型案例。
+<p>
+市场给予万泰生物高估值（PB一直在3倍以上）的核心逻辑是"国产九价HPV疫苗有望替代默沙东进口产品"。但九价疫苗的临床试验和产能建设进展多次低于预期，导致市场预期不断下调。因果链为：九价HPV疫苗研发投入持续 → 临床试验无里程碑突破 → 上市时间线不断推迟（从预计2023年推至2025-2026年） → DCF估值中的假设不断调低 → 股价持续下跌 → 同时现有业务（二价疫苗）利润暴跌 → PE和PB显得"便宜"实则无底。
+<p>
+万泰生物的实际控制人为钟睒睒（农夫山泉创始人），万泰生物与养生堂、农夫山泉之间存在复杂的股权和关联交易关系。这种"养生堂系"的交叉持股结构带来了潜在的公司治理风险：多个关联实体之间的资金往来、业务合作可能存在利益输送风险，控股股东对上市公司的支配权极强，中小股东权益保护面临挑战。这一治理结构问题在业绩好时被掩盖，但在业绩恶化时可能成为估值折价的额外因素。
+<p>
+<strong>格雷厄姆评估</strong>: 负PE和负ROE完全不符合格雷厄姆的基本要求。PB 3.09倍对于亏损企业来说毫无意义——因为净资产正在被持续亏损侵蚀。万泰也是典型的"价值陷阱"——看似跌了很多，但盈利根基正在瓦解。评分: 0/5。</div><div class="链条面板"><h4>23. 新产业生物 (300832) -- 体外诊断的国产替代</h4>新产业生物是国内化学发光免疫诊断领域的领先企业。化学发光诊断仪和试剂属于医院检验科的耗材型设备，其需求与基层医疗能力建设高度相关。因果链为：国家推动分级诊疗 → 县级医院检验科设备升级需求 → 化学发光仪采购增加 → 试剂（耗材）随检测量持续消耗 → 仪器+试剂的"剃须刀模式"带来持续性收入。当前PE 19倍和PB 4倍反映了市场对该"剃须刀模式"的确定性溢价。
+<p>
+2024-2025年，安徽等省份已将化学发光试剂纳入集采范围，价格降幅约30-50%，对行业利润率构成压力。因果链为：IVD集采试点扩大 → 化学发光试剂价格下降 → 新产业生物出厂价承压 → 但国产替代（从进口罗氏/雅培转向国产品牌）过程中，新产业销量增长抵消价格下降 → 进口企业受冲击大于国产企业。这一"以量补价"的因果链能否持续，取决于集采覆盖范围的扩展速度和新产业在三级医院（高端市场）的渗透进度。
+<p>
+新产业生物正在推进海外市场拓展，外销收入占比约30%且增速可观。发展中国家（东南亚、拉美、非洲）的化学发光渗透率远低于中国，新产业的性价比优势明显——单台仪器价格约为罗氏/雅培的1/3，试剂价格约为进口品牌的1/2。因果链为：海外化学发光市场增速（约15%）快于中国（约10%），新产业以低价策略切入，先占据中低端市场，再逐步向高端渗透。但海外业务面临的不确定性远高于国内：各国医疗器械注册周期不同（通常2-3年），当地经销商网络的建立和维护需要时间成本，且面临本土IVD企业的价格竞争。
+<p>
+<strong>格雷厄姆评估</strong>: PE 19.19倍超标，PB 3.97倍超标，ROE低于5%属于较低水平。新产业作为成长型医疗器械公司，在格雷厄姆框架下缺乏安全边际。评分: 1/5。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_中际旭创.html">
+            <span class="摘要名称">中际旭创</span>
+            <span class="摘要代码">300308</span>
+            <span class="摘要简述">光模块 ｜ 沪深300第一大权重 · AI算力核心</span>
+        </a><a class="公司摘要" href="公司_新易盛.html">
+            <span class="摘要名称">新易盛</span>
+            <span class="摘要代码">300502</span>
+            <span class="摘要简述">光模块 ｜ ROE高达72% · 英伟达供应链</span>
+        </a><a class="公司摘要" href="公司_寒武纪.html">
+            <span class="摘要名称">寒武纪</span>
+            <span class="摘要代码">688256</span>
+            <span class="摘要简述">AI芯片 ｜ PE超300倍 · 刚实现盈利</span>
+        </a><a class="公司摘要" href="公司_中芯国际.html">
+            <span class="摘要名称">中芯国际</span>
+            <span class="摘要代码">688981</span>
+            <span class="摘要简述">晶圆代工 ｜ PE超190倍 · 国产替代核心</span>
+        </a><a class="公司摘要" href="公司_北方华创.html">
+            <span class="摘要名称">北方华创</span>
+            <span class="摘要代码">002371</span>
+            <span class="摘要简述">半导体设备 ｜ 七年涨18倍 · 国产化率30%</span>
+        </a><a class="公司摘要" href="公司_海光信息.html">
+            <span class="摘要名称">海光信息</span>
+            <span class="摘要代码">688041</span>
+            <span class="摘要简述">CPU处理器 ｜ x86架构授权 · 信创核心标的</span>
+        </a><a class="公司摘要" href="公司_立讯精密.html">
+            <span class="摘要名称">立讯精密</span>
+            <span class="摘要代码">002475</span>
+            <span class="摘要简述">消费电子制造 ｜ 苹果供应链核心 · 汽车电子转型</span>
+        </a><a class="公司摘要" href="公司_海康威视.html">
+            <span class="摘要名称">海康威视</span>
+            <span class="摘要代码">002415</span>
+            <span class="摘要简述">智能安防 ｜ 实体清单压制 · PE科技板块最低</span>
+        </a><a class="公司摘要" href="公司_工业富联.html">
+            <span class="摘要名称">工业富联</span>
+            <span class="摘要代码">601138</span>
+            <span class="摘要简述">AI服务器 ｜ 英伟达核心代工厂 · 万亿市值</span>
+        </a><a class="公司摘要" href="公司_京东方A.html">
+            <span class="摘要名称">京东方A</span>
+            <span class="摘要代码">000725</span>
+            <span class="摘要简述">面板显示 ｜ PB仅1.08 · 面板周期股</span>
+        </a><a class="公司摘要" href="公司_韦尔股份.html">
+            <span class="摘要名称">韦尔股份</span>
+            <span class="摘要代码">603501</span>
+            <span class="摘要简述">图像传感器 ｜ 曾涨10倍跌77% · 手机+汽车CIS</span>
+        </a><a class="公司摘要" href="公司_大华股份.html">
+            <span class="摘要名称">大华股份</span>
+            <span class="摘要代码">002236</span>
+            <span class="摘要简述">智能安防 ｜ 四层评分科技板块最高 · PB仅1.44</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

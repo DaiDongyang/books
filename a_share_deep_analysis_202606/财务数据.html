@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>财务数据速查表</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+<h1>CSI 300 Top Stocks - Graham-Style Value Investing Financial Metrics</h1>
+<p>
+<blockquote>Data compiled from Eastmoney (<a href="公司_东方财富.html">东方财富</a>), Sina Finance (新浪财经), 10jqka (同花顺), Xueqiu (雪球), Futunn (富途), Jisilu (集思录), Investing.com (英为财情). Based on 2025 annual reports and 2026 Q1 data. Data as of mid-June 2026. All values based on publicly available financial data, may vary slightly across platforms.</blockquote>
+<p>
+<hr>
+<p>
+<h2>1. Bank Stocks (银行股) - 14 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_工商银行.html">工商银行</a></strong></td><td>601398</td><td>7.6x</td><td>0.53</td><td>6.2%</td><td>9.45%</td><td>92.0%</td><td>~2.77万亿</td><td>Yes (20+ yrs)</td><td>NP 3,686亿 (+0.7%); 2026Q1 NP 869亿 (+3.3%). Profit recovery underway</td></tr>
+<tr><td><strong><a href="公司_农业银行.html">农业银行</a></strong></td><td>601288</td><td>7.8x</td><td>0.70</td><td>3.5%</td><td>10.16%</td><td>93.4%</td><td>~1.99万亿</td><td>Yes (20+ yrs)</td><td>NP 2,910亿 (+3.2%); 2026Q1 Rev +10.5%. Steady growth</td></tr>
+<tr><td><strong><a href="公司_中国银行.html">中国银行</a></strong></td><td>601988</td><td>7.5x</td><td>0.60</td><td>5.7%</td><td>8.94%</td><td>~91%</td><td>~1.83万亿</td><td>Yes (20+ yrs)</td><td>NP 2,430亿 (+2.2%); 2026Q1 Rev +8.4%. Global banking strength</td></tr>
+<tr><td><strong><a href="公司_建设银行.html">建设银行</a></strong></td><td>601939</td><td>5.9x</td><td>0.53</td><td>5.6%</td><td>10.04%</td><td>~91%</td><td>~2.07万亿</td><td>Yes (20+ yrs)</td><td>NP 3,389亿 (+1.0%); 2026Q1 NP 863亿 (+3.5%). NIM stabilizing</td></tr>
+<tr><td><strong><a href="公司_招商银行.html">招商银行</a></strong></td><td>600036</td><td>6.4x</td><td>0.78</td><td>5.2%</td><td>13.44%</td><td>90.4%</td><td>~9,727亿</td><td>Yes (20+ yrs)</td><td>NP 1,502亿 (+1.2%); 2026Q1 NP 379亿 (+1.5%). Top retail bank</td></tr>
+<tr><td><strong><a href="公司_兴业银行.html">兴业银行</a></strong></td><td>601166</td><td>5.2x</td><td>0.44</td><td>5.8%</td><td>9.15%</td><td>~91%</td><td>~4,100亿</td><td>Yes (20+ yrs)</td><td>NP 775亿 (+0.3%); Rev turning positive. Div yield 5.75%, high value</td></tr>
+<tr><td><strong><a href="公司_交通银行.html">交通银行</a></strong></td><td>601328</td><td>6.4x</td><td>0.48</td><td>4.7%</td><td>8.38%</td><td>~92%</td><td>~6,130亿</td><td>Yes (20+ yrs)</td><td>NP 956亿 (+2.2%); PB only 0.48x. Deep value</td></tr>
+<tr><td><strong><a href="公司_浦发银行.html">浦发银行</a></strong></td><td>600000</td><td>6.7x</td><td>0.41</td><td>4.7%</td><td>6.76%</td><td>~91%</td><td>~3,280亿</td><td>Yes (20+ yrs)</td><td>NP 500亿 (+10.5%); Strong profit recovery. ROE improving 3yr trend</td></tr>
+<tr><td><strong><a href="公司_民生银行.html">民生银行</a></strong></td><td>600016</td><td>5.5x</td><td>0.24</td><td>1.4%</td><td>4.93%</td><td>~92%</td><td>~1,730亿</td><td>Yes (20+ yrs)</td><td>NP 306亿 (-5.4%); PB 0.24x extreme value trap. Dividend low</td></tr>
+<tr><td><strong><a href="公司_中信银行.html">中信银行</a></strong></td><td>601998</td><td>5.3x</td><td>0.51</td><td>7.1%</td><td>9.39%</td><td>~91%</td><td>~3,620亿</td><td>Yes (20+ yrs)</td><td>NP 706亿 (+3.0%); Div yield 7.06% very attractive. Record payout</td></tr>
+<tr><td><strong>光大银行</strong></td><td>601818</td><td>5.0x</td><td>0.32</td><td>2.2%</td><td>7.00%</td><td>~91%</td><td>~1,760亿</td><td>Yes (20+ yrs)</td><td>NP 388亿 (-6.9%); Revenue down -6.7%. NIM pressure</td></tr>
+<tr><td><strong><a href="公司_平安银行.html">平安银行</a></strong></td><td>000001</td><td>5.0x</td><td>0.44</td><td>5.4%</td><td>8.2%</td><td>~92%</td><td>~2,020亿</td><td>Yes (20+ yrs)</td><td>NP 426亿 (-4.2%); 2026Q1 NP +3.0%. PB 0.44x deep value</td></tr>
+<tr><td><strong><a href="公司_江苏银行.html">江苏银行</a></strong></td><td>600919</td><td>6.0x</td><td>0.62</td><td>2.1%</td><td>13.14%</td><td>92.9%</td><td>~1,800亿</td><td>Yes (10+ yrs)</td><td>NP 345亿 (+8.4%); 5yr consecutive growth. Low bad loan 0.84%</td></tr>
+<tr><td><strong><a href="公司_宁波银行.html">宁波银行</a></strong></td><td>002142</td><td>6.5x</td><td>0.86</td><td>3.0%</td><td>13.11%</td><td>~91%</td><td>~1,660亿</td><td>Yes (10+ yrs)</td><td>NP 293亿 (+8.1%); Bad loan 0.76% (19 yrs <1%). Premium city bank</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>2. Insurance Stocks (保险股) - 4 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_中国平安.html">中国平安</a></strong></td><td>601318</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.14%</td><td>89.9%</td><td>~9,595亿</td><td>Yes (13+ yrs)</td><td>NP 1,348亿 (+6.5%); Operating profit +10.3%. PEV 0.62x undervalued</td></tr>
+<tr><td><strong><a href="公司_中国人寿.html">中国人寿</a></strong></td><td>601628</td><td>7.0x</td><td>1.70</td><td>2.4%</td><td>27.81%</td><td>91.4%</td><td>~1.02万亿</td><td>Yes (19+ yrs)</td><td>NP 1,541亿 (+44%); 2026Q1 NP -32% on high base</td></tr>
+<tr><td><strong><a href="公司_中国太保.html">中国太保</a></strong></td><td>601601</td><td>5.9x</td><td>1.05</td><td>3.5%</td><td>16.60%</td><td>89.1%</td><td>~3,127亿</td><td>Yes (15+ yrs)</td><td>NP 535亿 (+19%); 2026Q1 steady +4.3%. Stable dividend payer</td></tr>
+<tr><td><strong>新华保险</strong></td><td>601336</td><td>5.2x</td><td>1.56</td><td>4.4%</td><td>34.69%</td><td>93.3%</td><td>~1,933亿</td><td>Yes (15+ yrs)</td><td>NP 363亿 (+38%); 2026Q1 NP +10.5%. High ROE, volatile revenue</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>3. Securities Stocks (券商股) - 4 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_中信证券.html">中信证券</a></strong></td><td>600030</td><td>11.9x</td><td>1.12</td><td>2.7%</td><td>10.59%</td><td>84.8%</td><td>~3,867亿</td><td>Yes (22+ yrs)</td><td>NP 301亿 (+39%, record); 2026Q1 NP +55%. Market leader</td></tr>
+<tr><td><strong>国泰海通</strong></td><td>601211</td><td>14.3x</td><td>0.99</td><td>2.8%</td><td>11.10%</td><td>84.5%</td><td>~3,136亿</td><td>Yes (10+ yrs)</td><td>2026Q1 Rev +59% but NP -48% (merger adjustment post-merger)</td></tr>
+<tr><td><strong><a href="公司_华泰证券.html">华泰证券</a></strong></td><td>601688</td><td>10.0x</td><td>0.95</td><td>2.9%</td><td>9.20%</td><td>82.7%</td><td>~1,753亿</td><td>Yes (10+ yrs)</td><td>NP 164亿 (+7%); 2026Q1 NP +32%. Tech-driven broker</td></tr>
+<tr><td><strong><a href="公司_东方财富.html">东方财富</a></strong></td><td>300059</td><td>23.1x</td><td>3.37</td><td>0.5%</td><td>14.03%</td><td>78.3%</td><td>~3,166亿</td><td>Yes (10+ yrs)</td><td>NP 121亿 (+26%); 2026Q1 NP +38%. Fintech premium</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>4. Consumer / Consumer Staples (消费股) - 7 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_贵州茅台.html">贵州茅台</a></strong></td><td>600519</td><td>22.3x</td><td>7.09</td><td>3.6%</td><td>32.53%</td><td>12.8%</td><td>~1.82万亿</td><td>Yes (20+ yrs)</td><td>NP 823亿 (-4.5%); 2026Q1 Rev +6.3%. Strong brand moat</td></tr>
+<tr><td><strong><a href="公司_五粮液.html">五粮液</a></strong></td><td>000858</td><td>9.4x</td><td>2.38</td><td>6.6%</td><td>~21% (5yr avg)</td><td>34.3%</td><td>~3,040亿</td><td>Yes (20+ yrs)</td><td>2025A NP declined ~23%; 2026Q1 strong recovery NP +83%</td></tr>
+<tr><td><strong><a href="公司_美的集团.html">美的集团</a></strong></td><td>000333</td><td>14.0x</td><td>2.83</td><td>5.6%</td><td>19.70%</td><td>61.2%</td><td>~6,498亿</td><td>Yes (20+ yrs)</td><td>NP 439亿 (+14%); 2026Q1 +2%. Diversified global appliance leader</td></tr>
+<tr><td><strong><a href="公司_格力电器.html">格力电器</a></strong></td><td>000651</td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.30%</td><td>59.2%</td><td>~2,276亿</td><td>Yes (20+ yrs)</td><td>NP 290亿 (-10%); 2026Q1 +3%. High yield, strong cash reserve</td></tr>
+<tr><td><strong><a href="公司_海尔智家.html">海尔智家</a></strong></td><td>600690</td><td>10.5x</td><td>1.65</td><td>5.5%</td><td>16.98%</td><td>55.2%</td><td>~1,958亿</td><td>Yes (10+ yrs)</td><td>NP 196亿 (+4.4%); 2026Q1 NP -15%. International expansion</td></tr>
+<tr><td><strong>伊利股份</strong></td><td>600887</td><td>14.1x</td><td>3.12</td><td>5.5%</td><td>20.87%</td><td>59.5%</td><td>~1,703亿</td><td>Yes (16+ yrs)</td><td>NP 116亿 (+37%); 2026Q1 NP +10.7%. Dairy sector leader</td></tr>
+<tr><td><strong>海天味业</strong></td><td>603288</td><td>28.0x</td><td>4.90</td><td>3.5%</td><td>19.59%</td><td>12.1%</td><td>~1,977亿</td><td>Yes (20+ yrs)</td><td>NP 70亿 (+11%); 2026Q1 +11%. Low debt, strong pricing power</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>5. Energy & Materials (能源/材料) - 9 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_中国石油.html">中国石油</a></strong></td><td>601857</td><td>12.0x</td><td>1.17</td><td>4.7%</td><td>10.10%</td><td>36.4%</td><td>~1.82万亿</td><td>Yes (20+ yrs)</td><td>NP 1,573亿 (-4.5%); Stable cash flow. Oil price sensitive</td></tr>
+<tr><td><strong><a href="公司_中国石化.html">中国石化</a></strong></td><td>600028</td><td>17.0x</td><td>0.73</td><td>4.7%</td><td>3.86%</td><td>54.1%</td><td>~6,010亿</td><td>Yes (20+ yrs)</td><td>NP 318亿 (-36.8%); ROE at multi-year low. High payout ratio</td></tr>
+<tr><td><strong><a href="公司_中国神华.html">中国神华</a></strong></td><td>601088</td><td>17.9x</td><td>1.92</td><td>7.6%</td><td>12.76%</td><td>29.0%</td><td>~9,220亿</td><td>Yes (20+ yrs)</td><td>NP 528亿 (-5.3%); PE at historical high. Very high dividend</td></tr>
+<tr><td><strong><a href="公司_长江电力.html">长江电力</a></strong></td><td>600900</td><td>19.0x</td><td>3.00</td><td>3.6%</td><td>15.90%</td><td>58.3%</td><td>~6,650亿</td><td>Yes (15+ yrs)</td><td>NP 345亿 (+6.2%, record high). Stable cash flow hydro</td></tr>
+<tr><td><strong>三峡能源</strong></td><td>600905</td><td>22-32x</td><td>1.32</td><td>1.0%</td><td>4.23%</td><td>71.9%</td><td>~1,200亿</td><td>No (IPO 2021)</td><td>NP 37亿 (-39.2%). Wind/solar pricing pressure</td></tr>
+<tr><td><strong><a href="公司_紫金矿业.html">紫金矿业</a></strong></td><td>601899</td><td>12.7x</td><td>4.10</td><td>1.3%</td><td>33.04%</td><td>51.4%</td><td>~8,050亿</td><td>Yes (10+ yrs)</td><td>NP 518亿 (+61.5%). Gold/copper boom. Very high ROE</td></tr>
+<tr><td><strong><a href="公司_万华化学.html">万华化学</a></strong></td><td>600309</td><td>18.0x</td><td>2.50</td><td>1.8%</td><td>12.44%</td><td>62.8%</td><td>~2,190亿</td><td>Yes (10+ yrs)</td><td>NP 125亿 (-3.9%); Revenue record high. Chemical cycle bottom</td></tr>
+<tr><td><strong>宝钢股份</strong></td><td>600019</td><td>14.0x</td><td>0.65</td><td>4.0%</td><td>5.07%</td><td>40.7%</td><td>~1,300亿</td><td>Yes (15+ yrs)</td><td>NP 103亿 (+40.5%). PB below 1x. Steel cyclical recovery</td></tr>
+<tr><td><strong>中国铝业</strong></td><td>601600</td><td>15.0x</td><td>2.80</td><td>2.1%</td><td>17.64%</td><td>46.0%</td><td>~2,000亿</td><td>Yes (10+ yrs)</td><td>NP 127亿 (+2.3%); ROE 17.6%. Solid alumina/aluminum</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>6. Technology (科技股) - 6 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_中际旭创.html">中际旭创</a></strong></td><td>300308</td><td>61.0x</td><td>22.0</td><td>0.1%</td><td>43.84%</td><td>30.2%</td><td>~8,200亿</td><td>Yes (11+ yrs)</td><td>NP 108亿 (+109%). AI optical module leader. Explosive growth</td></tr>
+<tr><td><strong><a href="公司_新易盛.html">新易盛</a></strong></td><td>300502</td><td>71.0x</td><td>38.0</td><td>0.1%</td><td>72.75%</td><td>31.0%</td><td>~7,700亿</td><td>Yes (12+ yrs)</td><td>NP 95亿 (+236%). AI boom. Very high ROE</td></tr>
+<tr><td><strong><a href="公司_寒武纪.html">寒武纪</a></strong></td><td>688256</td><td>200x+</td><td>37.0</td><td>~0%</td><td>26.96%</td><td>10.1%</td><td>~8,000亿</td><td>No (FY2025 first profit)</td><td>NP 20.6亿 (first profit). AI chip play. Very high valuation</td></tr>
+<tr><td><strong><a href="公司_立讯精密.html">立讯精密</a></strong></td><td>002475</td><td>28.0x</td><td>5.60</td><td>0.5%</td><td>21.10%</td><td>66.5%</td><td>~4,900亿</td><td>Yes (18+ yrs)</td><td>NP 166亿 (+24%). Apple supply chain + auto electronics</td></tr>
+<tr><td><strong><a href="公司_海康威视.html">海康威视</a></strong></td><td>002415</td><td>20.0x</td><td>3.70</td><td>3.6%</td><td>17.29%</td><td>30.3%</td><td>~2,950亿</td><td>Yes (12+ yrs)</td><td>NP 142亿 (+18.5%). Low debt. AIoT transformation</td></tr>
+<tr><td><strong><a href="公司_京东方A.html">京东方A</a></strong></td><td>000725</td><td>34.0x</td><td>1.08</td><td>0.8%</td><td>4.39%</td><td>51.9%</td><td>~2,260亿</td><td>Yes (12+ yrs)</td><td>NP 59亿 (+10%). Display cyclical. Low PB 1.08x</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>7. New Energy (新能源) - 4 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_宁德时代.html">宁德时代</a></strong></td><td>300750</td><td>23.6x</td><td>5.71</td><td>1.6%</td><td>24.91%</td><td>62.3%</td><td>~1.87万亿</td><td>Yes (8+ yrs, since IPO 2018)</td><td>NP 722亿 (+42%). Global battery leader. 5yr CAGR ~50%</td></tr>
+<tr><td><strong><a href="公司_比亚迪.html">比亚迪</a></strong></td><td>002594</td><td>29.7x</td><td>3.52</td><td>0.4%</td><td>20.8%</td><td>70.7%</td><td>~8,173亿</td><td>Yes (16+ yrs)</td><td>NP 326亿 (-19% high base). EV price war. Market share leader</td></tr>
+<tr><td><strong><a href="公司_隆基绿能.html">隆基绿能</a></strong></td><td>601012</td><td>N/A (loss)</td><td>2.00</td><td>0%</td><td>N/A (loss)</td><td>60.1%</td><td>~1,008亿</td><td>No (loss in 2024-2026)</td><td>Net loss 64亿. Solar overcapacity cycle bottom. Dividend suspended</td></tr>
+<tr><td><strong><a href="公司_阳光电源.html">阳光电源</a></strong></td><td>300274</td><td>26.5x</td><td>6.50</td><td>1.1%</td><td>31.26%</td><td>57.5%</td><td>~3,161亿</td><td>Yes (14+ yrs, since IPO)</td><td>NP 135亿 (+22%). Inverter leader. High ROE</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>8. Healthcare (医疗健康) - 4 Stocks</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong><a href="公司_恒瑞医药.html">恒瑞医药</a></strong></td><td>600276</td><td>38.7x</td><td>4.94</td><td>0.4%</td><td>14.26%</td><td>11.6%</td><td>~3,143亿</td><td>Yes (25+ yrs)</td><td>NP 77亿 (+22%); Innovation-driven recovery. Very low debt</td></tr>
+<tr><td><strong><a href="公司_迈瑞医疗.html">迈瑞医疗</a></strong></td><td>300760</td><td>22.1x</td><td>4.32</td><td>2.9%</td><td>21.58%</td><td>27.4%</td><td>~1,733亿</td><td>Yes (8+ yrs, since IPO)</td><td>NP 81亿 (-30% high base); Strong med device. Quality</td></tr>
+<tr><td><strong><a href="公司_药明康德.html">药明康德</a></strong></td><td>603259</td><td>14.6x</td><td>3.48</td><td>1.3%</td><td>28.56%</td><td>22.2%</td><td>~2,929亿</td><td>Yes (9+ yrs consecutive)</td><td>NP 192亿 (+103%); Best PE value in healthcare</td></tr>
+<tr><td><strong><a href="公司_爱尔眼科.html">爱尔眼科</a></strong></td><td>300015</td><td>22.9x</td><td>3.35</td><td>1.1%</td><td>14.97%</td><td>36.2%</td><td>~772亿</td><td>Yes (17+ yrs, since IPO)</td><td>NP 32.4亿 (-8.9%); eye hospital chain. Scale growth</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>Scoring for Graham-Style Value Screening</h2>
+<p>
+<h3>Graham Criteria (simplified):</h3>
+<li><strong>PE < 15</strong> (trailing 12 months)</li>
+<li><strong>PB < 1.5</strong> (or PE x PB < 22.5)</li>
+<li><strong>Dividend yield > 2/3 of AAA bond yield</strong> (~4%+ in current environment)</li>
+<li><strong>Current ratio > 2</strong> (or debt ratio < 50%) * — adjusted for financials</li>
+<li><strong>10+ years of consecutive profitability</strong></li>
+<li><strong>Stable earnings growth</strong> (no >10% decline in last 2 years)</li>
+<p>
+<h3>Top Candidates by PE Score:</h3>
+<div class="表格容器"><table>
+<thead><tr><th>Rank</th><th>Stock</th><th>PE</th><th>PB</th><th>Div Yield</th><th>ROE</th><th>Meets Graham Criteria*</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>1</td><td><strong><a href="公司_中信银行.html">中信银行</a></strong></td><td>5.3x</td><td>0.51</td><td>7.1%</td><td>9.39%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+<tr><td>2</td><td><strong><a href="公司_兴业银行.html">兴业银行</a></strong></td><td>5.2x</td><td>0.44</td><td>5.8%</td><td>9.15%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+<tr><td>3</td><td><strong><a href="公司_平安银行.html">平安银行</a></strong></td><td>5.0x</td><td>0.44</td><td>5.4%</td><td>8.2%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+<tr><td>4</td><td><strong><a href="公司_建设银行.html">建设银行</a></strong></td><td>5.9x</td><td>0.53</td><td>5.6%</td><td>10.04%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+<tr><td>5</td><td><strong><a href="公司_招商银行.html">招商银行</a></strong></td><td>6.4x</td><td>0.78</td><td>5.2%</td><td>13.44%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+<tr><td>6</td><td><strong>新华保险</strong></td><td>5.2x</td><td>1.56</td><td>4.4%</td><td>34.69%</td><td>Partial (PE yes, PB slightly high)</td></tr>
+<tr><td>7</td><td><strong><a href="公司_中国神华.html">中国神华</a></strong></td><td>17.9x</td><td>1.92</td><td>7.6%</td><td>12.76%</td><td>Partial (PE high, PB high, but Div excellent)</td></tr>
+<tr><td>8</td><td><strong><a href="公司_格力电器.html">格力电器</a></strong></td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.30%</td><td>Yes (PE, PB borderline, Div, Profitability)</td></tr>
+<tr><td>9</td><td><strong><a href="公司_中国太保.html">中国太保</a></strong></td><td>5.9x</td><td>1.05</td><td>3.5%</td><td>16.60%</td><td>Partial (PE yes, PB yes, Div borderline)</td></tr>
+<tr><td>10</td><td><strong><a href="公司_交通银行.html">交通银行</a></strong></td><td>6.4x</td><td>0.48</td><td>4.7%</td><td>8.38%</td><td>Yes (PE, PB, Div, Profitability)</td></tr>
+</tbody></table></div>
+<p>
+*\*Note: Graham's original criteria were designed for US industrial companies. For Chinese financial stocks (banks/insurance), high leverage is structural and PB < 1 is common. Adjusted criteria applied.*
+<p>
+<hr>
+<p>
+<h2>Summary Statistics</h2>
+<p>
+<h3>Best Value (Lowest PE ratio):</h3>
+<a href="公司_中信银行.html">中信银行</a> (5.3x), <a href="公司_兴业银行.html">兴业银行</a> (5.2x), <a href="公司_平安银行.html">平安银行</a> (5.0x), 光大银行 (5.0x), 新华保险 (5.2x)
+<p>
+<h3>Deepest Value (Lowest PB):</h3>
+<a href="公司_民生银行.html">民生银行</a> (0.24x), 光大银行 (0.32x), <a href="公司_浦发银行.html">浦发银行</a> (0.41x), <a href="公司_兴业银行.html">兴业银行</a> (0.44x), <a href="公司_平安银行.html">平安银行</a> (0.44x), <a href="公司_交通银行.html">交通银行</a> (0.48x)
+<p>
+<h3>Highest Dividend Yield:</h3>
+<a href="公司_中国神华.html">中国神华</a> (7.6%), <a href="公司_中信银行.html">中信银行</a> (7.1%), <a href="公司_格力电器.html">格力电器</a> (7.4%), <a href="公司_工商银行.html">工商银行</a> (6.2%), <a href="公司_兴业银行.html">兴业银行</a> (5.8%), <a href="公司_建设银行.html">建设银行</a>/<a href="公司_中国银行.html">中国银行</a> (5.6%)
+<p>
+<h3>Highest ROE:</h3>
+<a href="公司_新易盛.html">新易盛</a> (72.8%), <a href="公司_中际旭创.html">中际旭创</a> (43.8%), 新华保险 (34.7%), 茅台 (32.5%), <a href="公司_紫金矿业.html">紫金矿业</a> (33.0%), <a href="公司_阳光电源.html">阳光电源</a> (31.3%), <a href="公司_药明康德.html">药明康德</a> (28.6%), <a href="公司_中国人寿.html">中国人寿</a> (27.8%)
+<p>
+<h3>Most Conservative Balance Sheet (Lowest Debt):</h3>
+<a href="公司_恒瑞医药.html">恒瑞医药</a> (11.6%), 海天味业 (12.1%), <a href="公司_贵州茅台.html">贵州茅台</a> (12.8%), <a href="公司_寒武纪.html">寒武纪</a> (10.1%), <a href="公司_中国神华.html">中国神华</a> (29.0%), <a href="公司_海康威视.html">海康威视</a> (30.3%)
+<p>
+<h3>Strongest Growth (2025-2026):</h3>
+AI: <a href="公司_新易盛.html">新易盛</a> (NP+236%), <a href="公司_中际旭创.html">中际旭创</a> (NP+109%), <a href="公司_寒武纪.html">寒武纪</a> (first profit)
+Resources: <a href="公司_紫金矿业.html">紫金矿业</a> (NP+62%)
+Consumer recovery: <a href="公司_五粮液.html">五粮液</a> 2026Q1 (NP+83%)
+Securities: <a href="公司_中信证券.html">中信证券</a> 2026Q1 (NP+55%)
+Healthcare: <a href="公司_药明康德.html">药明康德</a> (NP+103%)
+<p>
+<hr>
+<p>
+*Disclaimer: All data sourced from public financial websites. Investment decisions should be based on thorough due diligence. This is not investment advice.*
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

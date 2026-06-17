@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏦 银行行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>🏦 银行行业 · 14 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_科技.html">💻 科技</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_新能源.html">🔋 新能源</a><a class="同行链接" href="行业_材料.html">⛏️ 材料</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_基建.html">🏗️ 基建</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a><a class="同行链接" href="行业_农业.html">🐷 农业</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>银行板块（天然的价值股聚集地）</h4><strong>格雷厄姆框架下的正面因素</strong>：
+<li>国有大行具备<strong>安全边际</strong>：市净率普遍在0.4-0.7倍之间，远低于格雷厄姆1.5倍的上限</li>
+<li><strong>股息率</strong>普遍在4-7%之间，远超过3%的门槛，且股息支付稳定</li>
+<li><strong>长期盈利记录</strong>：四大行连续盈利超过15年，无亏损年份</li>
+<li><strong>规模</strong>：全部为系统重要性金融机构，远超格雷厄姆的"适度规模"要求</li>
+<p>
+<strong>需要审慎的因素</strong>：
+<li>银行的高杠杆特征（资产负债率>90%）不完全符合格雷厄姆对"财务稳健"的要求</li>
+<li>净息差持续压缩是当前的结构性逆风</li>
+<li>房地产风险敞口可能在极端情况下影响资产质量</li></div><div class="链条面板"><h4>1.2 对金融股的特殊调整</h4>格雷厄姆的原始标准专为工业企业设计。银行靠杠杆经营（资产负债率90%+），市净率普遍低于1倍，股息率高。如果严格套用原始标准，95%的A股都会被淘汰——不是因为它们都不好，而是<strong>中国经济结构决定了金融行业集中了最多符合"低估"特征的公司</strong>。
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>标准</th><th>金融股调整标准</th><th>满分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-------------</td><td>------</td></tr>
+<tr><td>PE</td><td>< 10倍 = 1分</td><td>1</td></tr>
+<tr><td>PB</td><td>< 1.0倍 = 1分</td><td>1</td></tr>
+<tr><td>股息率</td><td>> 4% = 1分</td><td>1</td></tr>
+<tr><td>ROE</td><td>> 2%（银行）/ > 10%（保险券商）= 1分</td><td>1</td></tr>
+<tr><td>10年连续盈利</td><td>Yes = 1分</td><td>1</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5分</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2. 银行板块</h4><blockquote><strong>核心特征</strong>: 银行是中国A股的"价值之锚"。全板块PE 3-8倍，PB 0.2-0.9倍，股息率3-7%。几乎所有银行都符合PE<15和PB<1.5的格雷厄姆筛选标准。但银行的高杠杆是其商业模式的核心，不能用工业企业的债务标准来评判。</blockquote></div><div class="链条面板"><h4>2.1 工商银行 (601398) — "宇宙行"</h4><div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE (TTM)</td><td>7.6x</td><td>✅ PE<10 → 1分</td></tr>
+<tr><td>PB</td><td>0.53x</td><td>✅ PB<1.0 → 1分</td></tr>
+<tr><td>股息率</td><td>6.2%</td><td>✅ >4% → 1分</td></tr>
+<tr><td>ROE</td><td>9.45%</td><td>✅ >2% → 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes (20+年)</td><td>✅ → 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2.2 建设银行 (601939)</h4><div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>5.9x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.53x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.6%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>10.04%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>特色</strong>: 建行是中国最大的住房按揭贷款银行（房贷占总贷款约30%），也是基础设施贷款（基建贷款占对公贷款约40%）的最大提供者。</div><div class="链条面板"><h4>2.3 招商银行 (600036)</h4><div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>6.4x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.78x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.2%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>13.44%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2.4 兴业银行 (601166)</h4><div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>5.2x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.44x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.8%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>9.15%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2.5 交通银行 (601328)</h4><div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>6.4x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.48x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>4.7%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>8.38%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2.6 浦发银行 (600000)</h4>
+<strong>核心因果链</strong>：经济下行→对公不良暴露→利润骤降→拨备不足→限制分红→估值长期低迷。浦发2025年净利500亿（+10.5%），是复苏信号。</div><div class="链条面板"><h4>2.7 中信银行 (601998)</h4></div><div class="链条面板"><h4>2.8 民生银行 (600016)</h4>
+<strong>特色</strong>: PB仅0.24倍——A股最低。但低是有原因的：ROE仅4.93%，利润连年下滑（NP -5.4%），股息率仅1.4%。
+<p>
+<strong>价值陷阱风险</strong>：
+<li>民营股东治理问题（安邦、泛海等前大股东遗留问题）</li>
+<li>中小企业贷款资产质量不确定性大</li>
+<li>拨备覆盖率偏低（<150%）</li>
+<li><strong>格雷厄姆的提醒</strong>：极低的PB不一定是机会——如果资产在持续恶化，0.24倍PB可能变成0.19倍，再变成0.15倍。需要催化的ROE改善才能入场。</li></div><div class="链条面板"><h4>2.10 银行板块格雷厄姆筛选总结</h4><strong>关键矛盾</strong>：银行的杠杆率（资产负债率90%+）不符合格雷厄姆"低负债"要求。对此的经典回应：
+<li>银行的"负债"是存款，不是债务——存款是银行的原材料而非负担</li>
+<li>银行受央行/银保监会的严格监管（资本充足率、流动性覆盖率等），这些监管指标是比"资产负债率"更好的安全度量</li>
+<li>格雷厄姆本人也承认，其工业企业标准不完全适用于金融公司</li>
+<p>
+<blockquote>📌 <strong>以下章节（[3] 保险券商 至 [7] 电信汽车等）的分析由6个专业子代理并行处理中，完成后将逐一填入完整因果分析。以下为基于已完成数据的初步框架。</strong></blockquote></div><div class="链条面板"><h4>一、招商银行（600036）——"零售之王"的估值回归</h4><strong>上市时间：</strong> 2002年4月
+<strong>历史最高价：</strong> 约56.15元（2021年6月）
+<strong>历史最低PE：</strong> 4.55倍（2014年7月）</div><div class="链条面板"><h4>二、工商银行（601398）——宇宙行的高股息时代</h4><strong>上市时间：</strong> 2006年10月
+<strong>历史最高价：</strong> 约9.00元（2007年11月，除权价）
+<strong>历史最低价：</strong> 约3.13元（2013年6月，前复权）</div><div class="链条面板"><h4>三、建设银行（601939）——住房金融龙头的估值修复</h4><strong>上市时间：</strong> 2007年9月
+<strong>当前PE（TTM）：</strong> 7.82-7.99倍
+<strong>当前PB：</strong> 0.72-0.74倍
+<strong>2025年涨幅：</strong> +12.87%
+<p>
+建行的核心优势在于住房金融领域的传统龙头地位。在"中特估"行情中，建行受益逻辑与工行类似：高股息（2025年中期分红超500亿元）、低估值、央企市值管理考核。
+<p>
+建行2025年表现相对稳健但不及农行（+52.66%）和工行（+21.54%），主要原因是其住房贷款占比较高（约35%），市场对其在房地产市场调整中的资产质量有所担忧。但2025年建行不良率持续改善，营收增速转正，利润增速+1.0%。</div><div class="链条面板"><h4>四、农业银行（601288）——2025年板块最大赢家</h4><strong>上市时间：</strong> 2010年7月
+<strong>2025年涨幅：</strong> +52.66%（板块第一）
+<strong>2025年市值一度超越工行成为A股银行市值第一</strong>
+<p>
+<strong>① 县域金融护城河</strong>：农行在中国县域拥有最广泛的网点覆盖，县域存款和贷款增速持续高于行业平均水平。在"乡村振兴"政策推动下，县域金融业务成为增长亮点。
+<p>
+<strong>② 高股息+低估值共振</strong>：2025年初农行PB仅0.5倍左右，股息率超6%。在险资大规模增配银行股的背景下，农行成为最受益的标的之一。2025年农行H股获中国平安多次举牌，H股全年涨幅约41-44%。
+<p>
+<strong>③ 业绩增速领跑大行</strong>：2025年农行净利润同比+3.2%，增速在六大行中最高，且不良率保持在1.3%以下，拨备覆盖率超过200%。</div><div class="链条面板"><h4>五、中国银行（601988）——国际化程度最高的国有大行</h4>中行在2025年的涨幅相对温和（+10.75%），低于农行（+52.66%）和工行（+21.54%），原因在于：①中行的净息差压力更大（海外利率下行影响外币业务）②市场更青睐农行的高成长+高股息组合。但中行的高股息特征（股息率~5%）仍吸引长线资金。</div><div class="链条面板"><h4>六、交通银行（601328）——六大行中估值最低</h4><strong>上市时间：</strong> 2007年5月
+<strong>当前PE：</strong> 约4.05倍（行业排名第3低）
+<strong>当前PB：</strong> 0.39-0.58倍
+<strong>2025年涨幅（年初至4月）：</strong> +2.42%
+<p>
+交通银行是六大行中市值最小者，估值长期在国有大行中垫底。PB仅0.39-0.58倍，核心原因：①资产规模增长乏力，总资产增速在大行中偏后 ②净息差持续下行，盈利能力弱于四大行 ③不良贷款率也相对较高。</div><div class="链条面板"><h4>七、兴业银行（601166）——从"同业之王"到绿色金融转型</h4><strong>上市时间：</strong> 2007年2月
+<strong>2015年高点股价：</strong> 约20元（前复权，PE~7倍，PB~1.3倍）
+<strong>历史最低PE：</strong> 3.43倍（2023年11月）
+<strong>当前PE：</strong> 5.01-5.70倍
+<strong>当前PB：</strong> 0.42-0.50倍</div><div class="链条面板"><h4>为何兴业银行跌幅远超四大行？</h4>兴业银行曾被称为"同业之王"，其同业资产（应收款项类投资）从2008年的186亿元飙升至2016年的2.1万亿元，扩张超200倍，总资产一度超越招行成为股份行第一。2016年同业负债占比超过40%，远超股份行27%的平均水平。
+<p>
+2017年银监会"三三四十"专项检查（三违反、三套利、四不当），精准打击了兴业的同业空转套利模式。46号文重点限制同业负债比例（不超过总负债1/3），要求穿透监管。后果：2017年兴业营收同比下降15.78%（同业业务大幅回撤），净息差下降52BP，投资收益同比降63.34%。同业专营非标投资规模压降2382亿元（降幅21%），同业负债从41%降至32%。
+<p>
+从2015年高点约20元（PE~7倍，PB~1.3倍）到当前约18元（PE~5.2倍，PB~0.44倍），表面跌幅不大，但估值已经"腰斩再腰斩"。这10年间，兴业的净利润从约500亿元增长至775亿元（+55%），但PB从1.3倍跌至0.44倍——市场给予的估值大幅折价，原因包括：①同业业务的脆弱性已被市场充分认知 ②绿色金融转型成效尚需时间验证 ③内控问题频发（2022年被罚87次，罚款超2400万元）。
+<p>
+兴业银行是中国首家赤道银行，绿色金融是其差异化竞争优势。2025年绿色贷款余额超过1.6万亿元，但绿色金融对盈利的贡献尚不足以抵消传统业务的下行。当前PB 0.42-0.50倍，处于历史极低区域（接近2023年的3.43倍PE极端低位）。机构目标价24元（约PB 0.6倍），但修复的前提是：净息差企稳、资产质量持续改善、绿色金融收入贡献显著提升。</div><div class="链条面板"><h4>八、浦发银行（600000）——2025年的逆袭者</h4><strong>上市时间：</strong> 1999年11月（A股第一批规范上市的银行）
+<strong>历史最高价（52周）：</strong> 14.39元
+<strong>历史最低价（52周）：</strong> 8.75元
+<strong>2025年涨幅：</strong> +24.56%（板块排名第3）
+<strong>当前PE：</strong> 6.26倍
+<strong>当前PB：</strong> 0.42倍
+<p>
+浦发银行是2025年的意外赢家。在经历了多年"业绩涨股价不涨"的困境后，2025年终于迎来估值修复。驱动因素：①利息净收入同比+5.03%，净息差1.42%与上年持平，在"十万亿俱乐部"中唯一没有下降 ②500亿浦发转债顺利转股（转股率99.67%），消除了悬在头上的抛压 ③不良率降至1.26%（近十年最优），拨备覆盖率回升至200%以上 ④归母净利润同比+10.52%，连续两年双位数增长。
+<p>
+但2026年以来浦发银行股价回调明显（一度跌超22%），核心原因是转股后套利资金退出的短期冲击，以及市场担忧其业绩增长的可持续性。</div><div class="链条面板"><h4>九、中信银行（601998）——估值在股份行中垫底</h4>中信银行在股份行中估值长期偏低，PE仅4.24倍（股份行中最低之一），PB深度破净。原因：①对公业务占比过高，受宏观经济影响大 ②净息差持续下行 ③房地产和城投敞口带来资产质量隐忧。
+<p>
+2025年中信银行受益于银行板块整体上涨，但涨幅相对温和。作为中信集团的核心金融平台，市场期待集团内部的协同效应能带来差异化价值。</div><div class="链条面板"><h4>十、平安银行（000001）——零售转型的阵痛期</h4><strong>上市时间：</strong> 1991年4月（深发展A，最老牌的上市银行）
+<strong>当前PE：</strong> 4.93倍
+<strong>当前PB：</strong> 0.39倍
+<strong>2025年涨幅：</strong> +0.56%（几乎持平）
+<p>
+<strong>① 零售转型遭遇瓶颈</strong>：2025年平安银行零售业务增速明显放缓，信用卡不良率上升，消费贷需求疲弱。在居民"缩表"趋势下，其"中国版富国银行"的战略目标显得遥远。
+<p>
+<strong>② 净息差压缩严重</strong>：平安银行净息差从2020年的2.5%以上一路降至2025年的1.8%左右，高于行业平均降幅。其负债成本优势（背靠平安集团）尚不足以对冲资产端利率下行。
+<p>
+当前PB仅0.39倍，在股份行中属于深度破净。机构目标价约13.28元（较当前约11元仍有~20%空间），但需要看到零售业务拐点。</div><div class="链条面板"><h4>十一、民生银行（600016）——没落的贵族，PB倒数第一</h4><strong>上市时间：</strong> 2000年12月
+<strong>历史最高PE：</strong> 77.57倍（2001年4月）
+<strong>历史最低PE：</strong> 4.15倍（2024年9月）
+<strong>历史最低PB：</strong> 0.233倍
+<strong>2025年涨幅：</strong> -3.09%（板块跌幅最大之一）
+<strong>当前PE：</strong> 3.41倍（动态）
+<strong>当前PB：</strong> 0.27倍（42家上市银行倒数第一！）
+<p>
+民生银行是A股银行板块中最令人唏嘘的故事。曾经的"民企银行"代表，如今PB仅0.27倍——意味着市场认为其每股净资产的价值只剩27分钱。
+<p>
+恶化原因：①净利润从2019年的峰值约540亿元降至2025年的约306亿元，降幅达43% ②信用减值损失539.5亿元（同比+18.64%），持续侵蚀利润 ③不良贷款率1.49%，同比上升，信用卡不良率升至3.87% ④规模扩张停滞，总资产仅增长0.23% ⑤内控问题持续（多次违规被罚、高管动荡）。
+<p>
+PB已跌至历史冰点（0.27倍，百分位~0.44%），但能否修复取决于：利润降幅能否收窄、不良率能否企稳、新管理层能否带来战略聚焦。</div><div class="链条面板"><h4>十二、宁波银行（002142）——城商行中的"优等生"</h4><strong>上市时间：</strong> 2007年7月
+<strong>历史最高价（前复权）：</strong> 约39.11元
+<strong>历史最低PE：</strong> 4.64倍（2024年9月）
+<strong>2025年涨幅：</strong> +19.70%~20.68%（城商行中排名靠前）
+<strong>当前PE：</strong> ~6.4倍
+<strong>当前PB：</strong> 0.90-0.92倍
+<p>
+核心优势：①资产质量卓越（不良率0.76%，行业最低之一） ②拨备覆盖率373%（安全垫极其充足） ③业绩增速稳定（2025年净利润293亿元，同比+8.13%） ④2026年Q1中收同比+81.72%（财富管理+国际结算业务爆发） ⑤区域经济优势（浙江及长三角中小企业信贷需求旺盛）。
+<p>
+PB接近1倍（0.90-0.92倍），在大多数银行"破净"的背景下属于"准不破净"状态，体现了市场对其资产质量和成长性的认可。国泰海通予2026年1倍PB目标价38.89元（较当前~31.6元有~22%上行空间）。</div><div class="链条面板"><h4>十三、邮储银行（601658）——网点最多的国有大行</h4><strong>上市时间：</strong> 2019年12月
+<strong>当前PE：</strong> ~5.81-6.36倍
+<strong>当前PB：</strong> 0.58-0.64倍
+<strong>2025年涨幅：</strong> 数据差异较大（约0.31%-19.6%）
+<p>
+但2025年邮储表现明显弱于其他大行，原因：①作为相对年轻的上市银行（2019年），市场对其商业模式的理解仍在消化 ②负债成本优势虽强，但资产端收益率也偏低（贷款收益率在六大行中最低） ③2025年完成1300亿元注资后，存在一定的股本稀释效应。</div><div class="链条面板"><h4>十四、江苏银行（600919）——城商行市值一哥</h4><strong>上市时间：</strong> 2016年8月
+<strong>当前PE：</strong> 5.01-6.00倍
+<strong>当前PB：</strong> 0.60-0.80倍
+<strong>2025年涨幅：</strong> 约17.2%~21.4%
+<strong>2025年净利润：</strong> 345.01亿元（同比+8.35%）
+<p>
+江苏银行是2025年城商行中创历史新高次数最多的标的（24次）。核心驱动：①业绩高增长（净利润8%+增速，城商行中领先）②资产质量持续改善（不良率降至0.86%，上市以来最优）③总资产突破4万亿，在城商行中排名第一④董监高增持2427万元传递信心⑤区域优势（江苏省作为中国经济最强省份之一，信贷需求旺盛）。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_招商银行.html">
+            <span class="摘要名称">招商银行</span>
+            <span class="摘要代码">600036</span>
+            <span class="摘要简述">零售银行 ｜ 格雷厄姆满分 · 零售之王</span>
+        </a><a class="公司摘要" href="公司_工商银行.html">
+            <span class="摘要名称">工商银行</span>
+            <span class="摘要代码">601398</span>
+            <span class="摘要简述">国有大行 ｜ 全球最大银行 · 系统重要性</span>
+        </a><a class="公司摘要" href="公司_建设银行.html">
+            <span class="摘要名称">建设银行</span>
+            <span class="摘要代码">601939</span>
+            <span class="摘要简述">国有大行 ｜ 房贷第一 · 基建贷款龙头</span>
+        </a><a class="公司摘要" href="公司_农业银行.html">
+            <span class="摘要名称">农业银行</span>
+            <span class="摘要代码">601288</span>
+            <span class="摘要简述">国有大行 ｜ 县域覆盖最广 · 4万个网点</span>
+        </a><a class="公司摘要" href="公司_中国银行.html">
+            <span class="摘要名称">中国银行</span>
+            <span class="摘要代码">601988</span>
+            <span class="摘要简述">国有大行 ｜ 外汇专业银行 · 海外业务占25%</span>
+        </a><a class="公司摘要" href="公司_交通银行.html">
+            <span class="摘要名称">交通银行</span>
+            <span class="摘要代码">601328</span>
+            <span class="摘要简述">国有大行 ｜ 第五大行 · PB仅0.48</span>
+        </a><a class="公司摘要" href="公司_兴业银行.html">
+            <span class="摘要名称">兴业银行</span>
+            <span class="摘要代码">601166</span>
+            <span class="摘要简述">股份行 ｜ 绿色金融第一 · 同业之王</span>
+        </a><a class="公司摘要" href="公司_浦发银行.html">
+            <span class="摘要名称">浦发银行</span>
+            <span class="摘要代码">600000</span>
+            <span class="摘要简述">股份行 ｜ 不良出清中 · 业绩复苏</span>
+        </a><a class="公司摘要" href="公司_中信银行.html">
+            <span class="摘要名称">中信银行</span>
+            <span class="摘要代码">601998</span>
+            <span class="摘要简述">股份行 ｜ 股息最高7.1% · 中信集团协同</span>
+        </a><a class="公司摘要" href="公司_平安银行.html">
+            <span class="摘要名称">平安银行</span>
+            <span class="摘要代码">000001</span>
+            <span class="摘要简述">股份行 ｜ 平安集团协同 · 零售转型中</span>
+        </a><a class="公司摘要" href="公司_民生银行.html">
+            <span class="摘要名称">民生银行</span>
+            <span class="摘要代码">600016</span>
+            <span class="摘要简述">股份行 ｜ PB仅0.24全A最低 · 价值陷阱风险</span>
+        </a><a class="公司摘要" href="公司_宁波银行.html">
+            <span class="摘要名称">宁波银行</span>
+            <span class="摘要代码">002142</span>
+            <span class="摘要简述">城商行 ｜ 不良率0.76% · 连续19年低于1%</span>
+        </a><a class="公司摘要" href="公司_江苏银行.html">
+            <span class="摘要名称">江苏银行</span>
+            <span class="摘要代码">600919</span>
+            <span class="摘要简述">城商行 ｜ ROE13%领先 · PEG小于1</span>
+        </a><a class="公司摘要" href="公司_邮储银行.html">
+            <span class="摘要名称">邮储银行</span>
+            <span class="摘要代码">601658</span>
+            <span class="摘要简述">国有大行 ｜ 网点全国最多 · 县域存款优势</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

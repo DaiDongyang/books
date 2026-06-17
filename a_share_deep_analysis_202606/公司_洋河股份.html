@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>洋河股份（002304）· 完整分析</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>洋河股份 <span style="font-weight:400;color:var(--文字弱);font-size:0.55em;">002304</span></h1>
+
+<div class="提示 提示-信息">
+    <strong>消费行业</strong> · 白酒<br>
+    标签：PE和PB双达标 · 格雷厄姆满分 · 现金储备厚<br>
+    同行业：<a class="同行链接" href="公司_贵州茅台.html">贵州茅台</a><a class="同行链接" href="公司_五粮液.html">五粮液</a><a class="同行链接" href="公司_山西汾酒.html">山西汾酒</a><a class="同行链接" href="公司_格力电器.html">格力电器</a><a class="同行链接" href="公司_美的集团.html">美的集团</a><a class="同行链接" href="公司_海尔智家.html">海尔智家</a><a class="同行链接" href="公司_比亚迪.html">比亚迪</a>
+</div>
+
+<div class="引用框">
+    📊 在 <a href="总排名.html"><strong>四层综合排名</strong></a> 中查看该公司的位置 ｜
+    📊 <a href="财务数据.html"><strong>PE / PB / 股息率</strong></a> 速查 ｜
+    🔄 <a href="跨资产关联.html"><strong>股票与房地产、黄金、比特币</strong></a> 的关系
+</div>
+
+<div class="标签页"><button class="标签按钮 活跃" onclick="切换标签(event,'面板0')">概览</button><button class="标签按钮" onclick="切换标签(event,'面板1')">格雷厄姆评分</button><button class="标签按钮" onclick="切换标签(event,'面板2')">巴菲特芒格定性</button><button class="标签按钮" onclick="切换标签(event,'面板3')">费雪林奇成长</button><button class="标签按钮" onclick="切换标签(event,'面板4')">马克斯周期</button><button class="标签按钮" onclick="切换标签(event,'面板5')">因果传导链</button><button class="标签按钮" onclick="切换标签(event,'面板6')">历史股价</button></div>
+<div class="标签面板 活跃" id="面板0"><div class="链条面板"><h4>L1格雷厄姆定量满分（5/5，共8家）</h4><div class="表格容器"><table>
+<thead><tr><th>公司</th><th>行业</th><th>总分</th><th>最终评级</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>---------</td></tr>
+<tr><td>招商银行</td><td>银行</td><td>3.51</td><td>强烈推荐</td></tr>
+<tr><td>兴业银行</td><td>银行</td><td>3.02</td><td>推荐</td></tr>
+<tr><td>建设银行</td><td>银行</td><td>2.98</td><td>谨慎推荐</td></tr>
+<tr><td>中国平安</td><td>保险</td><td>0.744</td><td>强烈推荐（映射后）</td></tr>
+<tr><td>中国太保</td><td>保险</td><td>0.714</td><td>推荐</td></tr>
+<tr><td>洋河股份</td><td>白酒</td><td>0.664</td><td>谨慎推荐</td></tr>
+<tr><td>格力电器</td><td>家电</td><td>0.626</td><td>谨慎推荐</td></tr>
+<tr><td>中国石油</td><td>石油</td><td>2.98</td><td>谨慎推荐</td></tr>
+</tbody></table></div></div></div><div class="标签面板" id="面板1"><div class="链条面板"><h4>公司快速评分卡</h4><div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>格雷厄姆判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>------------</td></tr>
+<tr><td>格力电器</td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.3%</td><td><strong>5/5 🏆</strong></td><td>消费板块最佳</td></tr>
+<tr><td>洋河股份</td><td>6.59x</td><td>1.31</td><td>~4%</td><td>5.09%</td><td><strong>5/5 🏆</strong></td><td>白酒中最便宜</td></tr>
+<tr><td>五粮液</td><td>9.4x</td><td>2.38</td><td>6.6%</td><td>~21%</td><td>3/5</td><td>PE好但PB超标</td></tr>
+<tr><td>山西汾酒</td><td>6.65x</td><td>3.18</td><td>~3%</td><td>12.57%</td><td>3/5</td><td>PE极低但PB高</td></tr>
+<tr><td>贵州茅台</td><td>22.3x</td><td>7.09</td><td>3.6%</td><td>32.53%</td><td>2/5</td><td>PE/PB超标</td></tr>
+<tr><td>美的集团</td><td>14.0x</td><td>2.83</td><td>5.6%</td><td>19.7%</td><td>3/5</td><td>PE达标PB超标</td></tr>
+<tr><td>海尔智家</td><td>10.5x</td><td>1.65</td><td>5.5%</td><td>16.98%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td>海天味业</td><td>28x</td><td>4.90</td><td>3.5%</td><td>19.59%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>伊利股份</td><td>14.1x</td><td>3.12</td><td>5.5%</td><td>20.87%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>恒瑞医药</td><td>39x</td><td>4.94</td><td>0.4%</td><td>14.26%</td><td>0/5</td><td>成长股</td></tr>
+<tr><td>迈瑞医疗</td><td>22x</td><td>4.32</td><td>2.9%</td><td>21.58%</td><td>1/5</td><td>PE/PB超标</td></tr>
+<tr><td>药明康德</td><td>14.6x</td><td>3.48</td><td>1.3%</td><td>28.56%</td><td>2/5</td><td>PE达标但PB超标</td></tr>
+<tr><td>爱尔眼科</td><td>23x</td><td>3.35</td><td>1.1%</td><td>14.97%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>云南白药</td><td>10.82x</td><td>2.24</td><td>~3%</td><td>4.96%</td><td>3/5</td><td>PE好PB超标</td></tr>
+<tr><td>华润三九</td><td>9.38x</td><td>1.81</td><td>~3%</td><td>4.74%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td>万泰生物</td><td>-213x</td><td>3.09</td><td>0%</td><td>-0.36%</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>智飞生物</td><td>-19x</td><td>1.93</td><td>0%</td><td>-2.48%</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>爱美客</td><td>23x</td><td>3.65</td><td>~1%</td><td>3.86%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>中国中免</td><td>12.92x</td><td>2.09</td><td>~2%</td><td>4.16%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>比亚迪</td><td>30x</td><td>3.52</td><td>0.4%</td><td>1.65%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>上汽集团</td><td>10.11x</td><td>0.41</td><td>~3%</td><td>1.01%</td><td>4/5</td><td>PE+PB均优但ROE极低</td></tr>
+<tr><td>赛力斯</td><td>40x</td><td>3.0</td><td>~0%</td><td>1.83%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>广汽集团</td><td>-23x</td><td>0.57</td><td>0%</td><td>-0.63%</td><td>0/5</td><td>亏损</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>Top 30 格雷厄姆得分排名</h4><div class="表格容器"><table>
+<thead><tr><th>排名</th><th>公司</th><th>代码</th><th>行业</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>得分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td></tr>
+<tr><td>1</td><td><strong>格力电器</strong></td><td>000651</td><td>家电</td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.3%</td><td><strong>5/5</strong></td></tr>
+<tr><td>2</td><td><strong>招商银行</strong></td><td>600036</td><td>银行</td><td>6.4x</td><td>0.78</td><td>5.2%</td><td>13.4%</td><td><strong>5/5</strong></td></tr>
+<tr><td>3</td><td><strong>建设银行</strong></td><td>601939</td><td>银行</td><td>5.9x</td><td>0.53</td><td>5.6%</td><td>10.0%</td><td><strong>5/5</strong></td></tr>
+<tr><td>4</td><td><strong>工商银行</strong></td><td>601398</td><td>银行</td><td>7.6x</td><td>0.53</td><td>6.2%</td><td>9.45%</td><td><strong>5/5</strong></td></tr>
+<tr><td>5</td><td><strong>中信银行</strong></td><td>601998</td><td>银行</td><td>5.3x</td><td>0.51</td><td>7.1%</td><td>9.39%</td><td><strong>5/5</strong></td></tr>
+<tr><td>6</td><td><strong>兴业银行</strong></td><td>601166</td><td>银行</td><td>5.2x</td><td>0.44</td><td>5.8%</td><td>9.15%</td><td><strong>5/5</strong></td></tr>
+<tr><td>7</td><td><strong>交通银行</strong></td><td>601328</td><td>银行</td><td>6.4x</td><td>0.48</td><td>4.7%</td><td>8.38%</td><td><strong>5/5</strong></td></tr>
+<tr><td>8</td><td><strong>洋河股份</strong></td><td>002304</td><td>白酒</td><td>6.59x</td><td>1.31</td><td>~4%</td><td>5.09%</td><td><strong>5/5</strong></td></tr>
+<tr><td>9</td><td><strong>大秦铁路</strong></td><td>601006</td><td>铁路</td><td>10.5x</td><td>0.60</td><td>~5%</td><td>1.44%</td><td><strong>5/5</strong></td></tr>
+<tr><td>10</td><td><strong>中国平安</strong></td><td>601318</td><td>保险</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.1%</td><td><strong>5/5</strong></td></tr>
+<tr><td>11</td><td>宁波银行</td><td>002142</td><td>银行</td><td>6.37x</td><td>0.90</td><td>3.0%</td><td>3.60%</td><td><strong>5/5</strong></td></tr>
+<tr><td>12</td><td>邮储银行</td><td>601658</td><td>银行</td><td>5.88x</td><td>0.59</td><td>~3%</td><td>2.43%</td><td><strong>5/5</strong></td></tr>
+<tr><td>13</td><td>招商公路</td><td>001965</td><td>公路</td><td>12.18x</td><td>0.94</td><td>~3%</td><td>1.9%</td><td><strong>5/5</strong></td></tr>
+<tr><td>14</td><td>中国石油</td><td>601857</td><td>石油</td><td>12.0x</td><td>1.17</td><td>4.7%</td><td>10.1%</td><td>4/5</td></tr>
+<tr><td>15</td><td>宝钢股份</td><td>600019</td><td>钢铁</td><td>14.0x</td><td>0.65</td><td>4.0%</td><td>5.07%</td><td>4/5</td></tr>
+<tr><td>16</td><td>中国建筑</td><td>601668</td><td>建筑</td><td>3.51x</td><td>0.39</td><td>~3%</td><td>2.77%</td><td>4/5</td></tr>
+<tr><td>17</td><td>中国铁建</td><td>601186</td><td>建筑</td><td>4.89x</td><td>0.31</td><td>~3%</td><td>1.38%</td><td>4/5</td></tr>
+<tr><td>18</td><td>上汽集团</td><td>600104</td><td>汽车</td><td>10.11x</td><td>0.41</td><td>~3%</td><td>1.01%</td><td>4/5</td></tr>
+<tr><td>19</td><td>中国中车</td><td>601766</td><td>轨交</td><td>12.15x</td><td>0.93</td><td>~3%</td><td>1.94%</td><td>4/5</td></tr>
+<tr><td>20</td><td>正泰电器</td><td>601877</td><td>电气</td><td>11.65x</td><td>1.34</td><td>~3%</td><td>2.82%</td><td>4/5</td></tr>
+<tr><td>21</td><td>中国联通</td><td>600050</td><td>电信</td><td>15.98x</td><td>0.80</td><td>~3%</td><td>1.24%</td><td>4/5</td></tr>
+<tr><td>22</td><td>华泰证券</td><td>601688</td><td>券商</td><td>10.0x</td><td>0.95</td><td>2.9%</td><td>9.20%</td><td>4/5</td></tr>
+<tr><td>23</td><td>中信证券</td><td>600030</td><td>券商</td><td>11.9x</td><td>1.12</td><td>2.7%</td><td>10.6%</td><td>4/5</td></tr>
+<tr><td>24</td><td>方正证券</td><td>601901</td><td>券商</td><td>9.53x</td><td>1.08</td><td>~2%</td><td>2.88%</td><td>4/5</td></tr>
+<tr><td>25</td><td>五粮液</td><td>000858</td><td>白酒</td><td>9.4x</td><td>2.38</td><td>6.6%</td><td>~21%</td><td>3/5</td></tr>
+<tr><td>26</td><td>美的集团</td><td>000333</td><td>家电</td><td>14.0x</td><td>2.83</td><td>5.6%</td><td>19.7%</td><td>3/5</td></tr>
+<tr><td>27</td><td>海尔智家</td><td>600690</td><td>家电</td><td>10.5x</td><td>1.65</td><td>5.5%</td><td>17.0%</td><td>3/5</td></tr>
+<tr><td>28</td><td>中国神华</td><td>601088</td><td>煤炭</td><td>17.9x</td><td>1.92</td><td>7.6%</td><td>12.8%</td><td>3/5</td></tr>
+<tr><td>29</td><td>海螺水泥</td><td>600585</td><td>水泥</td><td>16.45x</td><td>0.50</td><td>~4%</td><td>0.76%</td><td>3/5</td></tr>
+<tr><td>30</td><td>国投电力</td><td>600886</td><td>电力</td><td>12.82x</td><td>1.57</td><td>~3%</td><td>3.06%</td><td>3/5</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>10.1 核心结论</h4><li><strong>格力电器是当前沪深300中唯一完全符合格雷厄姆原教旨标准的非金融公司</strong>——PE 8.2x（<15），PB 1.50（≤1.5），股息率7.4%（>3%），10年+连续盈利，资产负债率约60%（<60%的边界）。洋河股份（PE 6.59，PB 1.31）是唯二。</li></div><div class="链条面板"><h4>10.2 格雷厄姆式保守投资者在中国A股的配置建议</h4><div class="表格容器"><table>
+<thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>角色</th></tr></thead>
+<tbody>
+<tr><td>---------</td><td>---------</td><td>---------</td><td>------</td></tr>
+<tr><td>A股银行股</td><td>25-35%</td><td>招商银行、建设银行、中信银行（股息率>5%）</td><td>核心价值底仓</td></tr>
+<tr><td>A股其他价值股</td><td>10-15%</td><td>格力电器、洋河股份、大秦铁路、中国平安</td><td>分散化价值</td></tr>
+<tr><td>A股券商股</td><td>5-10%</td><td>中信证券、华泰证券（牛市弹性来源）</td><td>可选弹性</td></tr>
+<tr><td>黄金</td><td>5-15%</td><td>黄金ETF/紫金矿业</td><td>滞胀/地缘风险对冲</td></tr>
+<tr><td>现金/货币基金</td><td>15-25%</td><td>余额宝/银行理财/国债逆回购</td><td>等待机会的弹药</td></tr>
+<tr><td>房地产（自住）</td><td>按需</td><td>一线/强二线城市核心地段</td><td>生活配置，非投资</td></tr>
+<tr><td>比特币</td><td>0-5%</td><td>—</td><td>格雷厄姆会坚决反对，但现代组合理论允许少量</td></tr>
+<tr><td>A股成长股</td><td>0-10%</td><td>—</td><td>格雷厄姆不会碰，仅供有能力承受50%+回撤的投资者</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>4. 洋河股份 (002304) -- 格雷厄姆式候选者的深度困境</h4>洋河股份最核心的问题在于"大本营"江苏省内的市场竞争格局恶化。今世缘（603369.SH）作为省内第二大酒企，在2023-2025年持续侵蚀洋河的份额。这一竞争加剧的背后是宏观层面的"存量博弈"：全国白酒消费总量从2016年约1,358万千升下降至2025年约700万千升（腰斩），在整体蛋糕缩水的背景下，任何市场增长都只能来自竞争对手的份额丢失。洋河省内收入86亿元（-32.4%）的降幅几乎与省外收入102亿元（-34.5%）相当，说明即使在大本营也未能守住阵地。因果链为：白酒消费总量萎缩 → 各省酒企均面临增长压力 → 区域性品牌加速向竞争对手大本营渗透 → 洋河在江苏省内的渠道优势被蚕食 → 被迫降价/让利维护份额 → 利润弹性大于收入弹性。洋河股份的估值结构在白酒板块中极为罕见：静态PE 35.98倍（因净利润大幅下滑而被动抬高），但PB仅1.53倍（接近格雷厄姆红线）。这一"PE极高、PB极低"的极端组合反映了市场对洋河的极度不信任——完全不给其盈利能力任何价值，仅按清算价值定价。核心在于：洋河在2023年高峰期的ROE约20%，但当前ROE已跌至不足5%，市场正在定价其ROE的进一步下滑。如果2026年出清完成后的正常化ROE能恢复到10-15%，则当前PB 1.5倍就提供了显著的安全边际。但如果出清失败，盈利能力持续在5%以下，PB将从1.5倍继续向下突破。这是洋河投资中最核心的"二元判断"。</div><div class="链条面板"><h4>6.2 部分符合格雷厄姆标准的公司</h4><div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>ROE</th><th>评分</th><th>主要瑕疵</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>----</td><td>----</td><td>-----</td><td>------</td><td>---------</td></tr>
+<tr><td>格力电器</td><td>8.2</td><td>1.50</td><td>20.3%</td><td>4/5</td><td>PB贴线，增长前景一般</td></tr>
+<tr><td>华润三九</td><td>9.4</td><td>1.81</td><td>4.7%</td><td>3/5</td><td>ROE过低</td></tr>
+<tr><td>海尔智家</td><td>10.5</td><td>1.65</td><td>17.0%</td><td>3/5</td><td>PB略超标</td></tr>
+<tr><td>上海医药</td><td>10.6</td><td>0.77</td><td>1.9%</td><td>3/5</td><td>ROE极低</td></tr>
+<tr><td>洋河股份</td><td>6.6</td><td>1.31</td><td>5.1%</td><td>3/5(预期)</td><td>ROE太低，依赖修复预期</td></tr>
+<tr><td>五粮液</td><td>9.4</td><td>2.38</td><td>~21%</td><td>2/5</td><td>PB超标</td></tr>
+<tr><td>美的集团</td><td>14.0</td><td>2.83</td><td>19.7%</td><td>2/5</td><td>PB超标</td></tr>
+<tr><td>上汽集团</td><td>10.1</td><td>0.41</td><td>1.0%</td><td>2/5</td><td>行业变革风险</td></tr>
+</tbody></table></div></div></div><div class="标签面板" id="面板2"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板3"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板4"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板5"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板6"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div>
+
+<script>
+function 切换标签(e,t){
+    document.querySelectorAll('.标签按钮').forEach(function(b){ b.classList.remove('活跃'); });
+    document.querySelectorAll('.标签面板').forEach(function(p){ p.classList.remove('活跃'); });
+    e.currentTarget.classList.add('活跃');
+    document.getElementById(t).classList.add('活跃');
+}
+</script>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

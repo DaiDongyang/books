@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国人寿（601628）· 完整分析</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>中国人寿 <span style="font-weight:400;color:var(--文字弱);font-size:0.55em;">601628</span></h1>
+
+<div class="提示 提示-信息">
+    <strong>保险行业</strong> · 寿险<br>
+    标签：纯寿险高贝塔 · 利差损压力 · 国有大险企<br>
+    同行业：<a class="同行链接" href="公司_中国平安.html">中国平安</a><a class="同行链接" href="公司_中国太保.html">中国太保</a>
+</div>
+
+<div class="引用框">
+    📊 在 <a href="总排名.html"><strong>四层综合排名</strong></a> 中查看该公司的位置 ｜
+    📊 <a href="财务数据.html"><strong>PE / PB / 股息率</strong></a> 速查 ｜
+    🔄 <a href="跨资产关联.html"><strong>股票与房地产、黄金、比特币</strong></a> 的关系
+</div>
+
+<div class="标签页"><button class="标签按钮 活跃" onclick="切换标签(event,'面板0')">概览</button><button class="标签按钮" onclick="切换标签(event,'面板1')">格雷厄姆评分</button><button class="标签按钮" onclick="切换标签(event,'面板2')">巴菲特芒格定性</button><button class="标签按钮" onclick="切换标签(event,'面板3')">费雪林奇成长</button><button class="标签按钮" onclick="切换标签(event,'面板4')">马克斯周期</button><button class="标签按钮" onclick="切换标签(event,'面板5')">因果传导链</button><button class="标签按钮" onclick="切换标签(event,'面板6')">历史股价</button></div>
+<div class="标签面板 活跃" id="面板0"><div class="链条面板"><h4>上证综指前十大权重股（2025年7月快照）</h4><div class="表格容器"><table>
+<thead><tr><th>排名</th><th>公司</th><th>权重</th><th>行业</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>------</td></tr>
+<tr><td>1</td><td>工商银行</td><td>3.83%</td><td>银行</td></tr>
+<tr><td>2</td><td>农业银行</td><td>3.53%</td><td>银行</td></tr>
+<tr><td>3</td><td>贵州茅台</td><td>3.27%</td><td>白酒</td></tr>
+<tr><td>4</td><td>中国石油</td><td>2.55%</td><td>能源</td></tr>
+<tr><td>5</td><td>中国银行</td><td>2.49%</td><td>银行</td></tr>
+<tr><td>6</td><td>招商银行</td><td>1.78%</td><td>银行</td></tr>
+<tr><td>7</td><td>中国人寿</td><td>1.58%</td><td>保险</td></tr>
+<tr><td>8</td><td>长江电力</td><td>1.35%</td><td>公用事业</td></tr>
+<tr><td>9</td><td>中国神华</td><td>1.24%</td><td>能源/煤炭</td></tr>
+<tr><td>10</td><td>中国平安</td><td>1.12%</td><td>保险</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>Highest ROE:</h4>新易盛 (72.8%), 中际旭创 (43.8%), 新华保险 (34.7%), 茅台 (32.5%), 紫金矿业 (33.0%), 阳光电源 (31.3%), 药明康德 (28.6%), 中国人寿 (27.8%)</div></div><div class="标签面板" id="面板1"><div class="链条面板"><h4>公司快速评分卡</h4><div class="表格容器"><table>
+<thead><tr><th>公司</th><th>代码</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>核心特征</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>---------</td></tr>
+<tr><td>中国平安</td><td>601318</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.14%</td><td><strong>5/5</strong></td><td>综合金融龙头，PEV仅0.62倍，极低估</td></tr>
+<tr><td>中国人寿</td><td>601628</td><td>7.0x</td><td>1.70</td><td>2.4%</td><td>27.81%</td><td>4/5</td><td>纯寿险，投资收益率弹性大</td></tr>
+<tr><td>中国太保</td><td>601601</td><td>5.9x</td><td>1.05</td><td>3.5%</td><td>16.60%</td><td>4/5</td><td>均衡发展，分红稳定</td></tr>
+<tr><td>新华保险</td><td>601336</td><td>5.2x</td><td>1.56</td><td>4.4%</td><td>34.69%</td><td>4/5</td><td>小市值保险，高弹性</td></tr>
+<tr><td>中信证券</td><td>600030</td><td>11.9x</td><td>1.12</td><td>2.7%</td><td>10.59%</td><td>4/5</td><td>券商龙头，2026Q1 NP+55%</td></tr>
+<tr><td>国泰海通</td><td>601211</td><td>14.3x</td><td>0.99</td><td>2.8%</td><td>11.10%</td><td>3/5</td><td>合并后整合期</td></tr>
+<tr><td>华泰证券</td><td>601688</td><td>10.0x</td><td>0.95</td><td>2.9%</td><td>9.20%</td><td>4/5</td><td>科技驱动券商</td></tr>
+<tr><td>东方财富</td><td>300059</td><td>23.1x</td><td>3.37</td><td>0.5%</td><td>14.03%</td><td>1/5</td><td>PE/PB均不达标，成长股逻辑</td></tr>
+<tr><td>广发证券</td><td>000776</td><td>8.93x</td><td>1.22</td><td>~2%</td><td>3.32%</td><td>4/5</td><td>PE优秀</td></tr>
+<tr><td>招商证券</td><td>600999</td><td>12.58x</td><td>1.32</td><td>~2%</td><td>2.54%</td><td>4/5</td><td>招商系协同</td></tr>
+<tr><td>申万宏源</td><td>000166</td><td>12.22x</td><td>1.00</td><td>~2%</td><td>2.08%</td><td>4/5</td><td>PB刚好1.0</td></tr>
+<tr><td>中国银河</td><td>601881</td><td>10.51x</td><td>1.15</td><td>~2%</td><td>2.53%</td><td>4/5</td><td>PE优秀</td></tr>
+<tr><td>中金公司</td><td>601995</td><td>11.56x</td><td>1.61</td><td>~2%</td><td>3.35%</td><td>3/5</td><td>PB稍超标</td></tr>
+<tr><td>中信建投</td><td>601066</td><td>13.62x</td><td>2.32</td><td>~2%</td><td>4.02%</td><td>2/5</td><td>PB远超标</td></tr>
+<tr><td>光大证券</td><td>601788</td><td>14.51x</td><td>1.09</td><td>~2%</td><td>1.74%</td><td>3/5</td></tr>
+<tr><td>东方证券</td><td>600958</td><td>12.75x</td><td>0.99</td><td>~2%</td><td>1.94%</td><td>4/5</td><td>PB<1</td></tr>
+<tr><td>兴业证券</td><td>601377</td><td>16.84x</td><td>0.93</td><td>~2%</td><td>1.32%</td><td>3/5</td><td>PE超标</td></tr>
+<tr><td>方正证券</td><td>601901</td><td>9.53x</td><td>1.08</td><td>~2%</td><td>2.88%</td><td>4/5</td><td>PE极优</td></tr>
+<tr><td>国信证券</td><td>002736</td><td>12.71x</td><td>1.11</td><td>~2%</td><td>1.83%</td><td>4/5</td></tr>
+<tr><td>浙商证券</td><td>601878</td><td>14.46x</td><td>1.15</td><td>~2%</td><td>2.02%</td><td>4/5</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>附录：各公司估值一览表</h4><div class="表格容器"><table>
+<thead><tr><th>公司</th><th>代码</th><th>股价</th><th>PE(TTM)</th><th>PB</th><th>总市值(亿)</th><th>近5年PE分位</th><th>近5年PB分位</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>---------</td><td>-----</td><td>-----------</td><td>------------</td><td>------------</td></tr>
+<tr><td>中国平安</td><td>601318</td><td>52.99</td><td>7.23</td><td>0.93</td><td>9595</td><td>~15%</td><td>~10%</td></tr>
+<tr><td>中国人寿</td><td>601628</td><td>36.06</td><td>7.04</td><td>1.70</td><td>10192</td><td>~20%</td><td>~30%</td></tr>
+<tr><td>中国太保</td><td>601601</td><td>32.50</td><td>5.80</td><td>0.98</td><td>3127</td><td>~10%</td><td>~15%</td></tr>
+<tr><td>中信证券</td><td>600030</td><td>27.25</td><td>11.99</td><td>1.10</td><td>4039</td><td>~40%</td><td>~25%</td></tr>
+<tr><td>东方财富</td><td>300059</td><td>19.12</td><td>23.08</td><td>3.37</td><td>3025</td><td>~55%</td><td>~50%</td></tr>
+<tr><td>同花顺</td><td>300033</td><td>218.62</td><td>49.25</td><td>8.52*</td><td>1645</td><td>~60%</td><td>~55%</td></tr>
+<tr><td>中国移动</td><td>600941</td><td>92.99</td><td>14.84</td><td>1.22</td><td>20160</td><td>~70%</td><td>~65%</td></tr>
+<tr><td>比亚迪</td><td>002594</td><td>89.64</td><td>29.67</td><td>1.09</td><td>8173</td><td>~45%</td><td>~40%</td></tr>
+<tr><td>赛力斯</td><td>601127</td><td>68.78</td><td>20.09</td><td>0.83</td><td>1198</td><td>~35%</td><td>~20%</td></tr>
+<tr><td>长城汽车</td><td>601633</td><td>17.31</td><td>16.34</td><td>0.52</td><td>1481</td><td>~10%</td><td>~5%</td></tr>
+<tr><td>上汽集团</td><td>600104</td><td>10.65</td><td>12.11</td><td>0.75</td><td>1224</td><td>~15%</td><td>~5%</td></tr>
+<tr><td>南方航空</td><td>600029</td><td>5.39</td><td>31.66</td><td>2.64</td><td>977</td><td>~60%</td><td>~65%</td></tr>
+<tr><td>牧原股份</td><td>002714</td><td>35.05</td><td>20.69</td><td>0.83</td><td>2023</td><td>~25%</td><td>~10%</td></tr>
+<tr><td>温氏股份</td><td>300498</td><td>12.90</td><td>39.32</td><td>0.84</td><td>858</td><td>~30%</td><td>~10%</td></tr>
+</tbody></table></div></div><div class="链条面板"><h4>2. Insurance Stocks (保险股) - 4 Stocks</h4><div class="表格容器"><table>
+<thead><tr><th>Stock</th><th>Code</th><th>PE (TTM)</th><th>PB</th><th>Dividend Yield</th><th>ROE (2025)</th><th>Asset-Liability Ratio</th><th>Market Cap</th><th>10yr+ Profitability</th><th>Revenue / Profit Trend</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>中国平安</strong></td><td>601318</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.14%</td><td>89.9%</td><td>~9,595亿</td><td>Yes (13+ yrs)</td><td>NP 1,348亿 (+6.5%); Operating profit +10.3%. PEV 0.62x undervalued</td></tr>
+<tr><td><strong>中国人寿</strong></td><td>601628</td><td>7.0x</td><td>1.70</td><td>2.4%</td><td>27.81%</td><td>91.4%</td><td>~1.02万亿</td><td>Yes (19+ yrs)</td><td>NP 1,541亿 (+44%); 2026Q1 NP -32% on high base</td></tr>
+<tr><td><strong>中国太保</strong></td><td>601601</td><td>5.9x</td><td>1.05</td><td>3.5%</td><td>16.60%</td><td>89.1%</td><td>~3,127亿</td><td>Yes (15+ yrs)</td><td>NP 535亿 (+19%); 2026Q1 steady +4.3%. Stable dividend payer</td></tr>
+<tr><td><strong>新华保险</strong></td><td>601336</td><td>5.2x</td><td>1.56</td><td>4.4%</td><td>34.69%</td><td>93.3%</td><td>~1,933亿</td><td>Yes (15+ yrs)</td><td>NP 363亿 (+38%); 2026Q1 NP +10.5%. High ROE, volatile revenue</td></tr>
+</tbody></table></div></div></div><div class="标签面板" id="面板2"><div class="链条面板"><h4>中国太保（601601）</h4>太保寿险在2021-2022年间经历了类似于平安的深度调整，代理人数量从高峰约80万人降至约25万人。2023年以来，太保寿险的NBV恢复正增长，增速约15-25%，略低于平安但高于中国人寿，驱动力来自：一是银保渠道价值率改善，二是"长航行动"转型下的代理人产能提升。太保寿险的P/EV估值仅为0.5-0.6倍，处于历史低位，反映市场对其长期增长路径的疑虑。关键分歧在于：太保的养老社区和"保险+康养"战略能否创造持续的价值溢价——太保已在全国布局约20个太保家园养老社区，总投资约200-300亿元，若养老社区入住率达到预期水平（约70-80%），可带来持续的服务费和年金险交叉销售收入，提升长期内含价值；但养老社区的资本占用大、回报周期长（约8-10年），短期内对利润的贡献有限。</div></div><div class="标签面板" id="面板3"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板4"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div><div class="标签面板" id="面板5"><div class="链条面板"><h4>中国人寿（601628）</h4>中国人寿是中国最大的寿险公司，由财政部控股，PE约13倍，PB约1.7倍，ROE约3.27%，P/EV约0.65倍。其业务特征决定了它与中国平安有着显著不同的因果链结构。中国65岁以上人口已超过2.1亿，占总人口约15%，且以每年约1000万的速度递增。老龄化带来的直接保险需求体现在三个方面：第一，养老储蓄需求激增——居民对确定性收益的养老金融产品的需求快速膨胀，中国人寿作为"国字头"寿险龙头，天然受益于这一结构性趋势；第二，健康险需求增长——医疗费用年增长率远高于GDP增速，健康保险渗透率从2015年的约5%上升至当前的约20%，中国人寿在重疾险、医疗险领域市占率领先；第三，年金险需求——延迟退休政策和养老金第三支柱建设为年金险打开增长空间。2023-2024年中国人寿保费增速约5-8%，高于行业平均。然而，老龄化也意味着赔付率的刚性上升——医疗支出的通胀和长寿风险对寿险公司的负债端构成持续压力，中国人寿的赔付支出年增速约10-15%，快于保费增速，形成"增收不增利"的潜在隐忧。这是中国人寿最关键的经营风险。与中国平安不同，中国人寿的投资组合中政府债和准政府债（政策性银行债）的占比更高，约60-65%，权益类占比约10-12%。这意味着中国人寿的资产端更多暴露于利率风险。更为关键的是，中国人寿在2010-2019年间销售了大量预定利率为3.5-4.025%的传统寿险和年金险产品，负债端的保证成本较高。而当前10年期国债收益率已降至约1.6-2.0%区间，与存量保单的保证利率之间存在约150-200基点的"负利差"。根据精算估算，中国人寿的存量高利率保单约占总准备金的30-40%，规模约1.5-2万亿元。这意味着每年因利率下行产生的利差损约200-400亿元。虽然会计准则允许通过"保险收入"的期限和摊销结构减缓利润冲击，但长期来看，利差损是悬在股价上的结构性乌云。保险公司通过降低预定利率（从4.025%降到3.5%再到3.0%甚至更低的2.5%）缓解增量业务风险，但存量问题无法快速化解。中国人寿的可投资资产约5.5万亿元，即使权益类仅占10-12%，其绝对规模也达5500-6600亿元。沪深300指数每上涨10%，中国人寿的权益组合增值约550-660亿元，计入利润（IFRS 9准则下部分计入其他综合收益，部分计入当期损益）的规模约80-130亿元。相比于其年净利润约200-300亿元的体量，这部分弹性相当可观。因此中国人寿同样具有"市场贝塔"属性，只是弹性系数弱于平安（因权益占比更低）。当A股走出趋势性上行行情时，中国人寿是确定性较高的贝塔品种。这是中国人寿特有的结构性逻辑。作为财政部控股的"国家队"保险机构，中国人寿是监管层引导长期资金入市的核心抓手。2023-2024年，金融监管总局多次上调保险资金权益类投资上限（最高可达上季末总资产的45%），并松绑偿付能力资本要求。中国人寿的权益配置比例目前仅约10-12%，远低于监管上限，每提高1个百分点的权益配置（对应约550亿元），对A股市场形成约500-600亿元的直接买盘力量，而A股市场的上涨又会反馈至中国人寿的利润表，形成正循环。这种"政策注入弹性"的逻辑在中国人寿的定价中占据重要地位——每当政策强调"活跃资本市场"或"推动中长期资金入市"，中国人寿的估值就会获得阶段性提振。与中国平安相比，中国人寿的外资持股比例较低（约2-3%），因此受汇率和外资流动的直接冲击较小。但美国进入降息周期（2024年下半年起美联储降息）会带来双重效应：第一，美元资产回报率下降，部分全球资金重新配置至新兴市场，中国人寿作为低估值、高流动性的大盘股可能受益于资金回流；第二，中美利差收窄减轻人民币贬值压力，对外资配置A股整体有利。中国人寿因外资持仓占比低，受到的传导较间接，但作为沪深300权重股，仍然会受到整体外资流动的牵引。<div class="表格容器"><table>
+<thead><tr><th>维度</th><th>中国平安</th><th>中国人寿</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>---------</td><td>---------</td></tr>
+<tr><td>核心风险</td><td>房地产敞口、外资减持</td><td>利差损、存量高息保单</td></tr>
+<tr><td>主要贝塔</td><td>市场贝塔 + 房地产贝塔</td><td>利率贝塔 + 市场贝塔</td></tr>
+<tr><td>政策敏感度</td><td>中（综合金融监管）</td><td>高（保险业直接监管）</td></tr>
+<tr><td>外资持股</td><td>高（15-20%）</td><td>低（2-3%）</td></tr>
+<tr><td>对利率敏感度</td><td>中等（资产久期较短）</td><td>高（长端利率直接冲击利差损）</td></tr>
+<tr><td>P/EV</td><td>0.6-0.7</td><td>0.6-0.7</td></tr>
+<tr><td>股息率</td><td>约5%</td><td>约3-4%</td></tr>
+</tbody></table></div></div></div><div class="标签面板" id="面板6"><p><em>该维度暂无专属分析内容，请参考其他标签页。</em></p></div>
+
+<script>
+function 切换标签(e,t){
+    document.querySelectorAll('.标签按钮').forEach(function(b){ b.classList.remove('活跃'); });
+    document.querySelectorAll('.标签面板').forEach(function(p){ p.classList.remove('活跃'); });
+    e.currentTarget.classList.add('活跃');
+    document.getElementById(t).classList.add('活跃');
+}
+</script>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

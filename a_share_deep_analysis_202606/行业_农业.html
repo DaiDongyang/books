@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐷 农业行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>🐷 农业行业 · 1 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_银行.html">🏦 银行</a><a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_科技.html">💻 科技</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_新能源.html">🔋 新能源</a><a class="同行链接" href="行业_材料.html">⛏️ 材料</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_基建.html">🏗️ 基建</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>6.7 农业</h4>农业板块在沪深300中权重极低（约0.5%），但"猪周期"是中国A股最经典的行业周期之一，具有独立于宏观周期的自循环特征。</div><div class="链条面板"><h4>32. 牧原股份（002714）—— PE:-41.64（亏损）, PB:2.41, ROE:-1.57%</h4>牧原股份是中国最大的生猪养殖企业（年出栏量约7000万头），其盈利完全由生猪价格驱动——这就是A股最经典的"猪周期"逻辑。猪周期是典型的4年一轮的供求循环：传导路径为：猪价上涨 → 养殖户增加能繁母猪存栏 → 10-12个月后生猪出栏量增加 → 猪价因供应过剩下跌 → 养殖户淘汰能繁母猪 → 10-12个月后出栏量下降 → 猪价因供应不足再度上涨。牧原股份在周期底部（猪价低于养殖成本时）每出栏一头猪亏损约300-500元，年亏损约200-300亿元；在周期顶部每头盈利500-800元，年利润可超过300亿元。2024-2026年猪价在底部区域运行（约13-15元/公斤，低于牧原完全成本约15元/公斤），牧原当前处于亏损周期。
+<p>
+2018-2019年非洲猪瘟疫情是中国生猪养殖行业的分水岭。传导路径为：非瘟导致大量散养户和中小型猪场退出（生物安全能力不足）→ 行业供给收缩 → 猪价在2019-2020年飙升至40元/公斤以上（历史新高）→ 牧原利用非瘟期间的防疫优势和资本市场融资（定增/可转债）→ 大规模扩张产能（年出栏从约1000万头扩张至约7000万头）→ 市占率从约1%提升至约7-8% → 成为全球最大的生猪养殖企业。这一"非瘟→去散户化→龙头市占率提升"的结构性变化使牧原在每一轮周期底部都能获得比平均养殖户更低的亏损（低成本优势），从而在市场出清中扩大份额。
+<p>
+饲料成本占生猪养殖完全成本的约60-70%，其中玉米和豆粕是核心原料。传导路径为：玉米/大豆的国际价格受全球农产品供需、天气（厄尔尼诺/拉尼娜）、中美贸易关系（中国是否从美国进口大豆/玉米）影响 → 饲料价格变动 → 牧原的养殖完全成本波动。牧原通过（1）自建饲料厂（降低采购成本约5-10%）和（2）智能化养殖（降低料肉比约0.1-0.2）→ 养殖完全成本约15元/公斤，低于行业平均的16-17元/公斤 → 在猪价低迷时，牧原的亏损幅度小于行业平均。格雷厄姆框架下，牧原当前亏损、PE为负值，不符合任何价值投资标准——但熟悉猪周期的投资者会在周期底部（行业全行业亏损时）开始关注，在周期反转后获得丰厚回报。</div><div class="链条面板"><h4>33. 温氏股份（300498）—— PE:-20.05, PB:2.24, ROE:-2.59%</h4>温氏股份是国内第二大养猪企业和最大的肉鸡养殖企业，采用独特的"公司+农户"（委托养殖）模式。传导路径为：公司提供猪苗/鸡苗、饲料、兽药和技术指导 → 农户提供场地和劳动力 → 达到出栏标准后公司回收销售 → 农户赚取代养费（约300-500元/头猪、3-5元/只鸡）。温氏模式的优势是轻资产扩张（不需要自建大量养殖场，由农户投资猪舍），但劣势是农户管理难度大（非瘟防控不如工业化封闭猪场）。2019-2020年非瘟期间温氏因农户防控不力损失惨重，而牧原的全封闭工业化模式则展示了竞争优势，温氏的重心也逐渐转向自建养殖场（自建+合作并行）。
+<p>
+温氏是唯一同时大规模养猪和养鸡的上市公司，养鸡业务（约占收入的40%）具有与养猪不同的周期特征。传导路径为：鸡的生长周期短（约45天出栏，猪约180天）→ 鸡价调整速度快于猪价 → 温氏可以在猪价低迷时依靠养鸡利润来部分对冲 → 整体盈利稳定性好于纯养猪企业牧原。2024-2026年，鸡周期也处于下行通道（禽肉供应过剩），温氏的养鸡业务也承受压力，但亏损幅度小于养猪。
+<p>
+温氏在2024-2025年也处于亏损周期（猪价低于成本）。传导路径为：持续亏损 → 缩减能繁母猪存栏（温氏母猪存栏从高峰的约150万头降至约120万头）→ 行业产能去化 → 10-12个月后生猪供应减少 → 猪价有望在2026-2027年触底回升 → 温氏在周期上行的弹性。但温氏在2025年的成本控制不如牧原（完全成本约16-16.5元/公斤 vs 牧原约15元/公斤），意味着在同样的猪价水平下，温氏的亏损更深、反转需要更高的猪价。PB 2.24倍在农业股中处于中性水平，尚未到绝对便宜的底部区域。</div><div class="链条面板"><h4>四、农业银行（601288）——2025年板块最大赢家</h4><strong>上市时间：</strong> 2010年7月
+<strong>2025年涨幅：</strong> +52.66%（板块第一）
+<strong>2025年市值一度超越工行成为A股银行市值第一</strong>
+<p>
+<strong>① 县域金融护城河</strong>：农行在中国县域拥有最广泛的网点覆盖，县域存款和贷款增速持续高于行业平均水平。在"乡村振兴"政策推动下，县域金融业务成为增长亮点。
+<p>
+<strong>② 高股息+低估值共振</strong>：2025年初农行PB仅0.5倍左右，股息率超6%。在险资大规模增配银行股的背景下，农行成为最受益的标的之一。2025年农行H股获中国平安多次举牌，H股全年涨幅约41-44%。
+<p>
+<strong>③ 业绩增速领跑大行</strong>：2025年农行净利润同比+3.2%，增速在六大行中最高，且不良率保持在1.3%以下，拨备覆盖率超过200%。</div><div class="链条面板"><h4>13. 牧原股份(002714) -- 猪周期之王，成本护城河</h4><strong>当前估值</strong>：股价35.05元 | PE(TTM) 20.69倍 | PB 0.83倍(破净) | 总市值2023亿元
+<p>
+<strong>上轮猪周期(2019-2020)</strong>：非洲猪瘟导致全国生猪供给骤降70%，猪价从15元/kg暴涨至40元/kg(历史最高)。牧原作为自繁自养龙头，扩产最坚决，出栏从1000万头暴增至4000万头+，股价从15元涨至90元，<strong>涨6倍</strong>。利润从10亿级暴增至200-300亿级。
+<p>
+<strong>去产能周期(2021-2024)</strong>：产能恢复+超额供给→猪价从40元/kg跌至10元+/kg(行业成本线以下)，全行业深度亏损。牧原股价从90元跌至约30元，<strong>跌67%</strong>。2024-2025年利润大幅缩水，2026Q1亏损12.15亿。
+<p>
+<strong>猪周期4年定律</strong>：2006-2010(3年)、2010-2014(4年)、2014-2018(4年)、2018-2022(4年)。<strong>当前周期位置</strong>：2026年Q1为周期底部(猪价跌至8.66元/kg，全行业亏损超8个月，能繁母猪加速淘汰)。按4年历史规律，2022年为本轮周期低点，2023-2024磨底，2025-2026为反转窗口。但本轮特殊之处在于：规模化占比大幅提升(牧原+温氏市占率超10%)，去产能速度慢于历史，磨底时间可能更长。
+<p>
+<strong>牧原的特别之处</strong>：自繁自养模式成本全行业最低(约12元/kg vs 行业平均14-15元/kg)。即使猪价在行业成本线以下，牧原仍能维持正现金流(成本优势约2-3元/kg)。2026年出栏约7800万头，市占率持续提升。</div><div class="链条面板"><h4>14. 温氏股份(300498) -- 与牧原的模式比拼</h4><strong>当前估值</strong>：股价12.90元 | PE(TTM) 39.32倍 | PB 0.84倍(破净) | 总市值858亿元
+<p>
+<strong>牧原vs温氏的本质区别</strong>：牧原自繁自养(重资产+标准化)→成本低(约12元/kg)但资本开支大；温氏"公司+农户"(轻资产+扩张灵活)→成本偏高(约12.4元/kg)但财务风险更低。
+<p>
+<strong>周期底部表现</strong>：2026Q1温氏亏损10.7亿，略低于牧原(12.15亿)。在周期底部，牧原的成本优势和现金流韧性更强，但温氏的资产负债表约束更小(负债率更低)。从历史表现看，牧原在猪周期上行期弹性更大(自养模式扩产更快)，温氏在底部更抗跌(轻资产模式现金流压力小)。
+<p>
+<strong>当前PE 39倍</strong>高于牧原的20倍，一方面反映市场对牧原成本优势的认可，另一方面也反映温氏前期利润基数较低。两者当前PB均低于1倍(破净)，属于周期底部的典型特征。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_牧原股份.html">
+            <span class="摘要名称">牧原股份</span>
+            <span class="摘要代码">002714</span>
+            <span class="摘要简述">生猪养殖 ｜ 猪周期底部 · 全行业成本最低</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

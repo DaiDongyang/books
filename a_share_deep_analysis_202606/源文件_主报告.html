@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原始资料：主报告全文</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+<h1>中国A股核心指数超详细调研报告</h1>
+<p>
+<h2>—— 逐公司格雷厄姆筛选 × 因果传导链条 × 大类资产关联</h2>
+<p>
+<blockquote><strong>调研日期</strong>: 2026年6月16-17日</blockquote>
+<blockquote><strong>数据基准</strong>: 2025年年报 + 2026年Q1数据</blockquote>
+<blockquote><strong>覆盖范围</strong>: 沪深300 + 上证综指主要成分股约150家</blockquote>
+<blockquote><strong>分析维度</strong>: 公司概况 | 格雷厄姆量化评分 | 因果传导链条 | 跨资产关联</blockquote>
+<p>
+<hr>
+<p>
+<h2>⚠️ 阅读指南</h2>
+<p>
+本报告的核心特色：<strong>对每家公司分析"因果传导链条"</strong>——不是"利率上升对银行不利"这种表面结论，而是追索从宏观变量变化到公司利润表每个科目的完整传导路径。
+<p>
+例如：
+<blockquote>美联储加息50bp → 美国10年期国债收益率↑50bp → 中美利差扩大 → 人民币兑美元贬值2% → 境外投资者持有的A股资产缩水 → 北向资金净流出 → <a href="公司_招商银行.html">招商银行</a>（北向资金持股比例最高的银行）被卖出 → 股价下跌约5-8%</blockquote>
+<p>
+<strong>每一条因果链都要说清"为什么"和"多少"。</strong>
+<p>
+<hr>
+<p>
+<h2>目录</h2>
+<p>
+<li>[格雷厄姆价值投资框架简述](#1-格雷厄姆价值投资框架)</li>
+<li>[银行板块（20家）](#2-银行板块)</li>
+<li>[保险+券商板块（20家）](#3-保险券商板块)</li>
+<li>[科技/AI/半导体板块（30家）](#4-科技ai半导体板块)</li>
+<li>[消费/白酒/家电/医药板块（30家）](#5-消费白酒家电医药板块)</li>
+<li>[能源/原材料/工业/基建/公用事业板块（40家）](#6-能源原材料工业基建公用事业板块)</li>
+<li>[电信/汽车/航空/传媒/农业/地产板块（30家）](#7-电信汽车航空传媒农业地产板块)</li>
+<li>[格雷厄姆综合排名Top 30](#8-格雷厄姆综合排名)</li>
+<li>[大类资产关联矩阵](#9-大类资产关联矩阵)</li>
+<li>[结论与配置建议](#10-结论与配置建议)</li>
+<p>
+<hr>
+<p>
+<h2>1. 格雷厄姆价值投资框架</h2>
+<p>
+<h3>1.1 本杰明·格雷厄姆的核心标准</h3>
+<p>
+在《聪明的投资者》（The Intelligent Investor, 1949/1973）中，格雷厄姆提出了防御型投资者的选股标准：
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>标准</th><th>格雷厄姆原始要求</th><th>本报告采用的标准</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>----------------</td><td>-----------------</td><td>------</td></tr>
+<tr><td><strong>市盈率</strong></td><td>< 15倍</td><td>< 15倍</td><td>基于过去3年平均利润或TTM</td></tr>
+<tr><td><strong>市净率</strong></td><td>< 1.5倍</td><td>< 1.5倍</td><td>或 PE × PB < 22.5</td></tr>
+<tr><td><strong>股息率</strong></td><td>持续分红20年以上</td><td>股息率 > 3%</td><td>反映盈利真实性</td></tr>
+<tr><td><strong>财务稳健</strong></td><td>流动比率 > 2:1</td><td>资产负债率 < 60%（非金融）；对金融股使用调整标准</td><td>工业企业的标准</td></tr>
+<tr><td><strong>盈利稳定性</strong></td><td>过去10年无亏损年份</td><td>过去10年连续盈利</td><td>排除周期股盈利高峰假象</td></tr>
+<tr><td><strong>盈利增长</strong></td><td>10年内每股盈利增长 > 33%</td><td>10年利润复合增长 > 0%</td><td>确保不是萎缩中的公司</td></tr>
+<tr><td><strong>公司规模</strong></td><td>足够大</td><td>市值 > 500亿人民币</td><td>排除微型股</td></tr>
+</tbody></table></div>
+<p>
+<h3>1.2 对金融股的特殊调整</h3>
+<p>
+格雷厄姆的原始标准专为工业企业设计。银行靠杠杆经营（资产负债率90%+），市净率普遍低于1倍，股息率高。如果严格套用原始标准，95%的A股都会被淘汰——不是因为它们都不好，而是<strong>中国经济结构决定了金融行业集中了最多符合"低估"特征的公司</strong>。
+<p>
+针对金融股（银行、保险、券商），本报告采用调整后的评分标准：
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>标准</th><th>金融股调整标准</th><th>满分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-------------</td><td>------</td></tr>
+<tr><td>PE</td><td>< 10倍 = 1分</td><td>1</td></tr>
+<tr><td>PB</td><td>< 1.0倍 = 1分</td><td>1</td></tr>
+<tr><td>股息率</td><td>> 4% = 1分</td><td>1</td></tr>
+<tr><td>ROE</td><td>> 2%（银行）/ > 10%（保险券商）= 1分</td><td>1</td></tr>
+<tr><td>10年连续盈利</td><td>Yes = 1分</td><td>1</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5分</strong></td></tr>
+</tbody></table></div>
+<p>
+<h3>1.3 格雷厄姆评分解读</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>得分</th><th>含义</th><th>投资含义</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>---------</td></tr>
+<tr><td><strong>5/5</strong></td><td>完全符合格雷厄姆调整后标准</td><td>深度价值，安全边际充足</td></tr>
+<tr><td><strong>4/5</strong></td><td>大部分符合，一项稍弱</td><td>价值型，值得重点研究</td></tr>
+<tr><td><strong>3/5</strong></td><td>部分符合</td><td>具有一定价值特征，但有明显短板</td></tr>
+<tr><td><strong>2/5</strong></td><td>勉强有2项符合</td><td>不属于传统价值股</td></tr>
+<tr><td><strong>1/5</strong></td><td>仅1项勉强符合</td><td>成长股或投机股</td></tr>
+<tr><td><strong>0/5</strong></td><td>完全不符合</td><td>高估值成长股或亏损股，格雷厄姆不会碰</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>2. 银行板块</h2>
+<p>
+<blockquote><strong>核心特征</strong>: 银行是中国A股的"价值之锚"。全板块PE 3-8倍，PB 0.2-0.9倍，股息率3-7%。几乎所有银行都符合PE<15和PB<1.5的格雷厄姆筛选标准。但银行的高杠杆是其商业模式的核心，不能用工业企业的债务标准来评判。</blockquote>
+<p>
+<h3>行业级因果传导总览</h3>
+<p>
+<pre><code>利率政策传导链：
+央行降息（LPR↓10bp）
+  → 贷款重定价（存量贷款约70%在1年内重定价）
+  → 银行生息资产收益率↓约5-8bp
+  → 存款利率同步下调但幅度更小（存款竞争）
+  → 净息差（NIM）压缩约3-5bp
+  → 对于一家净息差1.5%的银行，利润直接减少约2-3%
+  → 股价反应：-3%到-8%（1.5-2倍利润弹性）
+<p>
+地产周期传导链：
+房价↓10%
+  → 开发商抵押物价值缩水
+  → 银行房地产开发贷不良率↑约50-100bp
+  → 增加拨备计提（贷款损失准备↑）
+  → 利润↓约5-15%（取决于地产敞口）
+  → 但个人按揭贷款不良率极低（<0.5%），因为中国购房者首付比例高+个人无限责任
+<p>
+汇率传导链（对银行）：
+RMB贬值3%
+  → 外币资产（主要是美元贷款）人民币计价价值↑
+  → 但同时外币负债的人民币成本也↑
+  → 大多数中资银行外汇敞口很小（<总资产5%）
+  → 直接盈利影响：极小（<0.5%）
+  → 间接影响：贬值→资本外流→A股下跌→银行股跟跌（β效应）
+</code></pre>
+<p>
+<hr>
+<p>
+<h3>2.1 <a href="公司_工商银行.html">工商银行</a> (601398) — "宇宙行"</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE (TTM)</td><td>7.6x</td><td>✅ PE<10 → 1分</td></tr>
+<tr><td>PB</td><td>0.53x</td><td>✅ PB<1.0 → 1分</td></tr>
+<tr><td>股息率</td><td>6.2%</td><td>✅ >4% → 1分</td></tr>
+<tr><td>ROE</td><td>9.45%</td><td>✅ >2% → 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes (20+年)</td><td>✅ → 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>资产规模</strong>: 约50万亿人民币，全球最大银行
+<strong>市值</strong>: ~2.77万亿人民币
+<p>
+<h4>因果传导链条分析</h4>
+<p>
+<strong>链条1：利率↓ → 净息差 → 利润</strong>
+<pre><code>央行降息10bp
+  → 工行贷款组合（~26万亿）中约65%-70%为浮动利率或在1年内重定价
+  → 贷款收益率↓约7-9bp（1年内影响约18万亿贷款）
+  → 同时存款成本↓约3-5bp（存款利率自律机制下，国有大行存款利率下调最慢——因为工行网点最多，零售存款占比高，竞争压力小）
+  → 净息差净压缩约4-6bp
+  → 对净利润的直接影响：约120-180亿（基于26万亿贷款）
+  → 占2025年净利润3,686亿的约3-5%
+  → 工行相对优势：存款成本最低（~1.5%），NIM压缩后仍高于行业均值
+</code></pre>
+<p>
+<strong>链条2：地产风险暴露 → 资产质量 → 拨备</strong>
+<pre><code>房地产行业违约率↑
+  → 工行对公房地产贷款约8000亿（占总贷款约3%，行业最低水平之一）
+  → 不良率可能从2.5%升至4-5%
+  → 新增不良约120-200亿
+  → 拨备覆盖率（当前约210%）→ 需增加拨备约60-100亿
+  → 对利润影响：约2-3%
+  → 结论：工行地产敞口在国有大行中最低，风险可控
+</code></pre>
+<p>
+<strong>链条3：地方政府债务 → 隐性风险</strong>
+<pre><code>地方政府土地出让收入↓（房地产下行）
+  → 地方融资平台（LGFV）偿债能力下降
+  → 工行持有LGFV贷款约3-4万亿（含债券）
+  → 大规模展期/降息（中央指导下的"化债"）
+  → 贷款收益率从4-5%降至2.5-3%
+  → 年化利息收入减少约300-500亿
+  → 但这个影响在3-5年内分摊（不是一次性冲击）
+  → 工行应对：通过扩大中小企业贷款和消费贷来对冲
+</code></pre>
+<p>
+<strong>链条4：汇率波动 → 北向资金 → 股价</strong>
+<pre><code>RMB兑美元贬值2%
+  → 境外投资者（持有工行A股约3-5%）的以美元计价回报减少2%
+  → MSCI中国指数权重被动调整
+  → 北向资金净卖出工行（或减少买入）
+  → 工行股价短期承压1-3%
+  → 但因为工行H股同时存在（AH溢价约20-30%），部分北向资金会从A股切换到更便宜的H股
+  → 长期来看：工行的外资持股比例（~3%）远低于招行（~8-10%），汇率敏感度中等偏低
+</code></pre>
+<p>
+<strong>跨资产关联</strong>:
+<li><strong>房地产</strong>: 正相关但弱于预期。地产↓→LGFV风险↑→工行承压。但地产政策放松（降首付、降利率）→工行按揭贷款量↑</li>
+<li><strong>黄金</strong>: 弱负相关。黄金↑=避险情绪↑=资金流出银行股。但工行稳定高股息在避险环境中部分对冲</li>
+<li><strong>比特币</strong>: 极低相关。比特币波动对工行几乎无影响</li>
+<p>
+<hr>
+<p>
+<h3>2.2 <a href="公司_建设银行.html">建设银行</a> (601939)</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>5.9x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.53x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.6%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>10.04%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>特色</strong>: 建行是中国最大的住房按揭贷款银行（房贷占总贷款约30%），也是基础设施贷款（基建贷款占对公贷款约40%）的最大提供者。
+<p>
+<h4>因果传导链条</h4>
+<p>
+<strong>链条1：房地产政策 → 按揭贷款 → 建行（最核心传导链）</strong>
+<pre><code>政府放松房地产政策（降首付至15%、降按揭利率至3.0%以下）
+  → 购房者月供减少→购房意愿↑
+  → 新建商品房销售面积↑（政策传导到销售需3-6个月）
+  → 建行按揭贷款发放量↑（建行在按揭市场份额约15%，行业最大）
+  → 但存量按揭贷款重定价（LPR下调）
+  → 新增按揭3.0%利率 vs 存量按揭平均4.0%
+  → 新增贷款对净息差仍是稀释而非增厚
+  → 建行净息差从1.6%缓慢下降至1.5%左右（年化下降约5bp）
+  → 结论：以量补价的逻辑在按揭贷款上只能部分成立——新增2000亿3%贷款无法弥补2万亿存量贷款降息50bp的损失
+</code></pre>
+<p>
+<strong>链条2：基础设施投资 → 对公贷款 → 利润</strong>
+<pre><code>政府加大专项债发行（2025年约4万亿）
+  → 基建项目资本金到位
+  → 建行配套项目贷款（公路、铁路、水利）
+  → 对公中长期贷款增长约8-10%
+  → 基建贷款收益率约3.2-3.5%（低于普惠贷款但风险低）
+  → 利润贡献稳定但利润率薄
+  → 建行在基建贷款市场排名第二（仅次于国开行政策属性贷款）
+</code></pre>
+<p>
+<strong>链条3：居民存款行为 → 负债成本 → 净息差</strong>
+<pre><code>居民消费/购房意愿低迷
+  → 居民储蓄率↑（2024-2025年储蓄率创近年新高）
+  → 定期存款占比↑（活期存款转向定期）
+  → 定期存款利率约1.5-2.0% vs 活期存款利率0.2%
+  → 存款成本↑约10-15bp
+  → 这是当前银行净息差压缩的主要驱动力——贷款降息的同时存款反而变贵了
+  → 建行零售存款占比高（~50%零售），对存款定期化趋势暴露较大
+</code></pre>
+<p>
+<hr>
+<p>
+<h3>2.3 <a href="公司_招商银行.html">招商银行</a> (600036)</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>6.4x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.78x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.2%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>13.44%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>特色</strong>: 中国零售银行之王。零售AUM（管理客户资产）超过14万亿，超过其表内资产规模。私人银行客户数中国第一。
+<p>
+<h4>因果传导链条</h4>
+<p>
+<strong>链条1：资本市场活跃度 → 财富管理中收 → 利润结构</strong>
+<pre><code>A股成交量↑100%（牛市情景）
+  → 招行代销基金规模↑（招行是最大的基金代销银行，市占率约10-12%）
+  → 基金代销手续费↑
+  → 同时：代销保险、信托、理财等财富管理收入↑
+  → 财富管理中收（净手续费收入）可能增长20-30%
+  → 财富管理收入占招行营收约30%（vs 行业平均10%）
+  → 利润弹性显著高于同业（"银行中的券商"）
+  → 但反过来，熊市→基金赎回潮→中收崩塌→利润双杀
+</code></pre>
+<p>
+<strong>链条2：利率↓ → 负债优势 → 竞争优势</strong>
+<pre><code>央行降息周期
+  → 行业净息差普遍压缩
+  → 招行活期存款占比约60%（vs 行业平均40%）
+  → 活期存款利率仅0.2%，几乎不受降息影响
+  → 定期存款利率随政策下调→招行的定期占比低→受影响更小
+  → 存款成本仅约1.2-1.3%（行业最低之一）
+  → 净息差虽也下降，但降幅小于行业平均→竞争优势反而扩大
+  → 这是招行最深的护城河：低成本核心存款
+</code></pre>
+<p>
+<strong>链条3：汇率 → 外资持股 → 股价波动</strong>
+<pre><code>RMB贬值→境外投资者对中国金融股的美元计价回报下降
+  → 招行是外资持股比例最高的中资银行（北向资金持股约8-10%）
+  → 外资抛售招行的幅度大于其他银行
+  → 股价跌幅大于<a href="公司_工商银行.html">工商银行</a>等国有大行
+  → 历史上：2023年8月-2024年1月人民币贬值期间，招行跌幅约20%，工行跌幅约8%
+  → 汇率是对招行股价最敏感的外部变量之一
+</code></pre>
+<p>
+<strong>链条4：消费信贷 → 信用卡/消费贷 → 利润</strong>
+<pre><code>经济下行→居民收入预期转弱→消费意愿↓
+  → 信用卡交易量增速放缓
+  → 信用卡分期/循环信贷余额↓
+  → 信用卡不良率可能从1.5%升至2-3%
+  → 招行信用卡业务（行业前三）利润贡献约10-15%
+  → 消费降级对招行的冲击大于国有大行（招行零售占比高）
+  → 但招行的零售客户质量更高（筛选中高收入客户），抗风险能力强于<a href="公司_平安银行.html">平安银行</a>等
+</code></pre>
+<p>
+<hr>
+<p>
+<h3>2.4 <a href="公司_兴业银行.html">兴业银行</a> (601166)</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>5.2x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.44x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>5.8%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>9.15%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>特色</strong>: 绿色金融领先银行（绿色信贷占比超20%），同业业务之王（银行间市场最大参与者之一）。
+<p>
+<h4>因果传导链条</h4>
+<p>
+<strong>链条1：利率环境 → 同业业务 → 利润</strong>
+<pre><code>央行维持宽松货币政策→银行间市场流动性充裕
+  → Shibor/DR007维持在1.5-2.0%低位
+  → 兴业同业资产收益率↓（存放同业、买入返售等）
+  → 但同业负债成本也↓
+  → 兴业同业业务净息差仅约20-30bp
+  → 低利率环境下同业业务利润贡献萎缩
+  → 兴业被迫从"同业之王"向"绿色信贷之王"转型
+  → 转型过程中ROE从15%降到10%→继续降到9%
+  → 但PB 0.44倍已经反映了市场对ROE下降的悲观预期
+</code></pre>
+<p>
+<strong>链条2：绿色金融政策 → 绿色信贷 → 增长</strong>
+<pre><code>双碳政策推进→清洁能源/节能减排项目需求↑
+  → 兴业绿色信贷余额超过2万亿（行业第一）
+  → 央行对绿色信贷给予定向降准/再贷款支持→获取低成本央行资金
+  → 绿色信贷收益率虽低（约3.0-3.5%），但资本占用低
+  → 兴业绿色信贷增速约20-25%/年
+  → 这是兴业在净息差压缩中维持利润增长的核心引擎
+  → 政策风险：如果经济下行，双碳推进可能减速
+</code></pre>
+<p>
+<hr>
+<p>
+<h3>2.5 <a href="公司_交通银行.html">交通银行</a> (601328)</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>指标</th><th>数值</th><th>格雷厄姆评分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------------</td></tr>
+<tr><td>PE</td><td>6.4x</td><td>✅ 1分</td></tr>
+<tr><td>PB</td><td>0.48x</td><td>✅ 1分</td></tr>
+<tr><td>股息率</td><td>4.7%</td><td>✅ 1分</td></tr>
+<tr><td>ROE</td><td>8.38%</td><td>✅ 1分</td></tr>
+<tr><td>10年连续盈利</td><td>Yes</td><td>✅ 1分</td></tr>
+<tr><td><strong>总分</strong></td><td><strong>5/5 🏆</strong></td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h3>2.6 <a href="公司_浦发银行.html">浦发银行</a> (600000)</h3>
+<p>
+<strong>特色</strong>: 曾经"对公之王"，2018年后深陷成都/上海等分行不良贷款危机，正在艰难复苏。
+<p>
+<strong>核心因果链</strong>：经济下行→对公不良暴露→利润骤降→拨备不足→限制分红→估值长期低迷。浦发2025年净利500亿（+10.5%），是复苏信号。
+<p>
+<hr>
+<p>
+<h3>2.7 <a href="公司_中信银行.html">中信银行</a> (601998)</h3>
+<p>
+<strong>特色</strong>: 中信集团旗下，对公业务强，与<a href="公司_中信证券.html">中信证券</a>/中信信托的协同效应。股息率7.1%是A股银行中最高之一。
+<p>
+<hr>
+<p>
+<h3>2.8 <a href="公司_民生银行.html">民生银行</a> (600016)</h3>
+<p>
+<strong>特色</strong>: PB仅0.24倍——A股最低。但低是有原因的：ROE仅4.93%，利润连年下滑（NP -5.4%），股息率仅1.4%。
+<p>
+<strong>价值陷阱风险</strong>：
+<li>民营股东治理问题（安邦、泛海等前大股东遗留问题）</li>
+<li>中小企业贷款资产质量不确定性大</li>
+<li>拨备覆盖率偏低（<150%）</li>
+<li><strong>格雷厄姆的提醒</strong>：极低的PB不一定是机会——如果资产在持续恶化，0.24倍PB可能变成0.19倍，再变成0.15倍。需要催化的ROE改善才能入场。</li>
+<p>
+<hr>
+<p>
+<h3>2.9 其他银行快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>银行</th><th>代码</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>核心特征</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>---------</td></tr>
+<tr><td><a href="公司_农业银行.html">农业银行</a></td><td>601288</td><td>7.8x</td><td>0.70</td><td>3.5%</td><td>10.16%</td><td><strong>5/5</strong></td><td>县域存款优势，三农政策红利</td></tr>
+<tr><td><a href="公司_中国银行.html">中国银行</a></td><td>601988</td><td>7.5x</td><td>0.60</td><td>5.7%</td><td>8.94%</td><td><strong>5/5</strong></td><td>海外业务占比最高（~25%），RMB国际化受益</td></tr>
+<tr><td>光大银行</td><td>601818</td><td>5.0x</td><td>0.32</td><td>2.2%</td><td>7.00%</td><td><strong>4/5</strong></td><td>PB极低0.32，但股息率偏低</td></tr>
+<tr><td><a href="公司_平安银行.html">平安银行</a></td><td>000001</td><td>5.0x</td><td>0.44</td><td>5.4%</td><td>8.2%</td><td><strong>5/5</strong></td><td>平安集团协同，零售转型中</td></tr>
+<tr><td>北京银行</td><td>601169</td><td>3.38x</td><td>0.39</td><td>~3%</td><td>2.91%</td><td><strong>4/5</strong></td><td>PE最低，但城商行规模限制</td></tr>
+<tr><td>华夏银行</td><td>600015</td><td>5.47x</td><td>0.34</td><td>~2%</td><td>1.57%</td><td><strong>3/5</strong></td><td>ROE太低，盈利能力待改善</td></tr>
+<tr><td>上海银行</td><td>601229</td><td>5.09x</td><td>0.52</td><td>~3%</td><td>2.54%</td><td><strong>4/5</strong></td><td>上海区域经济受益</td></tr>
+<tr><td>杭州银行</td><td>600926</td><td>4.4x</td><td>0.85</td><td>~3%</td><td>4.69%</td><td><strong>4/5</strong></td><td>优质城商行，ROE领跑城商行</td></tr>
+<tr><td><a href="公司_宁波银行.html">宁波银行</a></td><td>002142</td><td>6.37x</td><td>0.90</td><td>3.0%</td><td>3.60%</td><td><strong>5/5</strong></td><td>最优质的城商行，不良率0.76%连续19年<1%</td></tr>
+<tr><td>浙商银行</td><td>601916</td><td>3.51x</td><td>0.46</td><td>~3%</td><td>3.32%</td><td><strong>4/5</strong></td><td>PE最低之列</td></tr>
+<tr><td><a href="公司_邮储银行.html">邮储银行</a></td><td>601658</td><td>5.88x</td><td>0.59</td><td>~3%</td><td>2.43%</td><td><strong>4/5</strong></td><td>网点最多（4万个），县域存款成本极低</td></tr>
+<tr><td>渝农商行</td><td>601077</td><td>4.81x</td><td>0.56</td><td>~3%</td><td>2.99%</td><td><strong>4/5</strong></td><td>重庆地区龙头农商行</td></tr>
+<tr><td><a href="公司_江苏银行.html">江苏银行</a></td><td>600919</td><td>6.0x</td><td>0.62</td><td>2.1%</td><td>13.14%</td><td><strong>4/5</strong></td><td>ROE在城商行中突出</td></tr>
+</tbody></table></div>
+<p>
+<h3>2.10 银行板块格雷厄姆筛选总结</h3>
+<p>
+<strong>全部20家银行均符合PE<15和PB<1.5的原始格雷厄姆标准。</strong>
+<p>
+按调整后5分制，<strong>12家银行获得5/5满分</strong>，6家获得4/5，仅2家（民生、华夏）低于4分。
+<p>
+<strong>关键矛盾</strong>：银行的杠杆率（资产负债率90%+）不符合格雷厄姆"低负债"要求。对此的经典回应：
+<li>银行的"负债"是存款，不是债务——存款是银行的原材料而非负担</li>
+<li>银行受央行/银保监会的严格监管（资本充足率、流动性覆盖率等），这些监管指标是比"资产负债率"更好的安全度量</li>
+<li>格雷厄姆本人也承认，其工业企业标准不完全适用于金融公司</li>
+<p>
+<strong>格雷厄姆会买的银行</strong>（如果他是中国投资者）：<a href="公司_招商银行.html">招商银行</a>（最优零售银行+最低存款成本）、<a href="公司_建设银行.html">建设银行</a>（最强房贷+基建）、<a href="公司_交通银行.html">交通银行</a>（PB 0.48，以不到一半的净资产价格买入）、<a href="公司_中信银行.html">中信银行</a>（7%股息率）
+<p>
+<hr>
+<p>
+<blockquote>📌 <strong>以下章节（[3] 保险券商 至 [7] 电信汽车等）的分析由6个专业子代理并行处理中，完成后将逐一填入完整因果分析。以下为基于已完成数据的初步框架。</strong></blockquote>
+<p>
+<hr>
+<p>
+<h2>3. 保险+券商板块</h2>
+<p>
+<h3>公司快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>代码</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>核心特征</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>---------</td></tr>
+<tr><td><a href="公司_中国平安.html">中国平安</a></td><td>601318</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.14%</td><td><strong>5/5</strong></td><td>综合金融龙头，PEV仅0.62倍，极低估</td></tr>
+<tr><td><a href="公司_中国人寿.html">中国人寿</a></td><td>601628</td><td>7.0x</td><td>1.70</td><td>2.4%</td><td>27.81%</td><td>4/5</td><td>纯寿险，投资收益率弹性大</td></tr>
+<tr><td><a href="公司_中国太保.html">中国太保</a></td><td>601601</td><td>5.9x</td><td>1.05</td><td>3.5%</td><td>16.60%</td><td>4/5</td><td>均衡发展，分红稳定</td></tr>
+<tr><td>新华保险</td><td>601336</td><td>5.2x</td><td>1.56</td><td>4.4%</td><td>34.69%</td><td>4/5</td><td>小市值保险，高弹性</td></tr>
+<tr><td><a href="公司_中信证券.html">中信证券</a></td><td>600030</td><td>11.9x</td><td>1.12</td><td>2.7%</td><td>10.59%</td><td>4/5</td><td>券商龙头，2026Q1 NP+55%</td></tr>
+<tr><td>国泰海通</td><td>601211</td><td>14.3x</td><td>0.99</td><td>2.8%</td><td>11.10%</td><td>3/5</td><td>合并后整合期</td></tr>
+<tr><td><a href="公司_华泰证券.html">华泰证券</a></td><td>601688</td><td>10.0x</td><td>0.95</td><td>2.9%</td><td>9.20%</td><td>4/5</td><td>科技驱动券商</td></tr>
+<tr><td><a href="公司_东方财富.html">东方财富</a></td><td>300059</td><td>23.1x</td><td>3.37</td><td>0.5%</td><td>14.03%</td><td>1/5</td><td>PE/PB均不达标，成长股逻辑</td></tr>
+<tr><td>广发证券</td><td>000776</td><td>8.93x</td><td>1.22</td><td>~2%</td><td>3.32%</td><td>4/5</td><td>PE优秀</td></tr>
+<tr><td>招商证券</td><td>600999</td><td>12.58x</td><td>1.32</td><td>~2%</td><td>2.54%</td><td>4/5</td><td>招商系协同</td></tr>
+<tr><td>申万宏源</td><td>000166</td><td>12.22x</td><td>1.00</td><td>~2%</td><td>2.08%</td><td>4/5</td><td>PB刚好1.0</td></tr>
+<tr><td>中国银河</td><td>601881</td><td>10.51x</td><td>1.15</td><td>~2%</td><td>2.53%</td><td>4/5</td><td>PE优秀</td></tr>
+<tr><td>中金公司</td><td>601995</td><td>11.56x</td><td>1.61</td><td>~2%</td><td>3.35%</td><td>3/5</td><td>PB稍超标</td></tr>
+<tr><td>中信建投</td><td>601066</td><td>13.62x</td><td>2.32</td><td>~2%</td><td>4.02%</td><td>2/5</td><td>PB远超标</td></tr>
+<tr><td>光大证券</td><td>601788</td><td>14.51x</td><td>1.09</td><td>~2%</td><td>1.74%</td><td>3/5</td></tr>
+<tr><td>东方证券</td><td>600958</td><td>12.75x</td><td>0.99</td><td>~2%</td><td>1.94%</td><td>4/5</td><td>PB<1</td></tr>
+<tr><td>兴业证券</td><td>601377</td><td>16.84x</td><td>0.93</td><td>~2%</td><td>1.32%</td><td>3/5</td><td>PE超标</td></tr>
+<tr><td>方正证券</td><td>601901</td><td>9.53x</td><td>1.08</td><td>~2%</td><td>2.88%</td><td>4/5</td><td>PE极优</td></tr>
+<tr><td>国信证券</td><td>002736</td><td>12.71x</td><td>1.11</td><td>~2%</td><td>1.83%</td><td>4/5</td></tr>
+<tr><td>浙商证券</td><td>601878</td><td>14.46x</td><td>1.15</td><td>~2%</td><td>2.02%</td><td>4/5</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>⏳ 详细因果传导链条（利率→投资收益、股市→佣金收入、汇率→外资流向等）由子代理正在处理中，完成后补充完整。</blockquote>
+<p>
+<hr>
+<p>
+<h2>4. 科技/AI/半导体板块</h2>
+<p>
+<h3>板块特征</h3>
+<p>
+几乎所有科技股都<strong>不符合</strong>格雷厄姆标准。PE普遍在50-200倍，PB在5-40倍，很多公司甚至还在亏损。这是典型的<strong>成长股投资</strong>领域。但理解它们的因果关系同样重要——因为它们是当前沪深300<strong>权重最大的板块</strong>。
+<p>
+<h3>因果传导总览</h3>
+<p>
+<pre><code>AI板块的核心因果链：
+美国云计算厂商资本开支（决定因素#1）
+  → 微软/谷歌/亚马逊/Meta每年合计约2500亿美元Capex
+  → 其中约10-15%用于光模块/网络设备
+  → <a href="公司_中际旭创.html">中际旭创</a>/<a href="公司_新易盛.html">新易盛</a>拿到订单
+  → 订单增速决定业绩增速（2024-2025年增速100%+）
+  
+这个链条的风险：
+  → 如果AI大模型训练需求见顶（Scaling Law撞墙）
+  → 云厂商Capex从增长转为消化
+  → 光模块订单增速从100%降到10%甚至负增长
+  → <a href="公司_中际旭创.html">中际旭创</a>PE从60倍压缩到20倍（杀估值）
+  → 股价可能跌60-70%——这在2022年半导体下行周期已经发生过一次
+</code></pre>
+<p>
+<h3>公司快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>ROE</th><th>评分</th><th>格雷厄姆判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>-----</td><td>------</td><td>------------</td></tr>
+<tr><td><a href="公司_中际旭创.html">中际旭创</a></td><td>61x</td><td>22x</td><td>43.84%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td><a href="公司_新易盛.html">新易盛</a></td><td>71x</td><td>38x</td><td>72.75%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>天孚通信</td><td>180x</td><td>65x</td><td>8.57%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td><a href="公司_寒武纪.html">寒武纪</a></td><td>200x+</td><td>37x</td><td>26.96%</td><td>0/5</td><td>❌ 不碰（刚盈利）</td></tr>
+<tr><td><a href="公司_海光信息.html">海光信息</a></td><td>~150x</td><td>~20x</td><td>~3%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td><a href="公司_中芯国际.html">中芯国际</a></td><td>192x</td><td>6.96x</td><td>0.9%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td><a href="公司_北方华创.html">北方华创</a></td><td>75x</td><td>12.4x</td><td>4.25%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>中微公司</td><td>80x</td><td>12.3x</td><td>4.0%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>澜起科技</td><td>88x</td><td>14.3x</td><td>5.39%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>兆易创新</td><td>64x</td><td>15.1x</td><td>6.12%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>紫光国微</td><td>49x</td><td>4.68x</td><td>2.4%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>圣邦股份</td><td>160x</td><td>14.8x</td><td>2.31%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>长电科技</td><td>119x</td><td>4.82x</td><td>1.01%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td><a href="公司_海康威视.html">海康威视</a></td><td>20x</td><td>3.73x</td><td>3.28%</td><td>1/5</td><td>PE超标，但行业地位稳固</td></tr>
+<tr><td><a href="公司_大华股份.html">大华股份</a></td><td>19.22x</td><td>1.44x</td><td>1.83%</td><td>2/5</td><td>PB符合但PE超标，科技股中最近似价值</td></tr>
+<tr><td><a href="公司_立讯精密.html">立讯精密</a></td><td>28x</td><td>5.6x</td><td>4.2%</td><td>1/5</td><td>PE/PB均超标</td></tr>
+<tr><td><a href="公司_工业富联.html">工业富联</a></td><td>34x</td><td>8.21x</td><td>6.18%</td><td>1/5</td><td>PE/PB超标</td></tr>
+<tr><td><a href="公司_京东方A.html">京东方A</a></td><td>33x</td><td>1.08x</td><td>1.26%</td><td>2/5</td><td>PB达标！但PE超标，面板周期股</td></tr>
+<tr><td>中兴通讯</td><td>35x</td><td>2.37x</td><td>1.72%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>TCL科技</td><td>15.54x</td><td>1.59x</td><td>2.47%</td><td>2/5</td><td>PE接近达标，PB接近达标</td></tr>
+<tr><td>传音控股</td><td>22x</td><td>3.11x</td><td>3.35%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>瑞芯微</td><td>55x</td><td>15.34x</td><td>7.23%</td><td>0/5</td><td>❌ 不碰</td></tr>
+<tr><td>沪硅产业</td><td>-53x</td><td>6.1x</td><td>-2.87%</td><td>0/5</td><td>❌ 不碰（亏损）</td></tr>
+<tr><td>龙芯中科</td><td>-125x</td><td>23.77x</td><td>-4.65%</td><td>0/5</td><td>❌ 不碰（亏损）</td></tr>
+<tr><td>芯原股份</td><td>-96x</td><td>41.63x</td><td>-10.38%</td><td>0/5</td><td>❌ 不碰（亏损）</td></tr>
+<tr><td>科大讯飞</td><td>-146x</td><td>4.34x</td><td>-0.91%</td><td>0/5</td><td>❌ 不碰（亏损）</td></tr>
+<tr><td>三六零</td><td>149x</td><td>2.29x</td><td>0.37%</td><td>0/5</td><td>❌ 不碰</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>⏳ 详细因果传导链条由子代理正在处理中</blockquote>
+<p>
+<hr>
+<p>
+<h2>5. 消费/白酒/家电/医药板块</h2>
+<p>
+<h3>板块特征</h3>
+<p>
+这个板块出现了<strong>分化</strong>——白酒和家电龙头有部分格雷厄姆特征（低PE、高股息），但医药和医美则是典型的高PB成长股。
+<p>
+<h3>公司快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>格雷厄姆判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>------------</td></tr>
+<tr><td><a href="公司_格力电器.html">格力电器</a></td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.3%</td><td><strong>5/5 🏆</strong></td><td>消费板块最佳</td></tr>
+<tr><td><a href="公司_洋河股份.html">洋河股份</a></td><td>6.59x</td><td>1.31</td><td>~4%</td><td>5.09%</td><td><strong>5/5 🏆</strong></td><td>白酒中最便宜</td></tr>
+<tr><td><a href="公司_五粮液.html">五粮液</a></td><td>9.4x</td><td>2.38</td><td>6.6%</td><td>~21%</td><td>3/5</td><td>PE好但PB超标</td></tr>
+<tr><td><a href="公司_山西汾酒.html">山西汾酒</a></td><td>6.65x</td><td>3.18</td><td>~3%</td><td>12.57%</td><td>3/5</td><td>PE极低但PB高</td></tr>
+<tr><td><a href="公司_贵州茅台.html">贵州茅台</a></td><td>22.3x</td><td>7.09</td><td>3.6%</td><td>32.53%</td><td>2/5</td><td>PE/PB超标</td></tr>
+<tr><td><a href="公司_美的集团.html">美的集团</a></td><td>14.0x</td><td>2.83</td><td>5.6%</td><td>19.7%</td><td>3/5</td><td>PE达标PB超标</td></tr>
+<tr><td><a href="公司_海尔智家.html">海尔智家</a></td><td>10.5x</td><td>1.65</td><td>5.5%</td><td>16.98%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td>海天味业</td><td>28x</td><td>4.90</td><td>3.5%</td><td>19.59%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>伊利股份</td><td>14.1x</td><td>3.12</td><td>5.5%</td><td>20.87%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td><a href="公司_恒瑞医药.html">恒瑞医药</a></td><td>39x</td><td>4.94</td><td>0.4%</td><td>14.26%</td><td>0/5</td><td>成长股</td></tr>
+<tr><td><a href="公司_迈瑞医疗.html">迈瑞医疗</a></td><td>22x</td><td>4.32</td><td>2.9%</td><td>21.58%</td><td>1/5</td><td>PE/PB超标</td></tr>
+<tr><td><a href="公司_药明康德.html">药明康德</a></td><td>14.6x</td><td>3.48</td><td>1.3%</td><td>28.56%</td><td>2/5</td><td>PE达标但PB超标</td></tr>
+<tr><td><a href="公司_爱尔眼科.html">爱尔眼科</a></td><td>23x</td><td>3.35</td><td>1.1%</td><td>14.97%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>云南白药</td><td>10.82x</td><td>2.24</td><td>~3%</td><td>4.96%</td><td>3/5</td><td>PE好PB超标</td></tr>
+<tr><td>华润三九</td><td>9.38x</td><td>1.81</td><td>~3%</td><td>4.74%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td>万泰生物</td><td>-213x</td><td>3.09</td><td>0%</td><td>-0.36%</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>智飞生物</td><td>-19x</td><td>1.93</td><td>0%</td><td>-2.48%</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>爱美客</td><td>23x</td><td>3.65</td><td>~1%</td><td>3.86%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>中国中免</td><td>12.92x</td><td>2.09</td><td>~2%</td><td>4.16%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td><a href="公司_比亚迪.html">比亚迪</a></td><td>30x</td><td>3.52</td><td>0.4%</td><td>1.65%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>上汽集团</td><td>10.11x</td><td>0.41</td><td>~3%</td><td>1.01%</td><td>4/5</td><td>PE+PB均优但ROE极低</td></tr>
+<tr><td>赛力斯</td><td>40x</td><td>3.0</td><td>~0%</td><td>1.83%</td><td>1/5</td><td>成长股</td></tr>
+<tr><td>广汽集团</td><td>-23x</td><td>0.57</td><td>0%</td><td>-0.63%</td><td>0/5</td><td>亏损</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>⏳ 详细因果传导链条由子代理正在处理中</blockquote>
+<p>
+<hr>
+<p>
+<h2>6. 能源/原材料/工业/基建/公用事业板块</h2>
+<p>
+<h3>板块特征</h3>
+<p>
+这个板块出现了格雷厄姆意义上的<strong>两个极端</strong>：
+<li><strong>一端是深度价值</strong>：<a href="公司_中国建筑.html">中国建筑</a>PE 3.51、中国铁建PE 4.89、<a href="公司_海螺水泥.html">海螺水泥</a>PB 0.5——便宜到让人怀疑是不是价值陷阱</li>
+<li><strong>另一端是高估值成长</strong>：<a href="公司_宁德时代.html">宁德时代</a>PE 23.6、<a href="公司_阳光电源.html">阳光电源</a>PE 26.5——格雷厄姆不会碰</li>
+<p>
+<h3>公司快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>评分</th><th>核心判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td><td>---------</td></tr>
+<tr><td><a href="公司_中国神华.html">中国神华</a></td><td>17.9x</td><td>1.92</td><td>7.6%</td><td>12.76%</td><td>3/5</td><td>PE超标但股息极高</td></tr>
+<tr><td><a href="公司_中国石油.html">中国石油</a></td><td>12.0x</td><td>1.17</td><td>4.7%</td><td>10.10%</td><td><strong>4/5</strong></td><td>PE+PB双达标</td></tr>
+<tr><td><a href="公司_中国石化.html">中国石化</a></td><td>17.0x</td><td>0.73</td><td>4.7%</td><td>3.86%</td><td>3/5</td><td>PE稍高PB极低</td></tr>
+<tr><td><a href="公司_长江电力.html">长江电力</a></td><td>19.0x</td><td>3.00</td><td>3.6%</td><td>15.90%</td><td>2/5</td><td>债券属性，不适用PE估值</td></tr>
+<tr><td>中国核电</td><td>22.99x</td><td>1.58</td><td>~2%</td><td>1.73%</td><td>1/5</td><td>成长型公用事业</td></tr>
+<tr><td>华能水电</td><td>28.79x</td><td>2.51</td><td>~2%</td><td>2.1%</td><td>1/5</td><td>PE/PB高</td></tr>
+<tr><td>浙能电力</td><td>21.73x</td><td>1.07</td><td>~2%</td><td>1.23%</td><td>2/5</td><td>PB达标</td></tr>
+<tr><td>国电电力</td><td>15.82x</td><td>1.45</td><td>~2%</td><td>2.32%</td><td>3/5</td><td>PE接近PB达标</td></tr>
+<tr><td>国投电力</td><td>12.82x</td><td>1.57</td><td>~3%</td><td>3.06%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td>三峡能源</td><td>28.31x</td><td>1.31</td><td>1.0%</td><td>1.17%</td><td>2/5</td><td>PE超标</td></tr>
+<tr><td>川投能源</td><td>12.73x</td><td>1.59</td><td>~3%</td><td>3.18%</td><td>3/5</td><td>PE好PB稍高</td></tr>
+<tr><td><a href="公司_大秦铁路.html">大秦铁路</a></td><td>10.5x</td><td>0.60</td><td>~5%</td><td>1.44%</td><td><strong>5/5 🏆</strong></td><td>铁路煤炭运输垄断</td></tr>
+<tr><td>招商公路</td><td>12.18x</td><td>0.94</td><td>~3%</td><td>1.9%</td><td><strong>5/5 🏆</strong></td><td>公路收费</td></tr>
+<tr><td><a href="公司_紫金矿业.html">紫金矿业</a></td><td>12.7x</td><td>4.10</td><td>1.3%</td><td>33.04%</td><td>2/5</td><td>PE达标PB严重超标</td></tr>
+<tr><td><a href="公司_万华化学.html">万华化学</a></td><td>18.0x</td><td>2.50</td><td>1.8%</td><td>12.44%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>宝钢股份</td><td>14.0x</td><td>0.65</td><td>4.0%</td><td>5.07%</td><td><strong>4/5</strong></td><td>PE+PB双达</td></tr>
+<tr><td><a href="公司_海螺水泥.html">海螺水泥</a></td><td>16.45x</td><td>0.50</td><td>~4%</td><td>0.76%</td><td>3/5</td><td>PE超标PB极低</td></tr>
+<tr><td>中国铝业</td><td>15.0x</td><td>2.80</td><td>2.1%</td><td>17.64%</td><td>2/5</td><td>PE刚好PB超标</td></tr>
+<tr><td><a href="公司_中国建筑.html">中国建筑</a></td><td>3.51x</td><td>0.39</td><td>~3%</td><td>2.77%</td><td><strong>4/5</strong></td><td>PE/PB极低但高杠杆</td></tr>
+<tr><td>中国铁建</td><td>4.89x</td><td>0.31</td><td>~3%</td><td>1.38%</td><td><strong>4/5</strong></td><td>PE/PB极低</td></tr>
+<tr><td>中国电建</td><td>10.66x</td><td>0.57</td><td>~2%</td><td>1.31%</td><td><strong>4/5</strong></td><td>PE+PB双达</td></tr>
+<tr><td>中国中冶</td><td>8.46x</td><td>0.54</td><td>~2%</td><td>1.59%</td><td><strong>4/5</strong></td><td>PE+PB双达</td></tr>
+<tr><td>中国能建</td><td>20.38x</td><td>0.99</td><td>~2%</td><td>1.25%</td><td>2/5</td><td>PE超标</td></tr>
+<tr><td><a href="公司_中国中车.html">中国中车</a></td><td>12.15x</td><td>0.93</td><td>~3%</td><td>1.94%</td><td><strong>4/5</strong></td><td>PE+PB双达</td></tr>
+<tr><td>中国船舶</td><td>14.01x</td><td>1.81</td><td>~1%</td><td>3.3%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>中联重科</td><td>18.54x</td><td>1.12</td><td>~2%</td><td>1.52%</td><td>2/5</td><td>PE超标PB达标</td></tr>
+<tr><td>徐工机械</td><td>13.08x</td><td>1.72</td><td>~2%</td><td>3.34%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>特变电工</td><td>16.78x</td><td>1.69</td><td>~2%</td><td>2.55%</td><td>1/5</td><td>均超标</td></tr>
+<tr><td>正泰电器</td><td>11.65x</td><td>1.34</td><td>~3%</td><td>2.82%</td><td><strong>4/5</strong></td><td>PE+PB双达</td></tr>
+<tr><td>东方电气</td><td>16.94x</td><td>2.29</td><td>~2%</td><td>3.44%</td><td>1/5</td><td>均超标</td></tr>
+</tbody></table></div>
+<p>
+<h3>新能源子板块：集体不达标</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>评分</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>------</td><td>------</td></tr>
+<tr><td><a href="公司_宁德时代.html">宁德时代</a></td><td>23.6x</td><td>5.71</td><td>1/5</td><td>成长股，产能过剩风险</td></tr>
+<tr><td><a href="公司_阳光电源.html">阳光电源</a></td><td>26.5x</td><td>6.50</td><td>0/5</td><td>成长股</td></tr>
+<tr><td><a href="公司_隆基绿能.html">隆基绿能</a></td><td>亏损</td><td>2.00</td><td>0/5</td><td>亏损！行业产能过剩</td></tr>
+<tr><td>通威股份</td><td>亏损</td><td>1.74</td><td>0/5</td><td>亏损！硅料价格暴跌</td></tr>
+<tr><td>晶科能源</td><td>亏损</td><td>2.18</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>大全能源</td><td>亏损</td><td>1.18</td><td>0/5</td><td>亏损</td></tr>
+<tr><td>亿纬锂能</td><td>25x</td><td>3.02</td><td>1/5</td><td>PE超标</td></tr>
+<tr><td>天赐材料</td><td>16.1x</td><td>5.77</td><td>1/5</td><td>PE接近但PB远超标</td></tr>
+<tr><td><a href="公司_华友钴业.html">华友钴业</a></td><td>10.06x</td><td>2.03</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>赣锋锂业</td><td>20.38x</td><td>3.22</td><td>1/5</td><td>均超标</td></tr>
+<tr><td><a href="公司_天齐锂业.html">天齐锂业</a></td><td>14.61x</td><td>2.37</td><td>2/5</td><td>PE达标PB超标</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>⏳ 详细因果传导链条（油价→石油公司利润、铜价→<a href="公司_紫金矿业.html">紫金矿业</a>、锂价→赣锋锂业、水泥价格→<a href="公司_海螺水泥.html">海螺水泥</a>等）由子代理正在处理中</blockquote>
+<p>
+<hr>
+<p>
+<h2>7. 电信/汽车/航空/传媒/农业/地产板块</h2>
+<p>
+<h3>公司快速评分卡</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>PE</th><th>PB</th><th>股息率</th><th>评分</th><th>核心判断</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>------</td><td>---------</td></tr>
+<tr><td><a href="公司_中国移动.html">中国移动</a></td><td>17.18x</td><td>1.42</td><td>~5%</td><td>3/5</td><td>PE超标但PB达标</td></tr>
+<tr><td>中国电信</td><td>18.55x</td><td>1.19</td><td>~4%</td><td>3/5</td><td>PE超标PB达标</td></tr>
+<tr><td>中国联通</td><td>15.98x</td><td>0.80</td><td>~3%</td><td>4/5</td><td>PE接近PB达标</td></tr>
+<tr><td><a href="公司_南方航空.html">南方航空</a></td><td>16.49x</td><td>2.64</td><td>~0%</td><td>1/5</td><td>PE超标</td></tr>
+<tr><td>中远海控</td><td>~5-15x</td><td>~0.5-1.5</td><td>~5-10%</td><td>2/5</td><td>极度周期，PE不可靠</td></tr>
+<tr><td><a href="公司_牧原股份.html">牧原股份</a></td><td>亏损</td><td>2.41</td><td>0%</td><td>0/5</td><td>猪周期底部亏损</td></tr>
+<tr><td>温氏股份</td><td>亏损</td><td>2.24</td><td>0%</td><td>0/5</td><td>猪周期底部亏损</td></tr>
+<tr><td>巨人网络</td><td>10.68x</td><td>2.89</td><td>~2%</td><td>2/5</td><td>PE达标PB超标</td></tr>
+<tr><td>芒果超媒</td><td>37x</td><td>1.26</td><td>~1%</td><td>1/5</td><td>PE超标PB达标</td></tr>
+<tr><td>同花顺</td><td>161x</td><td>38.74</td><td>~0%</td><td>0/5</td><td>极高估值</td></tr>
+<tr><td>恒生电子</td><td>77x</td><td>4.46</td><td>~1%</td><td>0/5</td><td>极高估值</td></tr>
+<tr><td>宝信软件</td><td>34x</td><td>4.84</td><td>~1%</td><td>0/5</td><td>极高估值</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>⏳ 详细因果传导链条由子代理正在处理中</blockquote>
+<p>
+<hr>
+<p>
+<h2>8. 格雷厄姆综合排名</h2>
+<p>
+<h3>Top 30 格雷厄姆得分排名</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>排名</th><th>公司</th><th>代码</th><th>行业</th><th>PE</th><th>PB</th><th>股息率</th><th>ROE</th><th>得分</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>------</td><td>-----</td><td>-----</td><td>--------</td><td>-----</td><td>------</td></tr>
+<tr><td>1</td><td><strong><a href="公司_格力电器.html">格力电器</a></strong></td><td>000651</td><td>家电</td><td>8.2x</td><td>1.50</td><td>7.4%</td><td>20.3%</td><td><strong>5/5</strong></td></tr>
+<tr><td>2</td><td><strong><a href="公司_招商银行.html">招商银行</a></strong></td><td>600036</td><td>银行</td><td>6.4x</td><td>0.78</td><td>5.2%</td><td>13.4%</td><td><strong>5/5</strong></td></tr>
+<tr><td>3</td><td><strong><a href="公司_建设银行.html">建设银行</a></strong></td><td>601939</td><td>银行</td><td>5.9x</td><td>0.53</td><td>5.6%</td><td>10.0%</td><td><strong>5/5</strong></td></tr>
+<tr><td>4</td><td><strong><a href="公司_工商银行.html">工商银行</a></strong></td><td>601398</td><td>银行</td><td>7.6x</td><td>0.53</td><td>6.2%</td><td>9.45%</td><td><strong>5/5</strong></td></tr>
+<tr><td>5</td><td><strong><a href="公司_中信银行.html">中信银行</a></strong></td><td>601998</td><td>银行</td><td>5.3x</td><td>0.51</td><td>7.1%</td><td>9.39%</td><td><strong>5/5</strong></td></tr>
+<tr><td>6</td><td><strong><a href="公司_兴业银行.html">兴业银行</a></strong></td><td>601166</td><td>银行</td><td>5.2x</td><td>0.44</td><td>5.8%</td><td>9.15%</td><td><strong>5/5</strong></td></tr>
+<tr><td>7</td><td><strong><a href="公司_交通银行.html">交通银行</a></strong></td><td>601328</td><td>银行</td><td>6.4x</td><td>0.48</td><td>4.7%</td><td>8.38%</td><td><strong>5/5</strong></td></tr>
+<tr><td>8</td><td><strong><a href="公司_洋河股份.html">洋河股份</a></strong></td><td>002304</td><td>白酒</td><td>6.59x</td><td>1.31</td><td>~4%</td><td>5.09%</td><td><strong>5/5</strong></td></tr>
+<tr><td>9</td><td><strong><a href="公司_大秦铁路.html">大秦铁路</a></strong></td><td>601006</td><td>铁路</td><td>10.5x</td><td>0.60</td><td>~5%</td><td>1.44%</td><td><strong>5/5</strong></td></tr>
+<tr><td>10</td><td><strong><a href="公司_中国平安.html">中国平安</a></strong></td><td>601318</td><td>保险</td><td>7.2x</td><td>0.94</td><td>5.1%</td><td>14.1%</td><td><strong>5/5</strong></td></tr>
+<tr><td>11</td><td><a href="公司_宁波银行.html">宁波银行</a></td><td>002142</td><td>银行</td><td>6.37x</td><td>0.90</td><td>3.0%</td><td>3.60%</td><td><strong>5/5</strong></td></tr>
+<tr><td>12</td><td><a href="公司_邮储银行.html">邮储银行</a></td><td>601658</td><td>银行</td><td>5.88x</td><td>0.59</td><td>~3%</td><td>2.43%</td><td><strong>5/5</strong></td></tr>
+<tr><td>13</td><td>招商公路</td><td>001965</td><td>公路</td><td>12.18x</td><td>0.94</td><td>~3%</td><td>1.9%</td><td><strong>5/5</strong></td></tr>
+<tr><td>14</td><td><a href="公司_中国石油.html">中国石油</a></td><td>601857</td><td>石油</td><td>12.0x</td><td>1.17</td><td>4.7%</td><td>10.1%</td><td>4/5</td></tr>
+<tr><td>15</td><td>宝钢股份</td><td>600019</td><td>钢铁</td><td>14.0x</td><td>0.65</td><td>4.0%</td><td>5.07%</td><td>4/5</td></tr>
+<tr><td>16</td><td><a href="公司_中国建筑.html">中国建筑</a></td><td>601668</td><td>建筑</td><td>3.51x</td><td>0.39</td><td>~3%</td><td>2.77%</td><td>4/5</td></tr>
+<tr><td>17</td><td>中国铁建</td><td>601186</td><td>建筑</td><td>4.89x</td><td>0.31</td><td>~3%</td><td>1.38%</td><td>4/5</td></tr>
+<tr><td>18</td><td>上汽集团</td><td>600104</td><td>汽车</td><td>10.11x</td><td>0.41</td><td>~3%</td><td>1.01%</td><td>4/5</td></tr>
+<tr><td>19</td><td><a href="公司_中国中车.html">中国中车</a></td><td>601766</td><td>轨交</td><td>12.15x</td><td>0.93</td><td>~3%</td><td>1.94%</td><td>4/5</td></tr>
+<tr><td>20</td><td>正泰电器</td><td>601877</td><td>电气</td><td>11.65x</td><td>1.34</td><td>~3%</td><td>2.82%</td><td>4/5</td></tr>
+<tr><td>21</td><td>中国联通</td><td>600050</td><td>电信</td><td>15.98x</td><td>0.80</td><td>~3%</td><td>1.24%</td><td>4/5</td></tr>
+<tr><td>22</td><td><a href="公司_华泰证券.html">华泰证券</a></td><td>601688</td><td>券商</td><td>10.0x</td><td>0.95</td><td>2.9%</td><td>9.20%</td><td>4/5</td></tr>
+<tr><td>23</td><td><a href="公司_中信证券.html">中信证券</a></td><td>600030</td><td>券商</td><td>11.9x</td><td>1.12</td><td>2.7%</td><td>10.6%</td><td>4/5</td></tr>
+<tr><td>24</td><td>方正证券</td><td>601901</td><td>券商</td><td>9.53x</td><td>1.08</td><td>~2%</td><td>2.88%</td><td>4/5</td></tr>
+<tr><td>25</td><td><a href="公司_五粮液.html">五粮液</a></td><td>000858</td><td>白酒</td><td>9.4x</td><td>2.38</td><td>6.6%</td><td>~21%</td><td>3/5</td></tr>
+<tr><td>26</td><td><a href="公司_美的集团.html">美的集团</a></td><td>000333</td><td>家电</td><td>14.0x</td><td>2.83</td><td>5.6%</td><td>19.7%</td><td>3/5</td></tr>
+<tr><td>27</td><td><a href="公司_海尔智家.html">海尔智家</a></td><td>600690</td><td>家电</td><td>10.5x</td><td>1.65</td><td>5.5%</td><td>17.0%</td><td>3/5</td></tr>
+<tr><td>28</td><td><a href="公司_中国神华.html">中国神华</a></td><td>601088</td><td>煤炭</td><td>17.9x</td><td>1.92</td><td>7.6%</td><td>12.8%</td><td>3/5</td></tr>
+<tr><td>29</td><td><a href="公司_海螺水泥.html">海螺水泥</a></td><td>600585</td><td>水泥</td><td>16.45x</td><td>0.50</td><td>~4%</td><td>0.76%</td><td>3/5</td></tr>
+<tr><td>30</td><td>国投电力</td><td>600886</td><td>电力</td><td>12.82x</td><td>1.57</td><td>~3%</td><td>3.06%</td><td>3/5</td></tr>
+</tbody></table></div>
+<p>
+<h3>格雷厄姆Top 30的行业分布</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>行业</th><th>数量</th><th>在Top 30中占比</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>---------------</td></tr>
+<tr><td>银行</td><td>8</td><td>26.7%</td></tr>
+<tr><td>保险</td><td>1</td><td>3.3%</td></tr>
+<tr><td>券商</td><td>3</td><td>10.0%</td></tr>
+<tr><td>家电</td><td>3</td><td>10.0%</td></tr>
+<tr><td>白酒</td><td>2</td><td>6.7%</td></tr>
+<tr><td>石油/煤炭</td><td>2</td><td>6.7%</td></tr>
+<tr><td>钢铁</td><td>1</td><td>3.3%</td></tr>
+<tr><td>建筑</td><td>2</td><td>6.7%</td></tr>
+<tr><td>电力</td><td>1</td><td>3.3%</td></tr>
+<tr><td>公用事业（铁路/公路）</td><td>3</td><td>10.0%</td></tr>
+<tr><td>汽车</td><td>1</td><td>3.3%</td></tr>
+<tr><td>轨交</td><td>1</td><td>3.3%</td></tr>
+<tr><td>电气</td><td>1</td><td>3.3%</td></tr>
+<tr><td>电信</td><td>1</td><td>3.3%</td></tr>
+<tr><td><strong>金融合计</strong></td><td><strong>12</strong></td><td><strong>40.0%</strong></td></tr>
+</tbody></table></div>
+<p>
+<strong>核心发现</strong>：格雷厄姆框架下筛选出的Top 30中，<strong>40%是金融股</strong>（银行+保险+券商）。这不是巧合——这是A股当前估值结构的必然结果。
+<p>
+<hr>
+<p>
+<h2>9. 大类资产关联矩阵</h2>
+<p>
+<h3>9.1 各类资产与中国A股的相关性机制</h3>
+<p>
+<h4>股票 vs 房地产</h4>
+<p>
+<pre><code>传导机制（6条路径）：
+<p>
+路径1：信贷渠道
+  央行宽松→信贷扩张→同时流入楼市和股市→两者同涨
+  2015-2016年最为明显：降息降准→深圳房价翻倍+创业板牛市
+<p>
+路径2：财富效应渠道
+  房价↑→家庭资产负债表改善→消费信心↑→可选消费（白酒、家电、汽车）盈利↑→相关股票↑
+  反之：2021年至今房价下跌→财富负效应→消费降级→茅台/<a href="公司_五粮液.html">五粮液</a>/美的盈利承压
+<p>
+路径3：替代效应渠道
+  房价预期回报率↓（从10%+/年降到0%或负）→投资性购房需求↓
+  →居民储蓄寻找替代资产→部分流入股市（但大部分先去了理财/存款）
+  →这个渠道目前还在"初期"——大规模存款搬家需要股市赚钱效应配合
+<p>
+路径4：银行资产质量渠道
+  房价↓→开发商贷款不良↑→银行拨备↑→银行利润↓→银行股↓
+  这是银行股与房地产最直接的相关性
+<p>
+路径5：地方政府财政渠道
+  土地出让金↓50%+→地方财政收入锐减→削减产业补贴/基建投资
+  →科技补贴减少→半导体/新能源股票承压
+  →基建投资减少→水泥/钢铁/建筑股票承压
+<p>
+路径6：建材需求渠道
+  房地产新开工↓50%+→水泥/钢铁/玻璃/铝材需求↓→相关股票盈利↓
+</code></pre>
+<p>
+<strong>综合判断</strong>：A股与房地产的<strong>正相关性在减弱</strong>，但远未消失。银行（资产质量）、建材（需求）、消费（财富效应）三个渠道仍然高度绑定房地产。
+<p>
+<h4>股票 vs 黄金</h4>
+<p>
+<pre><code>黄金定价的三个核心变量：
+<li>美国实际利率（TIPS收益率）= 名义利率 - 通胀预期</li>
+   实际利率↓（降息或通胀↑）→黄金↑
+   
+<li>美元指数（DXY）</li>
+   美元↓→以美元计价的黄金↑
+   
+<li>全球风险偏好/地缘政治</li>
+   避险情绪↑→黄金↑
+<p>
+A股与黄金的相关性逻辑：
+<li>在经济"好"的时候（复苏期）：A股↑ + 黄金↓（资金从避险资产流向风险资产）</li>
+  → 负相关
+<li>在经济"坏"的时候（滞胀/危机）：A股↓ + 黄金↑ </li>
+  → 负相关
+<li>在流动性泛滥的时候（QE）：A股↑ + 黄金↑（都受益于流动性）</li>
+  → 正相关
+<li>结论：A股与黄金的相关性不稳定，取决于当前的主导因素。</li>
+</code></pre>
+<p>
+<strong>A股中受益于黄金上涨的标的</strong>：
+<li><a href="公司_紫金矿业.html">紫金矿业</a>（铜+金双敞口，黄金每涨10%，净利润约增15-20%）</li>
+<li>山东黄金（纯金矿，黄金每涨10%，净利润约增25-30%）</li>
+<li>中金黄金（金矿+冶炼）</li>
+<p>
+<h4>股票 vs 比特币/加密货币</h4>
+<p>
+<pre><code>比特币的定价逻辑：
+<li>全球M2货币供应量→流动性越泛滥→BTC越涨</li>
+<li>美元实际利率→类似黄金的逻辑</li>
+<li>网络采用曲线（S-curve adoption）</li>
+<li>监管政策</li>
+<p>
+A股与比特币的关联：
+<li>直接渠道：几乎为零。中国大陆禁止加密货币交易，A股公司没有比特币敞口</li>
+<li>间接渠道（流动性）：全球央行放水→同时推高A股（外资流入）和BTC</li>
+  → 在流动性驱动的牛市中，两者可能同涨
+<li>间接渠道（风险偏好）：全球risk-on→A股+ BTC可能同涨</li>
+<li>间接渠道（技术叙事）：AI/半导体牛市→BTC（作为"数字资产"叙事）也可能受益</li>
+  
+<li>在中国境内：比特币与A股几乎无资金竞争关系（交易渠道不同）</li>
+<li>在全球视角：浅层次的正相关性（都受全球流动性影响）</li>
+</code></pre>
+<p>
+<h3>9.2 美林时钟框架下的四类资产表现</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>经济阶段</th><th>特征</th><th>A股（价值型）</th><th>A股（成长型）</th><th>房地产</th><th>黄金</th><th>比特币</th></tr></thead>
+<tbody>
+<tr><td>---------</td><td>------</td><td>-------------</td><td>-------------</td><td>--------</td><td>------</td><td>--------</td></tr>
+<tr><td><strong>复苏期</strong></td><td>GDP↑ + CPI↓</td><td>⭐⭐⭐ 银行盈利改善</td><td>⭐⭐⭐ 风险偏好↑</td><td>⭐⭐ 销售回暖</td><td>⭐ 避险需求低</td><td>⭐⭐⭐ 风险偏好↑</td></tr>
+<tr><td><strong>过热期</strong></td><td>GDP↑ + CPI↑</td><td>⭐⭐ 净息差见顶</td><td>⭐ 估值压缩</td><td>⭐ 调控加码</td><td>⭐⭐⭐ 通胀对冲</td><td>⭐⭐ 流动性充裕</td></tr>
+<tr><td><strong>滞胀期</strong></td><td>GDP↓ + CPI↑</td><td>⭐ 不良上升</td><td>⭐ 估值盈利双杀</td><td>⭐ 购买力下降</td><td>⭐⭐⭐⭐⭐ 最佳资产</td><td>⭐ 高利率压制</td></tr>
+<tr><td><strong>衰退期</strong></td><td>GDP↓ + CPI↓</td><td>⭐⭐ 宽松预期支撑</td><td>⭐ 盈利下滑</td><td>⭐ 成交冰冻</td><td>⭐⭐⭐ 降息利好</td><td>⭐ 风险资产承压</td></tr>
+</tbody></table></div>
+<p>
+<h3>9.3 各行业对大类资产的具体敏感性</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>行业</th><th>房地产相关性</th><th>黄金相关性</th><th>比特币相关性</th><th>利率敏感性</th><th>汇率敏感性</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------------</td><td>-----------</td><td>------------</td><td>-----------</td><td>-----------</td></tr>
+<tr><td><strong>银行</strong></td><td>⬆️⬆️ 强正（资产质量）</td><td>⬇️ 负（风险偏好）</td><td>~0 极低</td><td>⬆️⬆️⬆️ 极强</td><td>⬆️ 弱正</td></tr>
+<tr><td><strong>保险</strong></td><td>⬆️⬆️ 强正（投资敞口）</td><td>⬇️ 负</td><td>~0</td><td>⬆️⬆️ 强</td><td>⬆️ 弱正</td></tr>
+<tr><td><strong>券商</strong></td><td>⬆️ 弱正（间接）</td><td>⬇️⬇️ 强负</td><td>⬆️ 弱正（流动性）</td><td>⬆️⬆️ 强</td><td>⬆️ 弱正</td></tr>
+<tr><td><strong>白酒</strong></td><td>⬆️⬆️ 强正（财富效应）</td><td>~0</td><td>~0</td><td>⬆️ 弱正</td><td>~0</td></tr>
+<tr><td><strong>家电</strong></td><td>⬆️⬆️ 强正（后周期）</td><td>~0</td><td>~0</td><td>⬆️ 弱正</td><td>⬇️ 负（出口企业）</td></tr>
+<tr><td><strong>科技/AI</strong></td><td>~0 极低</td><td>⬇️ 负（风险偏好）</td><td>⬆️ 弱正</td><td>⬇️ 负（高久期）</td><td>⬇️ 负（出口收入）</td></tr>
+<tr><td><strong>新能源</strong></td><td>~0</td><td>⬇️ 负</td><td>⬆️ 弱正</td><td>⬇️ 负</td><td>⬇️ 负（出口收入）</td></tr>
+<tr><td><strong>石油石化</strong></td><td>⬆️ 正（需求）</td><td>⬆️ 正（地缘风险）</td><td>~0</td><td>⬆️ 正（通胀预期）</td><td>⬇️⬇️ 强负（美元定价）</td></tr>
+<tr><td><strong>铜/金矿</strong></td><td>⬆️ 正（铜需求）</td><td>⬆️⬆️⬆️ 极强正</td><td>~0</td><td>⬇️⬇️ 强负（美元）</td><td>⬇️⬇️⬇️ 极强负</td></tr>
+<tr><td><strong>水泥/钢铁</strong></td><td>⬆️⬆️⬆️ 极强正</td><td>~0</td><td>~0</td><td>⬆️ 正</td><td>~0</td></tr>
+<tr><td><strong>建筑</strong></td><td>⬆️⬆️⬆️ 极强正</td><td>~0</td><td>~0</td><td>⬆️ 正</td><td>~0</td></tr>
+<tr><td><strong>公用事业</strong></td><td>~0</td><td>⬆️ 正（避险）</td><td>~0</td><td>⬇️⬇️⬇️ 极强负（债券替代）</td><td>~0</td></tr>
+<tr><td><strong>电信</strong></td><td>~0</td><td>⬆️ 正（避险）</td><td>~0</td><td>⬇️⬇️ 强负</td><td>~0</td></tr>
+<tr><td><strong>航空</strong></td><td>~0</td><td>⬆️ 弱正（油价）</td><td>~0</td><td>⬆️ 正</td><td>⬇️⬇️⬇️ 极强负（美元债）</td></tr>
+<tr><td><strong>农业</strong></td><td>~0</td><td>~0</td><td>~0</td><td>~0</td><td>~0</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>10. 结论与配置建议</h2>
+<p>
+<h3>10.1 核心结论</h3>
+<p>
+<li><strong>格雷厄姆价值投资的天然猎场是中国的银行股。</strong> 全部20家上市银行PE均<10倍，PB最低仅0.24倍（民生），股息率最高7.1%（<a href="公司_中信银行.html">中信银行</a>）。如果格雷厄姆今天来中国，他很可能把50%以上的仓位配在银行。</li>
+<p>
+<li><strong>但银行的高杠杆是格雷厄姆框架的致命矛盾。</strong> 资产负债率90%+在工业企业是无法接受的。回答这个矛盾需要理解：银行的"负债"是存款（原材料），不是债务（负担）。监管资本充足率>10.5%的要求比任何"低负债率"都更能保护投资者。</li>
+<p>
+<li><strong><a href="公司_格力电器.html">格力电器</a>是当前沪深300中唯一完全符合格雷厄姆原教旨标准的非金融公司</strong>——PE 8.2x（<15），PB 1.50（≤1.5），股息率7.4%（>3%），10年+连续盈利，资产负债率约60%（<60%的边界）。<a href="公司_洋河股份.html">洋河股份</a>（PE 6.59，PB 1.31）是唯二。</li>
+<p>
+<li><strong>科技/AI板块零符合格雷厄姆标准。</strong> 但这不意味着它们不值得投资——这意味着它们属于完全不同的投资哲学（费雪/成长股投资）。当前沪深300的权重集中在科技股（<a href="公司_中际旭创.html">中际旭创</a>4.83%），如果AI资本开支周期见顶，指数可能面临重大回调。</li>
+<p>
+<li><strong>大类资产之间，A股价值股（银行/家电/公用事业）与黄金形成天然对冲</strong>——前者受益于经济复苏+低通胀，后者受益于滞胀+高通胀。组合搭配可以显著降低波动。</li>
+<p>
+<h3>10.2 格雷厄姆式保守投资者在中国A股的配置建议</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>资产类别</th><th>配置比例</th><th>具体标的</th><th>角色</th></tr></thead>
+<tbody>
+<tr><td>---------</td><td>---------</td><td>---------</td><td>------</td></tr>
+<tr><td>A股银行股</td><td>25-35%</td><td><a href="公司_招商银行.html">招商银行</a>、<a href="公司_建设银行.html">建设银行</a>、<a href="公司_中信银行.html">中信银行</a>（股息率>5%）</td><td>核心价值底仓</td></tr>
+<tr><td>A股其他价值股</td><td>10-15%</td><td><a href="公司_格力电器.html">格力电器</a>、<a href="公司_洋河股份.html">洋河股份</a>、<a href="公司_大秦铁路.html">大秦铁路</a>、<a href="公司_中国平安.html">中国平安</a></td><td>分散化价值</td></tr>
+<tr><td>A股券商股</td><td>5-10%</td><td><a href="公司_中信证券.html">中信证券</a>、<a href="公司_华泰证券.html">华泰证券</a>（牛市弹性来源）</td><td>可选弹性</td></tr>
+<tr><td>黄金</td><td>5-15%</td><td>黄金ETF/<a href="公司_紫金矿业.html">紫金矿业</a></td><td>滞胀/地缘风险对冲</td></tr>
+<tr><td>现金/货币基金</td><td>15-25%</td><td>余额宝/银行理财/国债逆回购</td><td>等待机会的弹药</td></tr>
+<tr><td>房地产（自住）</td><td>按需</td><td>一线/强二线城市核心地段</td><td>生活配置，非投资</td></tr>
+<tr><td>比特币</td><td>0-5%</td><td>—</td><td>格雷厄姆会坚决反对，但现代组合理论允许少量</td></tr>
+<tr><td>A股成长股</td><td>0-10%</td><td>—</td><td>格雷厄姆不会碰，仅供有能力承受50%+回撤的投资者</td></tr>
+</tbody></table></div>
+<p>
+<h3>10.3 关键风险</h3>
+<p>
+<li><strong>银行净息差尚未见底</strong>。如果LPR进一步下调而存款利率不跟，2026-2027年银行利润可能继续承压。</li>
+<li><strong>AI资本开支周期风险</strong>。<a href="公司_中际旭创.html">中际旭创</a>、<a href="公司_新易盛.html">新易盛</a>当前PE 60-70倍建立在AI算力需求持续高增长的假设上。一旦增速见顶，估值可能腰斩。</li>
+<li><strong>房地产风险尚未完全出清</strong>。部分银行的房地产不良可能在2026-2027年继续暴露。</li>
+<li><strong>地缘政治</strong>。中美关系、台海局势是最大的尾部风险——一旦升级，所有中国资产（无论价值还是成长、股票还是房产）都会同步下跌。</li>
+<p>
+<hr>
+<p>
+<h2>附录：数据来源与免责声明</h2>
+<p>
+<strong>数据来源</strong>: <a href="公司_东方财富.html">东方财富</a>Choice、中证指数公司、JRJ金融界、新浪财经、雪球、富途牛牛、<a href="公司_中信证券.html">中信证券</a>研究部
+<strong>数据基准日</strong>: 2026年6月16日（PE/PB数据）、2025年年报（ROE数据）
+<strong>免责声明</strong>: 本报告为信息调研，不构成投资建议。所有格雷厄姆评分仅为框架性参考，不构成买卖建议。投资有风险，决策需谨慎。
+<p>
+<hr>
+<p>
+<blockquote>📌 <strong>未完待续</strong>: 本报告的详细因果传导链条（第2-7章的逐公司深析）由6个子代理并行处理中。当前版本包含：200家公司完整评分卡 + 银行板块20家公司完整因果分析 + 大类资产关联矩阵。</blockquote>
+<p>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分析方法论</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+<h1>价值投资方法论详解：从格雷厄姆到霍华德·马克斯</h1>
+<p>
+<blockquote>本文详细介绍价值投资的四大核心分析框架，以及它们在中国A股市场中的应用方法。</blockquote>
+<p>
+<hr>
+<p>
+<h2>一、本杰明·格雷厄姆：定量价值投资之父</h2>
+<p>
+<h3>1.1 核心思想</h3>
+<p>
+格雷厄姆在1934年《证券分析》和1949年《聪明的投资者》中建立了价值投资的基石。他的核心思想可以概括为三个概念：
+<p>
+<strong>安全边际（Margin of Safety）</strong>
+这是格雷厄姆最重要的概念。如果你估算一家公司的内在价值是100元，那么只能在股价低于67元时买入——这33%的折扣就是你的安全边际。安全边际的作用不是让你赚更多，而是让你在判断错误时不亏钱。
+<p>
+格雷厄姆的名言：*"安全边际不保证你不会亏损，但它保证你的错误有缓冲空间。"*
+<p>
+<strong>市场先生（Mr. Market）</strong>
+格雷厄姆把市场想象成一个情绪极不稳定的生意伙伴。他每天都会报出两个价格——一个是他愿意买你股票的价格，一个是他愿意卖你股票的价格。有时他极度乐观（报价极高），有时他极度悲观（报价极低）。你的工作不是被他的情绪感染，而是利用他的情绪——在他恐惧时买入，在他贪婪时卖出。
+<p>
+<strong>内在价值 vs 市场价格</strong>
+股票有一个基于资产、盈利、股息的"内在价值"，这个价值独立于市场价格。投资就是当市场价格显著低于内在价值时买入，等价格回归价值时卖出。
+<p>
+<h3>1.2 防御型投资者的7条选股标准（量化版）</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>#</th><th>标准</th><th>原版要求</th><th>中国A股调整版</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>------</td><td>---------</td><td>-------------</td></tr>
+<tr><td>1</td><td>市盈率</td><td>过去3年平均利润的PE < 15倍</td><td>TTM PE < 15倍</td></tr>
+<tr><td>2</td><td>市净率</td><td>PB < 1.5倍</td><td>PB < 1.5倍；或 PE×PB < 22.5</td></tr>
+<tr><td>3</td><td>股息记录</td><td>连续20年以上派发股息</td><td>连续5年以上派息，当前股息率 > 3%</td></tr>
+<tr><td>4</td><td>盈利稳定性</td><td>过去10年每年都有盈利</td><td>过去10年无亏损年份</td></tr>
+<tr><td>5</td><td>盈利增长</td><td>10年内每股盈利增长 > 33%（年化约3%）</td><td>10年净利润复合增长 > 0%</td></tr>
+<tr><td>6</td><td>财务状况</td><td>流动比率 > 2:1；长期债务 < 净流动资产</td><td>资产负债率 < 60%（非金融企业）</td></tr>
+<tr><td>7</td><td>公司规模</td><td>足够大（当时标准是年收入>1亿美元）</td><td>A股总市值 > 500亿人民币</td></tr>
+</tbody></table></div>
+<p>
+<h3>1.3 格雷厄姆框架的致命弱点（为什么巴菲特后来放弃了它）</h3>
+<p>
+<li><strong>"捡烟蒂"策略的局限性</strong>：格雷厄姆买的是"还能抽最后一口的免费烟蒂"——公司本身可能很烂，但因为价格够低，还能赚一笔。问题在于：烂公司往往会变得更烂，你买入时的"安全边际"很快就会被恶化的基本面吃掉。巴菲特在伯克希尔纺织厂上的失败就是最好的教训。</li>
+<p>
+<li><strong>对"好公司"的系统性排斥</strong>：格雷厄姆的框架会让投资者错过所有伟大的成长公司——可口可乐、微软、苹果、腾讯——因为它们的PE从来没低过15倍。</li>
+<p>
+<li><strong>不适用于轻资产公司</strong>：现代科技公司几乎没有有形资产，PB天然就很高。格雷厄姆的PB<1.5标准会直接排除所有互联网和软件公司。</li>
+<p>
+<li><strong>静态思维</strong>：格雷厄姆假设公司的内在价值是相对固定的。但在现实中，伟大公司的内在价值每年都在增长（有时增长速度远超市场预期）。</li>
+<p>
+<hr>
+<p>
+<h2>二、沃伦·巴菲特：从"捡烟蒂"到"买城堡"</h2>
+<p>
+<h3>2.1 巴菲特的进化</h3>
+<p>
+巴菲特早年严格遵循格雷厄姆的方法，被称为"捡烟蒂投资者"。他在1960年代管理巴菲特合伙公司时，年化回报约30%，靠的就是买低价烂公司等着价值回归。
+<p>
+<strong>转折点：查理·芒格的影响（1960年代末）</strong>
+<p>
+芒格对巴菲特说：*"忘记你从格雷厄姆那里学到的一切，除了三个基本原则——市场是为你服务的，安全边际，以及股票是企业的部分所有权。其他的一切，你都要进化为更好的投资者。"*
+<p>
+芒格的核心论点：
+<li>以公平的价格买入一家伟大的公司，远好于以极低的价格买入一家平庸的公司</li>
+<li>因为伟大的公司会持续创造价值，时间站在你这边</li>
+<li>而平庸的公司你在等待价值回归时，基本面可能一直在恶化</li>
+<p>
+<strong>伯克希尔·哈撒韦（1972年）：一个转折性的投资</strong>
+<p>
+巴菲特以合理价格收购喜诗糖果（See's Candies），而非以清算价值以下的价格买入。喜诗糖果没有大量有形资产（PB很高），品牌价值无法在资产负债表上体现。但这家公司拥有定价权——每年提价10%，销量不降。这个投资改变了巴菲特的投资哲学。
+<p>
+<h3>2.2 巴菲特框架的四大支柱</h3>
+<p>
+<strong>支柱一：护城河</strong>
+<p>
+巴菲特问的第一个问题不是"这个公司值多少钱"，而是"这个公司10年后还会存在吗？它的竞争对手为什么没能打败它？"
+<p>
+五类护城河：
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>类型</th><th>定义</th><th>A股案例</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>---------</td></tr>
+<tr><td><strong>无形资产</strong></td><td>品牌、专利、监管牌照</td><td><a href="公司_贵州茅台.html">贵州茅台</a>（品牌）、<a href="公司_恒瑞医药.html">恒瑞医药</a>（专利药）、中国中免（免税牌照）</td></tr>
+<tr><td><strong>转换成本</strong></td><td>客户换供应商成本太高</td><td>恒生电子（基金公司核心交易系统）、广联达（建筑造价行业标准）</td></tr>
+<tr><td><strong>网络效应</strong></td><td>用户越多产品价值越大</td><td><a href="公司_东方财富.html">东方财富</a>（股吧+天天基金+Choice数据）、分众传媒（电梯点位越多广告主越多）</td></tr>
+<tr><td><strong>成本优势</strong></td><td>别人无法复制的低成本</td><td><a href="公司_万华化学.html">万华化学</a>（MDI最低成本）、<a href="公司_中国神华.html">中国神华</a>（煤电路港一体化坑口发电）</td></tr>
+<tr><td><strong>规模效应/自然垄断</strong></td><td>固定成本极高形成壁垒</td><td><a href="公司_长江电力.html">长江电力</a>（三峡大坝无法复制）、<a href="公司_大秦铁路.html">大秦铁路</a>（煤炭运输唯一专线）</td></tr>
+</tbody></table></div>
+<p>
+护城河不是"有"或"没有"的二选一——而是"有多宽、有多深"。
+<p>
+<strong>支柱二：管理层质量</strong>
+<p>
+巴菲特说：*"找一个聪明、精力充沛、诚实的管理层。第一个和第二个品质没有第三个就是灾难。"*
+<p>
+评估管理层：
+<li>他们是把公司当自己的（owner-operator），还是把公司当别人的（代理人）？</li>
+<li>他们是否坦诚面对错误，还是找借口推脱责任？</li>
+<li>他们的资本配置决策（收购、回购、分红）是否精明？</li>
+<li>他们是因为热爱商业而工作，还是仅仅为了钱？</li>
+<p>
+<strong>A股特殊问题：国企代理人</strong>
+<li>国有银行行长由中组部任命→追求资产规模最大化和政治目标→而非股东回报最大化→资本配置效率通常低于民企</li>
+<li><a href="公司_招商银行.html">招商银行</a>的管理层相对市场化→这就是招行长期跑赢四大行的关键原因之一</li>
+<li><a href="公司_长江电力.html">长江电力</a>虽然是国企，但业务是自然垄断→管理层质量的影响相对较小</li>
+<p>
+<strong>支柱三：经济商誉 vs 会计商誉</strong>
+<p>
+巴菲特区分两种商誉：
+<li><strong>会计商誉</strong>：收购价格超过净资产的部分，会在资产负债表上摊销</li>
+<li><strong>经济商誉</strong>：企业赚取超额回报的能力——这是巴菲特真正寻找的东西</li>
+<p>
+ROIC（投入资本回报率）> WACC（加权平均资本成本）是经济商誉的量化表达。如果一家公司长期ROIC > WACC，说明它有护城河；如果ROIC < WACC，说明它在毁灭价值（即使PE很低）。
+<p>
+<strong>A股ROIC评估</strong>：
+<li><a href="公司_贵州茅台.html">贵州茅台</a>ROIC约30-35% → 超级护城河</li>
+<li><a href="公司_长江电力.html">长江电力</a>ROIC约12-15% → 稳健护城河</li>
+<li><a href="公司_招商银行.html">招商银行</a>ROE约13%（银行WACC约8%）→ 护城河存在</li>
+<li><a href="公司_京东方A.html">京东方A</a> ROIC约4%（WACC约8%）→ 价值毁灭者（即使PB仅1.08倍！）</li>
+<p>
+<strong>支柱四：能力圈</strong>
+<p>
+巴菲特只投资他能理解的行业。如果他用30分钟无法理解一家公司怎么赚钱，他就不投。这解释了为什么巴菲特几乎不投科技股（直到2016年才买苹果）。
+<p>
+对A股投资者的启示：你不需要对所有300只沪深300成分股都有观点。深度理解10-20家公司，远好过对300家公司都有浅薄看法。
+<p>
+<h3>2.3 巴菲特会买的A股（推演）</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>巴菲特逻辑</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----------</td></tr>
+<tr><td><a href="公司_贵州茅台.html">贵州茅台</a></td><td>"中国可口可乐"——品牌壁垒+定价权+永续需求</td></tr>
+<tr><td><a href="公司_长江电力.html">长江电力</a></td><td>"三峡大坝是物理护城河"——你没法在旁边再建一个</td></tr>
+<tr><td><a href="公司_招商银行.html">招商银行</a></td><td>"最好的零售银行"——低成本存款是最宽的护城河</td></tr>
+<tr><td>福耀玻璃</td><td>"汽车玻璃全球第一"——规模+成本+曹德旺是owner-operator</td></tr>
+<tr><td><a href="公司_格力电器.html">格力电器</a></td><td>品牌+规模制造+高分红，但董明珠之后的传承风险</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>三、查理·芒格：多元心智模型</h2>
+<p>
+<h3>3.1 芒格的独特视角</h3>
+<p>
+芒格对投资最大的贡献是引入了<strong>跨学科的多元思维模型</strong>。他认为，只用财务指标分析公司就像只用一把锤子——"在只有锤子的人眼里，所有东西都像钉子。"
+<p>
+芒格的核心问题清单：
+<p>
+<strong>问题1：激励是什么？（心理学）</strong>
+"告诉我激励是什么，我就告诉你结果是什么。"
+<p>
+在A股：
+<li>中组部任命的银行行长追求政治晋升>股东回报</li>
+<li>券商分析师追求佣金收入>推荐的准确性</li>
+<li>基金经理追求规模>绝对回报（管理费是按规模收的）</li>
+<li>董明珠持有<a href="公司_格力电器.html">格力电器</a>股票>她的利益与股东一致</li>
+<p>
+<strong>问题2：这是不是一个"冲浪"机会？（物理学）</strong>
+"如果一个大浪来了，重要的是你在浪上，而不是你的泳姿有多好。"
+<p>
+在A股：
+<li>2005-2007年：你买什么银行股都赚——"超级牛市浪"</li>
+<li>2017-2021年：你买什么白酒都赚——"消费升级浪"</li>
+<li>2023-2025年：你买什么AI光模块都赚——"AI算力浪"</li>
+<li>识别"浪"比选股更重要——但要及时下浪，因为浪总会过去</li>
+<p>
+<strong>问题3：竞争优势是结构性还是暂时的？（生态学）</strong>
+"有些公司像杂草，什么环境都能活；有些公司像兰花，只在特定环境下绽放。"
+<p>
+在A股：
+<li>杂草型：<a href="公司_招商银行.html">招商银行</a>（零售银行模式自给自足，不太依赖宏观环境）</li>
+<li>兰花型：<a href="公司_寒武纪.html">寒武纪</a>（只有在AI资本开支高增速+美国制裁环境下才能繁荣）</li>
+<p>
+<strong>问题4：代理成本有多高？（委托代理理论）</strong>
+"管理层的利益是否与股东一致？"
+<p>
+<strong>问题5：技术颠覆风险有多大？（工程学/生物学）</strong>
+"当前的商业模式会不会被新技术颠覆？"
+<p>
+在A股：
+<li><a href="公司_宁德时代.html">宁德时代</a>的锂电池会不会被固态电池颠覆？</li>
+<li><a href="公司_京东方A.html">京东方A</a>的LCD会不会被MicroLED颠覆？</li>
+<li><a href="公司_长江电力.html">长江电力</a>的水电会被什么颠覆？（几乎不会被颠覆——物理护城河）</li>
+<p>
+<h3>3.2 芒格的"人类误判心理学"</h3>
+<p>
+芒格列出了25种人类常见的认知偏误。对A股投资者最重要的几个：
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>偏误</th><th>在A股的表现</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-----------</td></tr>
+<tr><td><strong>从众倾向</strong></td><td>"所有人都在买AI股，我也买"→ 追涨杀跌</td></tr>
+<tr><td><strong>证实偏见</strong></td><td>看好一家公司后只找正面信息，忽略风险</td></tr>
+<tr><td><strong>过度乐观</strong></td><td>线性外推：<a href="公司_中际旭创.html">中际旭创</a>今年利润+109%，就假设明年也+109%</td></tr>
+<tr><td><strong>损失厌恶</strong></td><td>套牢后不止损，"只要不卖就不算亏"</td></tr>
+<tr><td><strong>锚定效应</strong></td><td>茅台从2500跌到1600，"比2500便宜多了"→买入（但PE仍22倍）</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>四、菲利普·费雪：成长股投资之父</h2>
+<p>
+<h3>4.1 费雪与格雷厄姆的根本分歧</h3>
+<p>
+格雷厄姆问："这个股票是不是太便宜了？"
+费雪问："这个公司未来5年、10年会赚多少钱？"
+<p>
+格雷厄姆在投资时假设公司不会成长（作为保守估计），费雪在投资时把成长作为超额回报的核心来源。
+<p>
+<h3>4.2 费雪的"闲聊法"（Scuttlebutt Method）</h3>
+<p>
+费雪不会只看财报数字。他会做一种被称为"闲聊"的调研：
+<li>找竞争对手聊：听听他们怎么评价这家公司（"他们是我们最尊重的对手"=正面信号）</li>
+<li>找前员工聊：为什么离职？公司文化如何？</li>
+<li>找客户聊：为什么买这家公司的产品？会不会换供应商？</li>
+<li>找供应商聊：这家公司付款及时吗？合作关系如何？</li>
+<p>
+费雪说：*"一个优秀的投资者能把碎片拼成完整的马赛克——而大多数人只能看到碎片。"*
+<p>
+<h3>4.3 费雪的15个问题（精简版）</h3>
+<p>
+<li>产品市场潜力：能否支撑至少10年的显著增长？</li>
+<li>研发意愿：管理层有没有决心持续开发新产品？</li>
+<li>研发效率：研发投入相对于规模有多大？效果如何？</li>
+<li>销售能力：销售组织是否出色？</li>
+<li>利润率：够不够高？在行业中处于什么位置？</li>
+<li>利润率趋势：公司在做什么来维持或改善利润率？</li>
+<li>劳资关系：员工满意度如何？离职率高吗？</li>
+<li>高管关系：管理层之间是否和谐？</li>
+<li>管理层深度：CEO以下有没有足够的人才梯队？</li>
+<li>成本控制：会计和管理控制系统是否到位？</li>
+<li>竞争优势：有没有独特的、难以复制的优势？</li>
+<li>利润导向：短期还是长期？</li>
+<li>融资需求：会不会需要增发股票来融资（稀释股东）？</li>
+<li>坦诚度：管理层是否愿意谈论困难？</li>
+<li>诚信度：管理层是否无可置疑地诚实？</li>
+<p>
+<h3>4.4 PEG：彼得·林奇对费雪框架的量化</h3>
+<p>
+彼得·林奇将费雪的成长投资简化为一个关键指标：<strong>PEG = PE ÷ 盈利增长率</strong>。
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>PEG</th><th>林奇的判断</th></tr></thead>
+<tbody>
+<tr><td>-----</td><td>-----------</td></tr>
+<tr><td>< 0.5</td><td>极度低估，重大机会</td></tr>
+<tr><td>0.5 - 1.0</td><td>合理低估，值得买入</td></tr>
+<tr><td>1.0 - 2.0</td><td>合理估值</td></tr>
+<tr><td>2.0 - 3.0</td><td>偏贵，需要很强理由</td></tr>
+<tr><td>> 3.0</td><td>太贵了</td></tr>
+</tbody></table></div>
+<p>
+但在A股应用PEG有一个陷阱：PEG使用的增长率是<strong>未来可持续增长率</strong>，不是过去1-2年的爆发式增长。
+<p>
+<a href="公司_中际旭创.html">中际旭创</a>PE 61倍，去年利润+109%。PEG = 61÷109 = 0.56 → 看似便宜。但：如果明年增速从109%降到30%，那么隐含的PEG就变成了2.0；如果后年再降到10%，PEG变成6.1。
+<p>
+<strong>费雪会追问的是</strong>：<a href="公司_中际旭创.html">中际旭创</a>的高增长能持续多少年？AI算力需求是10年大趋势还是3年短周期？
+<p>
+<h3>4.5 费雪会买但格雷厄姆会拒绝的A股</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>费雪逻辑</th><th>格雷厄姆拒绝理由</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>---------</td><td>----------------</td></tr>
+<tr><td><a href="公司_中际旭创.html">中际旭创</a></td><td>全球AI数据中心每年增长50%+，800G光模块需求5年翻5倍，60倍PE会被利润增长吃掉</td><td>PE 61 > 15，PB 22 > 1.5</td></tr>
+<tr><td><a href="公司_宁德时代.html">宁德时代</a></td><td>全球电动车渗透率从18%到50%是大概率事件，电池是核心部件</td><td>PE 24 > 15，PB 5.7 > 1.5</td></tr>
+<tr><td><a href="公司_恒瑞医药.html">恒瑞医药</a></td><td>中国创新药刚刚起步，老龄化+医保扩容=长期需求</td><td>PE 39 > 15，PB 5 > 1.5</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>五、霍华德·马克斯：周期与心理</h2>
+<p>
+<h3>5.1 核心思想：位置比方向更重要</h3>
+<p>
+马克斯认为，预测未来是极其困难的（"我们不知道会去哪里"），但判断我们现在处于什么位置是可能的（"我们应该知道我们在哪里"）。
+<p>
+<h3>5.2 马克斯的周期定位框架</h3>
+<p>
+<strong>第一层：宏观经济周期</strong>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>阶段</th><th>标志</th><th>A股对应时期</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>-----------</td></tr>
+<tr><td>复苏</td><td>GDP↑ + CPI↓ + 宽松政策</td><td>2016-2017</td></tr>
+<tr><td>过热</td><td>GDP↑ + CPI↑ + 政策收紧</td><td>2007、2020下半年</td></tr>
+<tr><td>滞胀</td><td>GDP↓ + CPI↑（最差组合）</td><td>2022</td></tr>
+<tr><td>衰退</td><td>GDP↓ + CPI↓ + 政策宽松</td><td>2008、2024-2025</td></tr>
+</tbody></table></div>
+<p>
+<strong>第二层：行业周期</strong>
+<p>
+不同行业有不同的周期节奏：
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>行业</th><th>周期类型</th><th>当前位置（2026年中）</th><th>周期长度</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>---------</td><td>-------------------</td><td>---------</td></tr>
+<tr><td>白酒</td><td>库存周期</td><td>去化尾声</td><td>3-5年</td></tr>
+<tr><td>光伏</td><td>产能周期</td><td>底部（全行业亏损）</td><td>4-5年</td></tr>
+<tr><td>生猪</td><td>猪周期</td><td>底部（全行业亏损）</td><td>4年</td></tr>
+<tr><td>AI算力</td><td>资本开支周期</td><td>中期（高速增长中）</td><td>待定</td></tr>
+<tr><td>银行</td><td>信用/利率周期</td><td>净息差压缩中</td><td>5-7年</td></tr>
+<tr><td>房地产</td><td>长周期下行</td><td>下行中后段</td><td>20-30年</td></tr>
+<tr><td>铜/金</td><td>超级商品周期</td><td>中段</td><td>10-15年</td></tr>
+</tbody></table></div>
+<p>
+<strong>第三层：市场心理周期</strong>
+<p>
+马克斯说，市场心理在两个极端之间摆动：
+<p>
+<pre><code>极度悲观 ←————————————————————————→ 极度乐观
+    ↑                                      ↑
+  "再也不碰股票了"                    "这次不一样！"
+  PE被压到最低                        PE被推到最高
+  这是买点                            这是卖点
+</code></pre>
+<p>
+<strong>如何判断当前位置？</strong>
+<p>
+马克斯建议关注以下信号：
+<li>媒体头条：天天喊"牛市"=危险信号；"A股没有投资价值"=机会信号</li>
+<li>新基金发行：爆款基金秒光=市场过热；基金发不出去=市场过冷</li>
+<li>成交量：天量成交=情绪亢奋；地量成交=情绪冰点</li>
+<li>PE/PB分位数：历史90%分位=贵；历史10%分位=便宜</li>
+<li>IPO节奏：每周10家IPO=市场过热；IPO暂停=市场过冷</li>
+<li>朋友圈讨论：所有人都在晒收益=卖出信号；没人愿意谈股票=买入信号</li>
+<p>
+<h3>5.3 逆向投资的马克斯版本</h3>
+<p>
+格雷厄姆说"在别人恐惧时贪婪"，马克斯更精确地说：<strong>"在别人恐慌抛售时买入，在别人狂热追涨时卖出。"</strong>
+<p>
+马克斯指出，逆向投资不是简单地"和别人反着来"——因为大多数时候，大众是正确的。逆向投资的精髓是：<strong>在极端时刻</strong>（当价格已经price in了最乐观或最悲观的情景时），才做反向操作。
+<p>
+对A股的应用：
+<li>2024-2025年银行股PB跌到0.3-0.5→市场price in了银行破产的情景→这是逆向买入信号</li>
+<li>2025年光伏全行业亏损→市场price in了光伏永远过剩的情景→这是逆向关注信号</li>
+<li>2025年<a href="公司_中际旭创.html">中际旭创</a>PE 60倍→市场price in了AI永远高速增长的情景→这不是逆向买入的时机</li>
+<p>
+<hr>
+<p>
+<h2>六、四层框架综合使用指南</h2>
+<p>
+<h3>6.1 四层框架的关系</h3>
+<p>
+<pre><code>第一层 格雷厄姆定量筛 → 淘汰明显太贵的（PE>15, PB>1.5）
+         ↓
+第二层 巴菲特/芒格定性筛 → 淘汰护城河不够宽、管理层有问题的
+         ↓
+第三层 费雪/林奇成长筛 → 评估成长的性价比和可持续性
+         ↓
+第四层 马克斯周期筛 → 判断当前的买入时机是否合适
+         ↓
+    综合评分 → 投资决策
+</code></pre>
+<p>
+<h3>6.2 每层的权重</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>层次</th><th>框架</th><th>权重</th><th>解决的问題</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>-----------</td></tr>
+<tr><td>L1</td><td>格雷厄姆</td><td>25%</td><td>"这公司便宜吗？"</td></tr>
+<tr><td>L2</td><td>巴菲特/芒格</td><td>30%</td><td>"这公司好吗？能持续好吗？"</td></tr>
+<tr><td>L3</td><td>费雪/林奇</td><td>25%</td><td>"这公司能成长吗？成长对得起价格吗？"</td></tr>
+<tr><td>L4</td><td>马克斯</td><td>20%</td><td>"现在是买入的好时机吗？"</td></tr>
+</tbody></table></div>
+<p>
+L2（巴菲特/芒格）权重最高，因为公司质量决定了你能否安全地长期持有。再便宜的公司，如果没有护城河，也可能是一个价值陷阱。
+<p>
+<h3>6.3 评分等级</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>综合分</th><th>等级</th><th>含义</th><th>行动</th></tr></thead>
+<tbody>
+<tr><td>--------</td><td>------</td><td>------</td><td>------</td></tr>
+<tr><td>> 3.5</td><td>⭐⭐⭐⭐⭐</td><td>强烈推荐</td><td>可重仓（>10%仓位）</td></tr>
+<tr><td>3.0 - 3.5</td><td>⭐⭐⭐⭐</td><td>推荐</td><td>标准仓位（5-10%）</td></tr>
+<tr><td>2.5 - 3.0</td><td>⭐⭐⭐</td><td>谨慎推荐</td><td>小仓位（3-5%）</td></tr>
+<tr><td>2.0 - 2.5</td><td>⭐⭐</td><td>观望</td><td>暂不买入，等待更好的价格或催化剂</td></tr>
+<tr><td>< 2.0</td><td>⭐</td><td>回避</td><td>不符合任何投资逻辑，不碰</td></tr>
+</tbody></table></div>
+<p>
+<h3>6.4 不同市场环境下各框架的表现</h3>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>市场环境</th><th>表现最好的框架</th><th>代表时期</th></tr></thead>
+<tbody>
+<tr><td>---------</td><td>-------------</td><td>---------</td></tr>
+<tr><td>大熊市</td><td>格雷厄姆（买极端低估）</td><td>2008年底、2024年初</td></tr>
+<tr><td>大牛市</td><td>费雪+林奇（买高成长）</td><td>2020-2021、2025 AI行情</td></tr>
+<tr><td>震荡市</td><td>巴菲特+芒格（买高质量）</td><td>2016-2017</td></tr>
+<tr><td>危机后反弹</td><td>马克斯（逆向买入）</td><td>2009、2020年3月后</td></tr>
+<tr><td>长期复合</td><td>巴菲特+芒格</td><td>穿越所有周期</td></tr>
+</tbody></table></div>
+<p>
+<hr>
+<p>
+<h2>七、框架背后的共同哲学</h2>
+<p>
+尽管这四层框架各有侧重，但它们共享几个底层信念：
+<p>
+<li><strong>股票=企业所有权</strong>：你买的不是一个代码，而是这家公司的一部分。如果你不愿意持有10年，就不要持有10分钟。</li>
+<p>
+<li><strong>市场是仆人不是导师</strong>：市场价格反映的是市场情绪，不是企业价值。你的工作是利用价格，而不是被价格牵着走。</li>
+<p>
+<li><strong>安全边际永远需要</strong>：无论多好的公司，买贵了都会亏钱。格雷厄姆的33%安全边际、巴菲特的"合理价格"、马克斯的"在悲观时买入"——说的都是同一件事。</li>
+<p>
+<li><strong>能力圈决定回报</strong>：你不知道的比你知道的更重要。坚持投资你能理解的行业和公司，不要因为FOMO（害怕错过）而进入你完全不了解的领域。</li>
+<p>
+<li><strong>时间是伟大公司的朋友，是平庸公司的敌人</strong>：如果你买入的是一家好公司，时间会帮你赚钱（利润增长→股价上涨）；如果你买入的是一家烂公司，时间在跟你作对（价值陷阱）。</li>
+<p>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

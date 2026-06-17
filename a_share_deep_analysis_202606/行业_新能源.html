@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔋 新能源行业</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+
+<h1>🔋 新能源行业 · 3 家公司</h1>
+
+<div class="提示 提示-信息">
+    <strong>点击公司名称进入详情页。</strong>每个公司页面包含七个标签页：概览、格雷厄姆评分、巴菲特芒格定性、费雪林奇成长、马克斯周期、因果传导链、历史股价。<br>
+    <span style="margin-top:6px;display:inline-block;">相关行业：<a class="同行链接" href="行业_银行.html">🏦 银行</a><a class="同行链接" href="行业_保险.html">🔒 保险</a><a class="同行链接" href="行业_券商.html">📈 券商</a><a class="同行链接" href="行业_科技.html">💻 科技</a><a class="同行链接" href="行业_消费.html">🍶 消费</a><a class="同行链接" href="行业_医药.html">💊 医药</a><a class="同行链接" href="行业_能源.html">⛽ 能源</a><a class="同行链接" href="行业_材料.html">⛏️ 材料</a><a class="同行链接" href="行业_公用事业.html">⚡ 公用事业</a><a class="同行链接" href="行业_基建.html">🏗️ 基建</a><a class="同行链接" href="行业_电信.html">📡 电信</a><a class="同行链接" href="行业_航空.html">✈️ 航空</a><a class="同行链接" href="行业_农业.html">🐷 农业</a></span>
+</div>
+
+<h2>行业深度分析</h2>
+<div class="链条面板"><h4>（三）新能源（宁德时代等）</h4><div class="表格容器"><table>
+<thead><tr><th>特征</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td></tr>
+<tr><td><strong>周期类型</strong></td><td>强周期（产能周期+政策周期叠加）</td></tr>
+<tr><td><strong>核心驱动因素</strong></td><td>产业政策、上游锂/钴资源价格、全球电动化率</td></tr>
+</tbody></table></div>
+<p>
+<li><strong>产业政策</strong>：</li>
+   - 补贴退出 → 行业洗牌，龙头集中度提升
+   - 碳关税（欧盟CBAM） → 对出口导向型电池企业形成新贸易壁垒
+   - 双碳政策 → 长期利好，但短期有政策节奏波动
+<p>
+<li><strong>上游资源价格</strong>：</li>
+   - 碳酸锂价格从2022年60万元/吨跌至2024年约10万元/吨 → 电池成本下降，但上游矿企承压
+   - 锂资源海外供应（澳洲、南美、非洲）受地缘政治影响</div><div class="链条面板"><h4>27. TCL科技 (000100) — 面板+光伏</h4><strong>核心财务指标：</strong> PE 15.54倍（全板块最低！） / PB 1.59倍（接近价值区！） / ROE 2.47%
+<p>
+TCL科技控股华星光电（CSOT），与京东方形成中国LCD面板双寡头。华星光电聚焦TV大尺寸面板和IT中小尺寸面板，在LCD赛道与京东方正面竞争。面板周期逻辑：需求回暖（TV/IT换机）+供给收缩（韩国产能退出）→面板价格上涨→利润弹性。
+<p>
+TCL科技收购中环股份（现TCL中环）后进入了硅片/电池光伏制造领域。2023-2024年中国光伏产能严重过剩（硅片产能约为全球需求的2.5倍），硅片价格从2022年的最高约8元/片暴跌至2024年的约1.5元/片，导致整个光伏产业链全面亏损。TCL中环2024年亏损数十亿元，严重拖累TCL科技合并报表。如果没有光伏业务，TCL科技2024年应是盈利的。
+<p>
+<strong>格雷厄姆评估：板块中"最接近合格"的标的！</strong> PE 15.54倍几乎符合格雷厄姆PE<15的标准（略微超标0.5倍）。PB 1.59倍同样接近1.5倍标准（超标0.09倍）。唯一明显偏离的是ROE 2.47%（远低于15%标准）。但如果剔除光伏业务的拖累（周期性亏损），TCL科技的面板业务ROE约为5-7%，仍低于格雷厄姆标准但已大幅改善。
+<p>
+对于"放宽版格雷厄姆"投资者（ROE标准降至10%），TCL科技是科技板块中为数不多的"可以看一眼"的公司。评分：2/5（科技板块中的最高分）。</div><div class="链条面板"><h4>6. 宁德时代 (300750) — 全球动力电池龙头，CSI300第2权重（约4.20%），PE:22.51, PB:5.71, ROE:5.98</h4><strong>因果链1：上游原材料价格暴跌带来利润率修复——但这是不可持续的"红利"吗？</strong>
+碳酸锂价格从2022年11月60万元/吨高点暴跌至2024年约10万元/吨 → 电池级碳酸锂每吨下降10万元 → 对应磷酸铁锂(LFP)电芯成本下降约0.05元/Wh → 宁德时代2024年出货量约560GWh → 成本下降释放约280亿元利润空间。但问题是：下游整车厂也要求同步降价 → 宁德时代的最终利润率改善幅度取决于其议价能力（即"降价幅度在产业链中如何分账"）。2024年实际结果是：宁德时代毛利率从22%提升至26%左右，大约60%的成本下降留在了自己的利润表、40%让渡给了客户。这一分账比例反映了宁德时代的强大议价权（cr4 > 50%的集中度优势）。但若下游需求进一步走弱，整车厂可能要求更大比例的降价让利。
+<p>
+<strong>因果链2：全球化受阻——美国市场的事实性封锁</strong>
+US IRA法案（2022年8月签署）→ 每辆电动车补贴$7500，但电池组件须在北美制造或与FTA国家采购 → 宁德时代以LFP技术优势寻求曲线进入 → 以"技术授权+工厂运营"模式与福特在密歇根合作（不直接持股，规避中国FEOC限制）→ 但2024年美方加强对FEOC定义的严格解释，扩展至"适用技术许可" → 宁德时代的美国战略有效受阻。影响：美国电动车市场（2024年约1200万辆/年，2030年预计3000万辆）对宁德时代几乎零直接敞口 → 宁德时代的成长上限被结构性压缩。作为对冲，宁德加大向欧洲/东南亚的产能布局。
+<p>
+<strong>因果链3：欧洲CBAM与碳关税的非关税壁垒</strong>
+欧盟碳边境调节机制(CBAM)于2026年正式征收 → 宁德时代出口欧洲电池需要购买碳配额（约80-100欧元/吨CO2）→ 每kWh电池的碳排放约60-80kg CO2 → 增加碳税约5-8欧元/kWh → 而宁德时代在欧盟（德国图林根/匈牙利德布勒森）本地工厂的碳排放更低（欧洲电网更清洁，碳密集度约0.25吨CO2/MWh vs 中国约0.55吨CO2/MWh）→ 因此欧盟CBAM反而加速宁德在欧洲本地建厂的ROI——本地工厂的碳成本优势≈5-8欧元/kWh的价差，足够覆盖欧洲人力成本高的劣势（欧洲人工约40欧元/小时 vs 中国10欧元/小时）。这是一个"看似利空实则因子加速"的复杂传导。
+<p>
+<strong>因果链4：储能"第二曲线"打开估值空间</strong>
+大型储能系统(ESS)的需求爆发（2024年中国储能装机约80GWh，预计2030年500GWh+）→ 宁德时代储能电池出货占比从2022年12%提升至2025年约25% → 储能电池与动力电池共享产线（可根据两类订单的价格动态分配产能）→ 当动力电池需求增速放缓时（EV渗透率从50%到70%的S曲线后半段），储能提供增量。更为关键的是，储能客户的付款条件通常优于整车厂（回款周期60天 vs 90-120天），有助于宁德时代改善经营性现金流（OCF）。
+<p>
+<strong>因果链5：利率路径对成长股估值的双重影响</strong>
+Fed加息周期（2022-2023）→ 无风险利率从0.25%升至5.5% → DCF估值模型中的折现率从7%升至10%+ → 远期现金流（5-10年后的储能/海外利润）现值缩水约40-50% → PE压缩至20倍区间。若Fed降息（降息周期开启）→ 折现率下降 → 远期现金流现值回升 → PE中枢从20倍重新升至30-35倍。但对于宁德时代而言，降息对成长股估值的提振可能被贸易摩擦加剧（关税）部分抵消——这是2025-2026年投资者需要权衡的核心矛盾。
+<p>
+<strong>格雷厄姆评价：</strong> PE 22.5 > 15（不通过），PB 5.71 > 1.5（不通过）。成长股特征明显，完全不符合格雷厄姆保守投资标准。打分：1/5。但这不代表不是好公司——只是说它属于"好生意、好价格尚需等待"的范畴。
+<p>
+<strong>黄金相关性：</strong> 负相关。避险情绪高时（黄金涨）→ 资金从成长股流向避险资产 → 宁德时代承压。历史相关约-0.2至-0.3。
+<p>
+<strong>比特币相关性：</strong> 温和正相关。两者都属于"流动性推动型资产"（Liquidity-driven Assets）→ Fed宽松周期同时推升科技成长股和加密资产 → 2021年两者同步性极高（r≈0.5-0.6），2024年后相关性降至0.2-0.3。</div><div class="链条面板"><h4>7. 比亚迪 (002594) — 新能源车+电池一体化，PE:50.02, PB:3.52, ROE:1.65</h4><strong>因果链1：终端价格战——这是生存战还是份额战？</strong>
+2023年特斯拉率先降价（Model 3从23万降至19万）→ 比亚迪被迫跟进（秦Plus DM-i从15万降至10万以内，降幅33%）→ 单车ASP从18万下降至14万元 → 而单车BOM成本降幅仅约2-3万元（电池成本下降+规模效应） → 单车毛利从4万缩至2.5万 → 净利润/辆从约1万降至约4000-5000元。传XX径为：降价→销量增长但利润缩水→必须依赖更大的销量规模来维持总利润→这逼迫比亚迪进一步降价→进入"降价-增量-再降价"循环，直到行业中边际产能（如哪吒/零跑/合众的出清）。行业出清拐点的标志：CR3（比亚迪+特斯拉+某个头部企业）市占率超过65%。
+<p>
+<strong>因果链2：欧盟反补贴关税——区域市场利润的被稀释</strong>
+欧盟对华电动车反补贴调查（2023年10月启动）→ 终裁决定对比亚迪（唯一配合调查的企业）征收17%额外关税，对其他企业征收17-36% → 比亚迪元Plus(Atto 3)在欧洲售价约3.5万欧元 → 加征17%关税后终端价格升至4.1万欧元 → 与欧洲本土竞品（大众ID.4约4万欧元、标致e-2008约3.8万欧元）的价差优势从10%转为0 → 但比亚迪选择在匈牙利（欧盟成员）建厂（2025年投产，年产15万辆）→ 本地生产绕过关税壁垒 → 但匈牙利工厂初始产能爬坡期（1-2年）的成本高于国内出口 → 欧洲业务的利润率从8-10%（出口）降至3-5%（本地化初期），要在2027年才能恢复至正常水平。
+<p>
+<strong>因果链4：智能化与自动驾驶的"投资悖论"</strong>
+比亚迪宣布2024年起全系标配智驾系统（DiPilot+高阶智驾包）→ 每辆车增加1000-2000元BOM成本（激光雷达+摄像头+域控制+算法投入）→ 目前消费者对智驾的支付意愿约为3000-5000元（调研数据）→ 短期来看智驾投资是"亏本买卖"（收入<成本）→ 但这是必要的防御性投资——如果不做智驾，比亚迪在15万以上市场的份额将被小鹏/蔚来/华为系持续蚕食。这个"成本先行、收益在后"的结构，将压制比亚迪短期利润2-3个季度，但可能成为2027年后的竞争壁垒。
+<p>
+<strong>格雷厄姆评价：</strong> PE 50倍（极端高估），PB 3.52（高估），ROE 1.65%（极低，反映2024年盈利低谷）。完全不符合。打分：0/5。对格雷厄姆派投资者来说，比亚迪是可观测、不可投资的对象——需要等待利润释放后的PE压缩。</div><div class="链条面板"><h4>8. 隆基绿能 (601012) — PE:-13.12, PB:2.0, ROE:-3.61，光伏组件龙头当前深度亏损</h4><strong>因果链1：全球光伏产能过剩下的"绞肉机"效应——核心因果链</strong>
+2020-2023年光伏全产业链疯狂扩产（组件产能从200GW扩张至800GW+，而2024年全球需求仅约500GW）→ 产能利用率降至60% → 组件价格从2.0元/W暴跌至0.8元/W（跌60%）→ 隆基主打的182mm PERC组件毛利率从+20%转为-5% → 按隆基2024年出货量约120GW计算，每瓦亏损0.08元 → 相当于全年亏损约100亿元 → ROE深度转负。此过程中，隆基原计划依靠"HPBC（高效背接触）电池"的差异化路线（更高效率/更高定价）来避免卷入价格战 → 但HPBC量产良率仅90%（研发阶段目标95%+），导致生产成本高于常规TopCon组件，反过来压缩了差异化溢价空间。这一"技术路线赌注失败"的因果链对于理解隆基的惨状至关重要。
+<p>
+<strong>因果链2：贸易壁垒的分割市场效应</strong>
+美国对东南亚四国（柬埔寨、马来西亚、泰国、越南）的太阳能产品进行反倾销/反规避调查（2024年）→ 隆基原本通过越南/马来西亚工厂出口美国（避开直接从中国出口的201条款关税）→ 反规避裁决：若使用中国硅片，需加征约50-250%关税 → 隆基东南亚产线受到严重冲击 → 被迫将产能向美国本土转移（隆基在俄亥俄州有5GW组件工厂）→ 但美国人力成本（组件制造人工：$25-30/小时 vs 中国$5-8/小时）→ 美国工厂的成本比中国高40-50% → 海外产能的利润率显著低于国内。全球贸易保护主义抬头的结果：光伏从"全球统一市场"分裂成"中国/印度/欧美三大分割市场" → 隆基的市场天花板被结构性降低。
+<p>
+<strong>因果链3：利率下降对光伏项目的利好——但短期被产能过剩掩盖</strong>
+全球利率下行（Fed降息+ECB降息+PBOC降息）→ 光伏电站的融资成本（WACC）从7%降至5% → 电站项目IRR提升约1.5-2个百分点（组件价格已跌80%，叠加低利率双重利好）→ 终端需求在理论上应大幅回升 → 但在产能过剩的背景下，需求回升的刺激被组件继续降价吞噬 → 形成了一个"降价→更多项目可盈利→总需求增加→但产能更多→继续降价"的螺旋。这种全行业层面的囚徒困境何时结束？需等产能利用率回升至80%以上（即落后产能被淘汰约200GW）。
+<p>
+<strong>因果链4：央国企招标规则改变对组件企业的利润再分配</strong>
+2024年以来，国内大型光伏电站（央国企为主）的招标规则发生变化 → 从"最低价中标"逐步改为"综合评分（价格60%+技术20%+质保10%+交付10%）" → 这意味着如果隆基能证明其HPBC组件30年寿命内的衰减率比TopCon低0.5个百分点 → 在综合评分中可加3-5分 → 不需将报价降到全行业最低也能中标 → 可以维持500-1000元/千瓦的合理溢价 → 2025-2026年随产品质量差异化被招标规则重新定价，龙头企业的利润率可能从-5%回升至+5%。但这一传导需要2-3年才能真正体现在利润表上。
+<p>
+<strong>格雷厄姆评价：</strong> PE为负（亏损），毫无价值。打分：0/5。对价值投资者而言，隆基目前是"不可知"——你不知道周期底部在哪里，也不清楚技术路线变化会让这家公司成为胜利者还是倒退者。</div><div class="链条面板"><h4>9-20. 其他新能源公司简要因果链分析</h4><strong>通威股份 (600438) — PE:-6.22, PB:1.74, ROE:-6.49</strong>
+多晶硅环节是光伏产业链"最惨环节"——2022年硅料价格30万元/吨时毛利率90%，2024年价格跌至6万元/吨以下，全行业亏损。通威成本约4.5-5万元/吨（行业最低之一），但即便成本最低的企业也在现金利润线附近挣扎。因果链：硅料新产能（协鑫颗粒硅+信义等新进入者）持续释放 → 供过于求至少持续至2026年上半年 → 通威只能依靠鱼光互补电站业务（养鱼+光伏发电）和化工副产（氯碱）的非主营利润来支撑现金流。格雷厄姆：0/5。
+<p>
+<strong>晶科能源 (688223) — PE:-10.06, PB:2.18, ROE:-5.4</strong>
+组件企业在全球品牌差异化方面做得最好的一家 → N型TopCon组件出货占比超过60%，比同行高15-20ppt → 但即便效率领先0.5-1个百分点，在目前的全行业亏损环境里也无力转盈。晶科2024年亏损约50亿元 → 等待2025年行业出清后利润弹性最大（因为亏损最严重的企业在行业反转时利润修复幅度最大）。格雷厄姆：0/5。
+<p>
+<strong>天合光能 (688599) — 组件+跟踪支架+分布式</strong>
+差异化在于跟踪支架业务（约贡献利润20%）→ 跟踪支架可使电站发电量提升15-25% → 随利率下降（高利率时跟踪支架的资本支出额外成本难以被融资支持），跟踪支架需求弹性的释放将较固定支架大。格雷厄姆：0/5。
+<p>
+<strong>阿特斯 (688472) — PE:20.13, PB:1.77, ROE:2.21</strong>
+组件+大型储能+BIPV（光伏建筑一体化） → 红筹股上市（海外架构），在储能系统集成领域有较强的美国市场准入能力 → 美国IRA补贴下，阿特斯在德州5GW组件工厂将于2025年投产 → 享受本土制造10%额外补贴。是目前光伏板块中"美国敞口"最大的企业之一，中美贸易摩擦中这既是机会也是风险。格雷厄姆：1/5。
+<p>
+<strong>大全能源 (688303) — PE:-14.08, PB:1.18, ROE:-2.08</strong>
+纯多晶硅企业，成本约5.5万元/吨（比通威高1万元/吨）→ 在当前6万元/吨以下的价格环境中已经全成本亏损 → 2024年经营性现金流为负 → 若2025-2026年不能将成本降至5万元/吨以下，存在资金链断裂风险。格雷厄姆：0/5。
+<p>
+<strong>天赐材料 (002709) — PE:16.1, PB:5.77, ROE:8.84</strong>
+电解液龙头（市场份额约35%）→ 电解液是锂电材料中竞争最充分、波动最猛的环节 → 2022年六氟磷酸锂价格60万/吨时毛利率60%，2024年价格5万/吨时毛利率降至15% → 但天赐是全行业成本最低（产业链垂直整合：从六氟磷酸锂到电解液全自产）→ 行业亏现金时天赐仍有5%左右的净利率 → 具有最强的"熬底能力"。格雷厄姆：PE勉强过线但PB太高，2/5。
+<p>
+<strong>华友钴业 (603799) — PE:10.06, PB:2.03, ROE:5.05</strong>
+钴+镍+锂+铜的多金属一体化材料商 → 从"刚果金钴王"转型为"锂电正极材料全覆盖" → 核心因果链：刚果金政治不稳定 → 钴供应中断风险 → 钴价上涨 → 华友上游采矿利润增加 → 但中游前驱体（正极材料原料）产能过剩 → 前驱体加工费（Processing Fee）被压缩 → 出现"上游赚矿的钱、中游亏加工的钱"的利润分叉。格雷厄姆：PE合格但PB偏高，2/5。
+<p>
+<strong>赣锋锂业 (002460) — PE:20.38, PB:3.22, ROE:4.02</strong>
+澳大利亚Mount Marion锂精矿+阿根廷盐湖+墨西哥黏土矿 → 矿产分布最广的锂企 → 锂价从60万/吨跌至10万/吨时 → 澳洲锂精矿定价从6000美元/吨跌至1000美元/吨 → 赣锋的矿端毛利从80%压缩至20-30% → 但阿根廷盐湖提锂成本约4000美元/吨LCE，远高于澳洲联合锂辉石矿(CIF中国约1000美元/吨LCE) → 成本下降缓慢使得赣锋在周期底部的利润优势不如天齐。格雷厄姆：1/5。
+<p>
+<strong>天齐锂业 (002466) — PE:14.61, PB:2.37, ROE:4.31</strong>
+持有全球最大锂矿Greenbushes（澳大利亚，51%权益）→ Greenbushes锂精矿的现金成本约400-500澳元/吨（全球最低成本曲线） → 锂价周期底部其他矿商亏损停产 → Greenbushes仍能维持正现金流 → 另一块影响：天齐在2022年以高价买入智利SQM的23.75%股权（约43亿美元）→ 智利"锂矿国有化"政策风险（2024年智利政府宣布成立国家锂业公司）→ SQM的Atacama盐湖采矿权2025-2030年续约存在变数 → 天齐的SQM投资收益存在"政治没收"的尾部风险。格雷厄姆：PE<15过线，PB太高，2/5。
+<p>
+<strong>国轩高科 (002074) — PE:651.31, PB:1.9, ROE:0.07</strong>
+几乎不能以PE估值（2024年净利润仅约1亿元，对比市值400亿元，极度高估） → 大众汽车（持股26%）战略投资的价值取决于能否进入大众全球供应链 → 大众SSP平台（下一代电动平台）的电池定点至今未明确给国轩 → 存在"战略投资承诺落空"的风险。格雷厄姆：0/5。</div><div class="链条面板"><h4>8. 比亚迪(002594) -- 新能源汽车全球龙头</h4>全球新能源汽车销量冠军，2025年销量超400万辆。从2020年40元大涨至2021年350元(前复权，约8倍)后，持续回调至当前90元以下。PE 30倍在汽车行业不属于极端估值，但需关注价格战对盈利的侵蚀和海外市场拓展进度。</div>
+
+<h2>行业内公司</h2>
+<div class="引用框">
+    📖 <strong>参考页面</strong>：<a href="方法论.html">分析方法论</a> ｜ <a href="总排名.html">总排名</a> ｜ <a href="财务数据.html">财务数据</a> ｜ <a href="跨资产关联.html">跨资产关联</a>
+</div>
+<a class="公司摘要" href="公司_宁德时代.html">
+            <span class="摘要名称">宁德时代</span>
+            <span class="摘要代码">300750</span>
+            <span class="摘要简述">动力电池 ｜ 全球电池龙头 · PE从200+压缩到23</span>
+        </a><a class="公司摘要" href="公司_隆基绿能.html">
+            <span class="摘要名称">隆基绿能</span>
+            <span class="摘要代码">601012</span>
+            <span class="摘要简述">光伏组件 ｜ 从高点跌86%回原点 · 全行业产能过剩</span>
+        </a><a class="公司摘要" href="公司_阳光电源.html">
+            <span class="摘要名称">阳光电源</span>
+            <span class="摘要代码">300274</span>
+            <span class="摘要简述">逆变器储能 ｜ 储能第二增长曲线 · PEG小于1</span>
+        </a>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>

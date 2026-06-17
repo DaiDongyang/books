@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原始资料：历史股价分析</title>
+<style>
+/* ── 基础变量 ── */
+:root {
+    --主色: #1e3a5f;
+    --主色浅: #2c5282;
+    --背景: #f8f9fb;
+    --卡片: #ffffff;
+    --文字: #1a202c;
+    --文字次: #4a5568;
+    --文字弱: #a0aec0;
+    --边框: #e2e8f0;
+    --边框浅: #edf2f7;
+    --金色: #b8860b;
+    --金色浅: #fef9e7;
+    --绿色: #059669;
+    --绿色浅: #ecfdf5;
+    --蓝色浅: #eff6ff;
+    --红色: #dc2626;
+    --红色浅: #fef2f2;
+    --橙色: #d97706;
+    --橙色浅: #fffbeb;
+    --阴影小: 0 1px 3px rgba(0,0,0,0.06);
+    --阴影中: 0 4px 12px rgba(0,0,0,0.08);
+    --阴影大: 0 8px 30px rgba(0,0,0,0.12);
+    --圆角: 10px;
+    --圆角小: 6px;
+}
+
+/* ── 全局重置 ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: var(--背景);
+    color: var(--文字);
+    line-height: 1.8;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── 导航栏 ── */
+.导航 {
+    background: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-bottom: 1px solid #e8ecf1;
+}
+.导航内层 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 2px;
+}
+.导航品牌 {
+    font-weight: 800;
+    font-size: 1.05em;
+    color: var(--主色);
+    margin-right: 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.导航品牌 span { color: #2563eb; }
+.导航 a {
+    color: #64748b;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.82em;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    font-weight: 500;
+}
+.导航 a:hover { background: #f1f5f9; color: var(--主色); }
+.导航 .分隔符 { color: #cbd5e1; font-size: 0.65em; margin: 0 6px; user-select: none; }
+
+/* ── 主容器 ── */
+.主容器 {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+.宽容器 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 24px 100px;
+}
+
+/* ── 页头区 ── */
+.页头 {
+    text-align: center;
+    padding: 48px 20px 40px;
+    margin-bottom: 32px;
+    background: linear-gradient(160deg, #f0f4ff 0%, #fafafa 50%, #f0fdf4 100%);
+    border-radius: 16px;
+    border: 1px solid var(--边框);
+}
+.页头 h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    color: var(--主色);
+    margin-bottom: 12px;
+    border: none;
+    letter-spacing: 1px;
+}
+.页头 p {
+    font-size: 1.05em;
+    color: var(--文字次);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ── 标题层级 ── */
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+h2 {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--主色);
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--边框);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: #6366f1;
+    border-radius: 2px;
+}
+h3 { font-size: 1.1em; font-weight: 700; color: #2d3748; margin-top: 24px; margin-bottom: 10px; }
+h4 { font-size: 1em; font-weight: 600; color: #4a5568; margin-top: 16px; margin-bottom: 8px; }
+p { margin-bottom: 12px; color: var(--文字); }
+
+/* ── 统计数字区 ── */
+.统计区 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0 36px;
+}
+.统计卡片 {
+    text-align: center;
+    padding: 24px 16px;
+    border-radius: var(--圆角);
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    box-shadow: var(--阴影小);
+    transition: transform 0.2s;
+}
+.统计卡片:hover { transform: translateY(-2px); box-shadow: var(--阴影中); }
+.统计数字 {
+    font-size: 2.4em;
+    font-weight: 800;
+    color: #6366f1;
+    line-height: 1.2;
+}
+.统计标签 {
+    font-size: 0.85em;
+    color: var(--文字次);
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+/* ── 卡片 ── */
+.卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 20px 24px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+}
+.卡片:hover {
+    box-shadow: var(--阴影中);
+    transform: translateY(-2px);
+    border-color: #cbd5e0;
+}
+.卡片网格 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+.卡片网格 a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.卡片网格 a .卡片 { height: 100%; }
+.卡片 h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--主色);
+}
+.卡片 .卡片副标题 {
+    font-size: 0.82em;
+    color: var(--文字次);
+    line-height: 1.5;
+}
+.卡片 .卡片标签 {
+    display: inline-block;
+    background: var(--蓝色浅);
+    color: var(--主色浅);
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+/* ── 行业卡片（首页用） ── */
+.行业卡片 {
+    background: var(--卡片);
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角);
+    padding: 18px 22px;
+    box-shadow: var(--阴影小);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+.行业卡片:hover { box-shadow: var(--阴影中); transform: translateY(-2px); border-color: var(--主色); }
+.行业图标 { font-size: 1.8em; flex-shrink: 0; }
+.行业卡片 h3 { margin: 0 0 4px 0; font-size: 1.05em; font-weight: 700; color: var(--主色); }
+.行业卡片 p { margin: 0; font-size: 0.82em; color: var(--文字次); }
+
+/* ── 公司摘要行（行业页用） ── */
+.公司摘要 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 18px;
+    border: 1px solid var(--边框浅);
+    border-radius: var(--圆角小);
+    margin: 6px 0;
+    background: var(--卡片);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+}
+.公司摘要:hover { border-color: var(--主色); background: #f8fafc; box-shadow: var(--阴影小); }
+.公司摘要 .摘要名称 { font-weight: 700; font-size: 0.95em; min-width: 90px; color: var(--主色); }
+.公司摘要 .摘要代码 { color: var(--文字弱); font-size: 0.8em; min-width: 65px; }
+.公司摘要 .摘要简述 { color: var(--文字次); font-size: 0.82em; flex: 1; }
+
+/* ── 评分徽章 ── */
+.徽章 {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+.分5 { background: var(--绿色); }
+.分4 { background: #0891b2; }
+.分3 { background: var(--橙色); }
+.分2 { background: #ea580c; }
+.分1 { background: var(--红色); }
+
+/* ── 提示框 ── */
+.提示 {
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: var(--圆角小);
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+.提示-信息 { background: var(--蓝色浅); border-left: 4px solid #3b82f6; color: #1e40af; }
+.提示-成功 { background: var(--绿色浅); border-left: 4px solid var(--绿色); color: #065f46; }
+.提示-警示 { background: var(--橙色浅); border-left: 4px solid var(--橙色); color: #92400e; }
+.提示-危险 { background: var(--红色浅); border-left: 4px solid var(--红色); color: #991b1b; }
+
+/* ── 引用框 ── */
+.引用框 {
+    background: #f8fafc;
+    border: 1px solid var(--边框);
+    border-radius: var(--圆角小);
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 0.9em;
+}
+.引用框 a { font-weight: 600; }
+
+/* ── 标签页 ── */
+.标签页 {
+    display: flex;
+    border-bottom: 2px solid var(--边框);
+    margin: 22px 0;
+    gap: 0;
+    flex-wrap: wrap;
+}
+.标签按钮 {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--文字次);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.标签按钮:hover { color: var(--主色); background: #f7fafc; }
+.标签按钮.活跃 { color: var(--主色); border-bottom-color: var(--主色); font-weight: 700; }
+.标签面板 { display: none; }
+.标签面板.活跃 { display: block; }
+
+/* ── 链条面板（公司分析内容区） ── */
+.链条面板 {
+    border-left: 3px solid #818cf8;
+    padding: 12px 18px;
+    margin: 12px 0;
+    background: #fafafe;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+
+/* ── 表格 ── */
+.表格容器 { overflow-x: auto; margin: 16px 0 24px; border-radius: var(--圆角小); border: 1px solid var(--边框); }
+table { width: 100%; border-collapse: collapse; font-size: 0.87em; min-width: 600px; }
+table thead { background: #f1f5f9; }
+table thead th {
+    color: #475569;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85em;
+    white-space: nowrap;
+    border-bottom: 2px solid #e2e8f0;
+}
+table tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+table tbody tr:nth-child(even) { background: #fafbfc; }
+table tbody tr:hover { background: #eef2ff; }
+
+/* ── 代码块 ── */
+code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: #1e293b; }
+pre { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: var(--圆角小); overflow-x: auto; margin: 14px 0; font-size: 0.84em; line-height: 1.6; }
+pre code { background: none; padding: 0; color: inherit; }
+
+/* ── 其他元素 ── */
+blockquote {
+    border-left: 4px solid #818cf8;
+    margin: 14px 0;
+    padding: 10px 20px;
+    background: #fafafe;
+    color: var(--文字次);
+    font-style: italic;
+    border-radius: 0 var(--圆角小) var(--圆角小) 0;
+}
+blockquote p:last-child { margin-bottom: 0; }
+hr { border: none; border-top: 1px solid var(--边框); margin: 32px 0; }
+ul, ol { margin: 8px 0 16px 24px; }
+li { margin-bottom: 6px; color: var(--文字); }
+strong { color: #c0392b; font-weight: 700; }
+a { color: var(--主色浅); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── 同行链接 ── */
+.同行链接 {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 2px;
+    border: 1px solid var(--边框);
+    border-radius: 14px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: var(--文字次);
+    transition: all 0.15s;
+}
+.同行链接:hover { background: var(--主色); color: #fff; border-color: var(--主色); text-decoration: none; }
+
+/* ── 页脚 ── */
+.页脚 {
+    text-align: center;
+    color: var(--文字弱);
+    font-size: 0.82em;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--边框);
+    line-height: 1.8;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .主容器, .宽容器 { padding: 20px 14px 60px; }
+    .页头 { padding: 28px 16px 24px; }
+    .页头 h1 { font-size: 1.5em; }
+    .统计区 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .统计数字 { font-size: 1.8em; }
+    .卡片网格 { grid-template-columns: 1fr; }
+    table { font-size: 0.78em; }
+    .公司摘要 { flex-wrap: wrap; gap: 8px; }
+    .标签按钮 { padding: 8px 14px; font-size: 0.82em; }
+}
+</style>
+</head>
+<body>
+<nav class="导航"><div class="导航内层">
+<a href="index.html" class="导航品牌"><span>●</span> 中国A股深度调研</a>
+<a href="行业_银行.html">🏦 银行</a>
+<a href="行业_保险.html">🔒 保险</a>
+<a href="行业_券商.html">📈 券商</a>
+<a href="行业_科技.html">💻 科技</a>
+<a href="行业_消费.html">🍶 消费</a>
+<a href="行业_医药.html">💊 医药</a>
+<a href="行业_能源.html">⛽ 能源</a>
+<span class="分隔符">|</span>
+<a href="总排名.html">🏆 总排名</a>
+<a href="财务数据.html">📊 财务数据</a>
+<a href="方法论.html">📖 方法论</a>
+<a href="跨资产关联.html">🔄 跨资产</a>
+</div></nav>
+<div class="宽容器">
+<h1>中国A股主要板块历史股价与关键驱动因素分析</h1>
+<p>
+<blockquote>数据基准日：2026年6月16日收盘</blockquote>
+<blockquote>股价数据来源：腾讯证券实时行情；估值数据来源：同花顺/雅虎财经/证券时报</blockquote>
+<p>
+<hr>
+<p>
+<h2>一、保险板块</h2>
+<p>
+<h3>1. <a href="公司_中国平安.html">中国平安</a>(601318) -- 保险龙头，周期与成长的双面</h3>
+<p>
+<strong>当前估值</strong>：股价52.99元 | PE(TTM) 7.23倍 | PB 0.93倍 | P/EV约0.62倍 | 总市值9595亿元
+<p>
+<strong>十年股价图谱</strong>：2007年上市首日约50元→2008年金融海啸跌至21元(+富通事件)→2017年"漂亮50"涨至78元→2020年触及历史最高92元→2024年最低约35元（较高点跌61%）。
+<p>
+<strong>2019-2020年何以到90元？</strong> 三轮驱动叠加：①NBV(新业务价值)高增长，代理人峰值达140万人，寿险ROE超30%；②平安好医生/金融壹账通等金融科技故事赋予成长股溢价；③MSCI纳入后外资持股升至峰值；④P/EV从0.8倍扩张至1.3倍，戴维斯双击。
+<p>
+<strong>2021-2024为何暴跌61%？</strong> 核心是"增长故事断裂+估值坍塌"：①华夏幸福暴雷(540亿敞口触发地产恐慌)；②代理人从140万骤降至30万(改革阵痛)；③NBV连续三年负增长；④外资从超配到低配，持股比例腰斩；⑤P/EV从1.3倍压缩至0.5倍(2022年8月创历史最低)。
+<p>
+<strong>P/EV历史区间</strong>：2007年牛市峰值7.32倍→2008年危机跌破1倍→2013-14年约0.85倍(多年底部)→2017年1.65倍→2020年1.3倍→2022年8月0.5倍(历史最低)→当前0.62倍。<strong>P/EV反弹通常需要三大条件共振</strong>：NBV增速转正且加速、长端利率企稳、地产风险出清信号。当前NBV已在2025-2026年重回+20%增长，但利率下行(10年期国债降至1.65%)压制P/EV修复空间。
+<p>
+<strong>当前定位</strong>：PE 7.2倍处于近5年约15%分位，PB 0.93倍处于近5年约10%分位，P/EV 0.62倍。三者均处于历史最低区间。
+<p>
+<hr>
+<p>
+<h3>2. <a href="公司_中国人寿.html">中国人寿</a>(601628) -- 纯寿险的贝塔放大器</h3>
+<p>
+<strong>当前估值</strong>：股价36.06元 | PE(TTM) 7.04倍 | PB 1.70倍 | 每股净资产21.17元 | 总市值约1.02万亿元
+<p>
+<strong>历史走势</strong>：2007年牛市PE冲至50倍以上→2008年熊市跌80%；2015年牛市PE冲至30倍→股灾后跌60%；2026年Q1权益市场波动导致利润骤降，PE跌至6.6倍(近5年低点)。
+<p>
+<strong>纯寿险高贝塔基因</strong>：寿险公司利润高度依赖权益投资(国寿股票+基金配置占比约15-20%)，牛市中投资收益暴增→利润弹性极大→高PE变为低PE；熊市中则相反。2026年新会计准则下，浮盈浮亏直接计入损益表，利润波动进一步放大。
+<p>
+<strong>与平安对比</strong>：国寿波动性高于平安(纯寿险vs综合金融集团)，但当前PE/PB均低于平安，核心原因在于NBV增速(国寿约+8% vs 平安约+22%)和代理人改革进度落后。
+<p>
+<hr>
+<p>
+<h3>3. <a href="公司_中国太保.html">中国太保</a>(601601) -- 估值最低的大型险企</h3>
+<p>
+<strong>当前估值</strong>：股价32.50元 | PE(TTM) 5.80倍 | PB 0.89-0.98倍 | 每股净资产约33-36元 | 总市值3127亿元
+<p>
+<strong>估值特征</strong>：PE 5.8倍为三大险企中最低，PB跌破1倍(破净)。2025年净利润535亿元(+19%)，ROE达18%，基本面并不差。当前折价的根源在于：银保新单占比上升(市场担忧价值率下降)、利率下行压力。
+<p>
+<strong>三大险企波动性排序</strong>：国寿 > 平安 > 太保。国寿弹性最大(纯寿险高贝塔)，太保波动最小(财险业务提供稳定器)。但从当前估值看，太保的PE/PB均处于三者底部，P/EV约0.53倍(开源证券预测)，性价比角度值得关注。
+<p>
+<hr>
+<p>
+<h2>二、券商板块</h2>
+<p>
+<h3>4. <a href="公司_中信证券.html">中信证券</a>(600030) -- 券商茅，每轮牛市的核心受益者</h3>
+<p>
+<strong>当前估值</strong>：股价27.25元 | PE(TTM) 11.99倍 | PB 1.10倍 | 总市值4039亿元
+<p>
+<strong>三轮牛市的涨幅图谱</strong>：
+<li><strong>2007年大牛市</strong>(2005-2007)：从4元至118元(后复权约160元)，<strong>涨27-32倍</strong>！核心驱动是净利润从4亿暴增至124亿(增31倍)，PE始终在25倍附近(利润增长完全解释了涨幅)。</li>
+<li><strong>2015年大牛市</strong>(2014-2015)：从10元至38元，<strong>涨约4倍</strong>。远不及2007年，原因是体量变大(市值已超3000亿)、佣金率下降(千三降至万三)。同期西部证券涨8倍、<a href="公司_东方财富.html">东方财富</a>涨12倍。</li>
+<li><strong>2020年结构性牛市</strong>：从20元至33元，涨幅约65%。注册制改革驱动，但涨幅已明显收敛。</li>
+<p>
+<strong>券商股周期性规律</strong>：每轮牛市中涨3-5倍(龙头)至8-12倍(小盘)，熊市中跌50-70%。驱动的三驾马车：①<strong>日均成交额</strong>→佣金收入(万二至万三费率)；②<strong>IPO节奏</strong>→投行收入(注册制后弹性下降)；③<strong>两融余额</strong>→利息收入。
+<p>
+<strong>当前定位</strong>：PE 11.99倍处于近5年约40%分位，PB 1.10倍处于近5年约25%分位。估值处于"非牛市"的合理偏低区间。下一波牛市，按历史规律，<a href="公司_中信证券.html">中信证券</a>有望涨2-4倍(取决于牛市强度)。
+<p>
+<hr>
+<p>
+<h3>5. <a href="公司_东方财富.html">东方财富</a>(300059) -- A股最极致的牛市期权</h3>
+<p>
+<strong>当前估值</strong>：股价19.12元 | PE(TTM) 23.08倍 | PB 3.37倍 | 总市值3025亿元
+<p>
+<strong>2015年超级牛市</strong>：从约7元涨至80-90元，<strong>涨10-12倍</strong>。收购同信证券后连续11个涨停板。更惊人的是PE——2015年1月峰值高达<strong>595倍</strong>！这是"极低利润基数→牛市利润暴增"的数字魔术：2014年净利润仅1.66亿，2015年增至18亿，十倍增长但PE仍高达100+，市场买的是"互联网券商"的想象空间。
+<p>
+<strong>2020-2021年第二轮</strong>：从10元涨至40元(涨4倍)，驱动因素是基金代销爆发+天天基金网用户暴增。PE从约40倍扩张至60倍。
+<p>
+<strong>股灾规律</strong>：2015年跌83%(40元→7元)，2022-2024年跌约70%(40元→12元)。暴跌速度与上涨速度成正比。
+<p>
+<strong>核心逻辑</strong>：东财不是价值股，是<strong>牛市期权</strong>——PE 23倍(当前)在非牛市属中等偏高，但一遇牛市即可暴增至50-100+倍。历史上每轮牛市中平均涨5-12倍。
+<p>
+<hr>
+<p>
+<h3>6. 同花顺(300033) -- 比东财更极端的波动</h3>
+<p>
+<strong>当前估值</strong>：股价218.62元 | PE(TTM) 49.25倍 | 总市值1645亿元
+<p>
+<strong>极致的贝塔</strong>：2015年牛市从约10元涨至约200元，<strong>暴涨20倍</strong>，弹性远超东财。原因在于：①体量更小(2015年初市值不到100亿)；②几乎100%收入来自行情/交易软件(牛市弹性最大)；③高毛利率(约90%)和极低固定成本。
+<p>
+<strong>当前PE 49倍</strong>在非牛市明显偏高，但与历史峰值相比仍有巨大弹性空间。同花顺是"牛市必选股"，但也是熊市中跌得最惨的品种之一。
+<p>
+<hr>
+<p>
+<h2>三、电信运营商</h2>
+<p>
+<h3>7. <a href="公司_中国移动.html">中国移动</a>(600941) -- 中特估核心标的，回归A股后的价值重估</h3>
+<p>
+<strong>当前估值</strong>：股价92.99元 | PE(TTM) 14.84倍 | PB 1.22倍 | 总市值约2.02万亿元
+<p>
+<strong>A股上市路线</strong>：2022年1月以57.58元发行价回A上市，首日微涨0.52%。此后稳步攀升，2023年3月在中特估行情中涨停，创历史新高102.72元，较发行价涨78%。
+<p>
+<strong>四重驱动因素</strong>：
+① <strong>"中特估"价值重估</strong>：回A前港股PE仅约8倍、PB不足1倍，国资委提出"国企价值重估"后，PE从10倍扩张至15倍区间；
+② <strong>高股息策略</strong>：派息率从60%提升至70%以上，2022年全年每股分红约4.41港元，股息率约5-6%，在市场利率下行环境中凸显稀缺性；
+③ <strong>数字经济新故事</strong>：数字化转型收入(云计算/IDC/大数据)同比+39%，打开第二增长曲线；
+④ <strong>AH估值修复</strong>：A股长期较港股溢价约50-70%，回A后吸引内地资金配置。
+<p>
+<strong>当前PE 14.84倍</strong>是历史偏高水平。<a href="公司_中国移动.html">中国移动</a>港股历史上PE通常在8-12倍区间，当前A股PE隐含了一个"中特估"溢价。若从PB角度，1.22倍在历史中枢(1.0-1.5倍)之内。核心问题是：PE能否维持15倍以上，取决于(1)高分红能否持续，(2)数字化转型能否兑现利润。
+<p>
+<hr>
+<p>
+<h2>四、汽车板块</h2>
+<p>
+<h3>8. <a href="公司_比亚迪.html">比亚迪</a>(002594) -- 新能源汽车全球龙头</h3>
+<p>
+<strong>当前估值</strong>：股价89.64元 | PE(TTM) 29.67倍 | PB 1.09倍 | 总市值8173亿元
+<p>
+全球新能源汽车销量冠军，2025年销量超400万辆。从2020年40元大涨至2021年350元(前复权，约8倍)后，持续回调至当前90元以下。PE 30倍在汽车行业不属于极端估值，但需关注价格战对盈利的侵蚀和海外市场拓展进度。
+<p>
+<hr>
+<p>
+<h3>9. 赛力斯(601127) -- 华为概念驱动的超级牛股</h3>
+<p>
+<strong>当前估值</strong>：股价68.78元 | PE(TTM) 20.09倍 | PB 0.83倍 | 总市值1198亿元
+<p>
+<strong>史诗级翻盘</strong>：2022年亏损38亿，股价徘徊20-30元。2023年8月华为Mate60系列发布(搭载自研芯片回归)，问界M7同步改款上市——引发全民关注，问界销量从月销3000辆飙升至30000+。赛力斯股价从30元一路涨至150元，<strong>涨5倍</strong>，2025年9月盘中创历史新高。
+<p>
+<strong>业绩爆发</strong>：2024年营收约1467亿(+300%)，净利润55-60亿(首次扭亏)。2025上半年净利润29.4亿(+81%)。
+<p>
+<strong>核心逻辑</strong>：华为深度赋能(智驾/智舱/渠道)+问界M9攻入50万+价格带(月销1.5万辆)+盈利正循环。当前PE 20倍已从高点的40+倍回落，但需跟踪"华为"标签的持续性：问界新M7订单能否持续，以及华为与其他车企合作(阿维塔/享界/智界)对赛力斯的"分流效应"。
+<p>
+<hr>
+<p>
+<h3>10. 长城汽车(601633) -- 从9倍牛股到估值回归</h3>
+<p>
+<strong>当前估值</strong>：股价17.31元 | PE(TTM) 16.34倍 | PB 0.52倍(破净) | 总市值1481亿元
+<p>
+<strong>2020-2021年超级行情</strong>：从7元涨至65元，<strong>涨9倍</strong>，PE从16倍扩张至109倍(2021年1月历史峰值)。三大爆款驱动：①坦克300(硬派越野SUV，20-30万价位供不应求)；②欧拉品牌(女性电动车，销量增514%)；③柠檬+DHT混动平台。
+<p>
+<strong>回归之路</strong>：随着行业价格战加剧、坦克系列竞品增多，PE逐步回落至当前16倍。PB 0.52倍已破净，是A股汽车板块中PB最低的公司之一。当前PE处于近5年约10%分位(极低区间)。关注点：海外出口(俄罗斯/东南亚)能否成为新增长极。
+<p>
+<hr>
+<p>
+<h3>11. 上汽集团(600104) -- 最漫长的价值毁灭之一</h3>
+<p>
+<strong>当前估值</strong>：股价10.65元 | PE(TTM) 12.11倍 | PB 0.75倍(破净) | 总市值1224亿元
+<p>
+<strong>七年漫漫下跌路</strong>：2018年高点约30元→当前10.65元，<strong>跌64%</strong>。期间净利润从360亿(2018)降至约80亿(2025)，降幅约78%。合资品牌(上汽大众+上汽通用)市场份额被<a href="公司_比亚迪.html">比亚迪</a>、吉利、特斯拉侵蚀，自主品牌(荣威/名爵)未能接棒。
+<p>
+<strong>价值毁灭根源</strong>：①合资利润(曾占集团利润超70%)持续萎缩；②自主品牌新能源转型不及预期；③巨额折旧+研发开支挤压利润；④PB从2倍跌至0.75倍(破净)，隐含市场"价值毁灭"预期。
+<p>
+<strong>两难处境</strong>：低PE(12倍)和高股息(约4%+)看似便宜，但利润持续下滑构成"价值陷阱"。PB 0.75倍是全名单中最低之一，但与长城汽车一样面临盈利拐点不确定的问题。
+<p>
+<hr>
+<p>
+<h2>五、航空板块</h2>
+<p>
+<h3>12. <a href="公司_南方航空.html">南方航空</a>(600029) -- 强周期股，适合波段而非持有</h3>
+<p>
+<strong>当前估值</strong>：股价5.39元 | PE(TTM) 31.66倍 | PB 2.64倍 | 52周高6.01元/低4.91元 | 总市值977亿元
+<p>
+<strong>疫情三阶段</strong>：2020年疫情冲击跌至约4元→2023年"报复性出行"反弹至约8元→2024-2026年又跌回5元。典型的"V型反弹+二次回落"。
+<p>
+<strong>驱动因素三角模型</strong>：①<strong>油价</strong>(负相关)：航空燃油占总成本约30-35%，油价每涨10%，利润影响约20-30亿；②<strong>汇率</strong>(负相关)：南航持有大量美元债(约150亿美元)，人民币每贬值1%，汇兑损失约10-15亿；③<strong>客座率/票价</strong>(正相关)：供需决定利润弹性。2025年首次扭亏(净利润8.57亿)，2026Q1盈利14.8亿(Q1通常为淡季)，基本面在改善。
+<p>
+<strong>历史规律</strong>：航空股极少能"长期持有"赚钱——2007年至今持有南航几乎零回报。更适合在周期底部(油价低位+汇率稳定+需求复苏)买入做波段，或在"繁荣周期"(客座率>85%+油价<60美元)持有。
+<p>
+<strong>当前周期位置</strong>：处于盈利恢复初期(刚扭亏)。PE 31倍看起来不便宜，但要理解——航空股必须在利润全面恢复(全年净利50-80亿)后才能消化估值。对应PE约12-20倍才是合理区间。
+<p>
+<hr>
+<p>
+<h2>六、养殖板块</h2>
+<p>
+<h3>13. <a href="公司_牧原股份.html">牧原股份</a>(002714) -- 猪周期之王，成本护城河</h3>
+<p>
+<strong>当前估值</strong>：股价35.05元 | PE(TTM) 20.69倍 | PB 0.83倍(破净) | 总市值2023亿元
+<p>
+<strong>上轮猪周期(2019-2020)</strong>：非洲猪瘟导致全国生猪供给骤降70%，猪价从15元/kg暴涨至40元/kg(历史最高)。牧原作为自繁自养龙头，扩产最坚决，出栏从1000万头暴增至4000万头+，股价从15元涨至90元，<strong>涨6倍</strong>。利润从10亿级暴增至200-300亿级。
+<p>
+<strong>去产能周期(2021-2024)</strong>：产能恢复+超额供给→猪价从40元/kg跌至10元+/kg(行业成本线以下)，全行业深度亏损。牧原股价从90元跌至约30元，<strong>跌67%</strong>。2024-2025年利润大幅缩水，2026Q1亏损12.15亿。
+<p>
+<strong>猪周期4年定律</strong>：2006-2010(3年)、2010-2014(4年)、2014-2018(4年)、2018-2022(4年)。<strong>当前周期位置</strong>：2026年Q1为周期底部(猪价跌至8.66元/kg，全行业亏损超8个月，能繁母猪加速淘汰)。按4年历史规律，2022年为本轮周期低点，2023-2024磨底，2025-2026为反转窗口。但本轮特殊之处在于：规模化占比大幅提升(牧原+温氏市占率超10%)，去产能速度慢于历史，磨底时间可能更长。
+<p>
+<strong>牧原的特别之处</strong>：自繁自养模式成本全行业最低(约12元/kg vs 行业平均14-15元/kg)。即使猪价在行业成本线以下，牧原仍能维持正现金流(成本优势约2-3元/kg)。2026年出栏约7800万头，市占率持续提升。
+<p>
+<hr>
+<p>
+<h3>14. 温氏股份(300498) -- 与牧原的模式比拼</h3>
+<p>
+<strong>当前估值</strong>：股价12.90元 | PE(TTM) 39.32倍 | PB 0.84倍(破净) | 总市值858亿元
+<p>
+<strong>牧原vs温氏的本质区别</strong>：牧原自繁自养(重资产+标准化)→成本低(约12元/kg)但资本开支大；温氏"公司+农户"(轻资产+扩张灵活)→成本偏高(约12.4元/kg)但财务风险更低。
+<p>
+<strong>周期底部表现</strong>：2026Q1温氏亏损10.7亿，略低于牧原(12.15亿)。在周期底部，牧原的成本优势和现金流韧性更强，但温氏的资产负债表约束更小(负债率更低)。从历史表现看，牧原在猪周期上行期弹性更大(自养模式扩产更快)，温氏在底部更抗跌(轻资产模式现金流压力小)。
+<p>
+<strong>当前PE 39倍</strong>高于牧原的20倍，一方面反映市场对牧原成本优势的认可，另一方面也反映温氏前期利润基数较低。两者当前PB均低于1倍(破净)，属于周期底部的典型特征。
+<p>
+<hr>
+<p>
+<h2>附录：各公司估值一览表</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>公司</th><th>代码</th><th>股价</th><th>PE(TTM)</th><th>PB</th><th>总市值(亿)</th><th>近5年PE分位</th><th>近5年PB分位</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>------</td><td>------</td><td>---------</td><td>-----</td><td>-----------</td><td>------------</td><td>------------</td></tr>
+<tr><td><a href="公司_中国平安.html">中国平安</a></td><td>601318</td><td>52.99</td><td>7.23</td><td>0.93</td><td>9595</td><td>~15%</td><td>~10%</td></tr>
+<tr><td><a href="公司_中国人寿.html">中国人寿</a></td><td>601628</td><td>36.06</td><td>7.04</td><td>1.70</td><td>10192</td><td>~20%</td><td>~30%</td></tr>
+<tr><td><a href="公司_中国太保.html">中国太保</a></td><td>601601</td><td>32.50</td><td>5.80</td><td>0.98</td><td>3127</td><td>~10%</td><td>~15%</td></tr>
+<tr><td><a href="公司_中信证券.html">中信证券</a></td><td>600030</td><td>27.25</td><td>11.99</td><td>1.10</td><td>4039</td><td>~40%</td><td>~25%</td></tr>
+<tr><td><a href="公司_东方财富.html">东方财富</a></td><td>300059</td><td>19.12</td><td>23.08</td><td>3.37</td><td>3025</td><td>~55%</td><td>~50%</td></tr>
+<tr><td>同花顺</td><td>300033</td><td>218.62</td><td>49.25</td><td>8.52*</td><td>1645</td><td>~60%</td><td>~55%</td></tr>
+<tr><td><a href="公司_中国移动.html">中国移动</a></td><td>600941</td><td>92.99</td><td>14.84</td><td>1.22</td><td>20160</td><td>~70%</td><td>~65%</td></tr>
+<tr><td><a href="公司_比亚迪.html">比亚迪</a></td><td>002594</td><td>89.64</td><td>29.67</td><td>1.09</td><td>8173</td><td>~45%</td><td>~40%</td></tr>
+<tr><td>赛力斯</td><td>601127</td><td>68.78</td><td>20.09</td><td>0.83</td><td>1198</td><td>~35%</td><td>~20%</td></tr>
+<tr><td>长城汽车</td><td>601633</td><td>17.31</td><td>16.34</td><td>0.52</td><td>1481</td><td>~10%</td><td>~5%</td></tr>
+<tr><td>上汽集团</td><td>600104</td><td>10.65</td><td>12.11</td><td>0.75</td><td>1224</td><td>~15%</td><td>~5%</td></tr>
+<tr><td><a href="公司_南方航空.html">南方航空</a></td><td>600029</td><td>5.39</td><td>31.66</td><td>2.64</td><td>977</td><td>~60%</td><td>~65%</td></tr>
+<tr><td><a href="公司_牧原股份.html">牧原股份</a></td><td>002714</td><td>35.05</td><td>20.69</td><td>0.83</td><td>2023</td><td>~25%</td><td>~10%</td></tr>
+<tr><td>温氏股份</td><td>300498</td><td>12.90</td><td>39.32</td><td>0.84</td><td>858</td><td>~30%</td><td>~10%</td></tr>
+</tbody></table></div>
+<p>
+<blockquote>*注：同花顺PB 8.52倍系基于腾讯API数据源计算。分位值为近似估算，实际值请以券商终端数据为准。</blockquote>
+<p>
+<hr>
+<p>
+<h2>附录：关键驱动因素清单</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>板块</th><th>业绩驱动因子(主动)</th><th>估值驱动因子(市场情绪)</th></tr></thead>
+<tbody>
+<tr><td>------</td><td>-------------------</td><td>---------------------</td></tr>
+<tr><td>保险</td><td>NBV增速、代理人产能、投资收益率、内含价值增长</td><td>P/EV折溢价、长端利率、外资持股比例</td></tr>
+<tr><td>券商</td><td>日均成交额、IPO融资额、两融余额、资管规模</td><td>牛熊市预期、政策(注册制/做市商)</td></tr>
+<tr><td>电信</td><td>移动用户ARPU、云/IDC收入、5G资本开支</td><td>中特估政策、分红率、AH溢价</td></tr>
+<tr><td>汽车</td><td>月销量、单车均价、新能源渗透率、出口量</td><td><a href="公司_比亚迪.html">比亚迪</a>/华为/小米等"流量效应"</td></tr>
+<tr><td>航空</td><td>客座率、票价、布伦特原油、人民币汇率</td><td>经济复苏预期、出行景气度</td></tr>
+<tr><td>养殖</td><td>猪价(供给端)、能繁母猪存栏、饲料成本</td><td>猪周期预期、CPI走势</td></tr>
+</tbody></table></div>
+
+</div>
+<footer class="页脚">
+    <p>生成日期：2026年06月17日 ｜ 覆盖 64 家公司、14 个行业 ｜ 四层框架综合分析</p>
+    <p style="margin-top:4px;">⚠️ 本报告为研究分析，不构成任何投资建议。投资有风险，决策需谨慎。</p>
+</footer>
+</body>
+</html>
