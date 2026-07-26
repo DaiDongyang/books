@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>数据与输出</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>数据与输出</h1>
+<h2>已确认日频数据清单</h2>
+<div class="表格容器"><table>
+<thead><tr><th>获取时间(UTC)</th><th>数据行数</th><th>状态</th><th>代码</th></tr></thead>
+<tbody>
+<tr><td>2026-07-11T14:34:26</td><td>1211</td><td>success</td><td>300502.SZ</td></tr>
+<tr><td>2026-07-11T14:34:28</td><td>1211</td><td>success</td><td>300476.SZ</td></tr>
+<tr><td>2026-07-11T14:34:34</td><td>1211</td><td>success</td><td>300972.SZ</td></tr>
+<tr><td>2026-07-11T14:34:36</td><td>1211</td><td>success</td><td>300570.SZ</td></tr>
+<tr><td>2026-07-11T14:34:39</td><td>1211</td><td>success</td><td>688256.SH</td></tr>
+<tr><td>2026-07-11T14:34:40</td><td>1211</td><td>success</td><td>300308.SZ</td></tr>
+<tr><td>2026-07-11T14:34:43</td><td>1199</td><td>success</td><td>000506.SZ</td></tr>
+<tr><td>2026-07-11T14:34:46</td><td>873</td><td>success</td><td>301377.SZ</td></tr>
+<tr><td>2026-07-11T14:34:48</td><td>1211</td><td>success</td><td>600105.SH</td></tr>
+<tr><td>2026-07-11T14:34:51</td><td>1211</td><td>success</td><td>601869.SH</td></tr>
+<tr><td>2026-07-11T14:34:52</td><td>1211</td><td>success</td><td>603256.SH</td></tr>
+<tr><td>2026-07-11T14:34:55</td><td>1202</td><td>success</td><td>688313.SH</td></tr>
+<tr><td>2026-07-11T14:34:58</td><td>852</td><td>success</td><td>688498.SH</td></tr>
+<tr><td>2026-07-11T14:35:00</td><td>1201</td><td>success</td><td>688195.SH</td></tr>
+<tr><td>2026-07-11T14:35:02</td><td>845</td><td>success</td><td>688525.SH</td></tr>
+</tbody></table></div>
+<h2>粗筛结果（≥6倍）</h2>
+<p>共 379 条记录。前30条：</p>
+<div class="表格容器"><table>
+<thead><tr><th>代码</th><th>名称</th><th>粗筛倍数</th><th>低价日</th><th>高价日</th></tr></thead>
+<tbody>
+<tr><td>300308.SZ</td><td>中际旭创</td><td class="倍数10x">45.3x</td><td>20220915</td><td>20260701</td></tr>
+<tr><td>603256.SH</td><td>宏和科技</td><td class="倍数10x">40.2x</td><td>20220715</td><td>20260701</td></tr>
+<tr><td>301377.SZ</td><td>鼎泰高科</td><td class="倍数10x">36.5x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>688585.SH</td><td>上纬新材</td><td class="倍数10x">33.9x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>920438.BJ</td><td>XD戈碧迦</td><td class="倍数10x">30.5x</td><td>20210915</td><td>20260701</td></tr>
+<tr><td>688256.SH</td><td>寒武纪</td><td class="倍数10x">27.5x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>300502.SZ</td><td>新易盛</td><td class="倍数10x">27.0x</td><td>20220915</td><td>20260515</td></tr>
+<tr><td>688525.SH</td><td>佰维存储</td><td class="倍数10x">26.5x</td><td>20230116</td><td>20260701</td></tr>
+<tr><td>603083.SH</td><td>剑桥科技</td><td class="倍数10x">25.4x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>300476.SZ</td><td>胜宏科技</td><td class="倍数10x">25.0x</td><td>20230116</td><td>20260515</td></tr>
+<tr><td>603929.SH</td><td>亚翔集成</td><td class="倍数10x">24.9x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>920522.BJ</td><td>纳科诺尔</td><td class="倍数10x">23.1x</td><td>20210715</td><td>20260115</td></tr>
+<tr><td>601869.SH</td><td>长飞光纤</td><td class="倍数10x">22.8x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>603516.SH</td><td>淳中科技</td><td class="倍数10x">21.8x</td><td>20220715</td><td>20260115</td></tr>
+<tr><td>300489.SZ</td><td>光智科技</td><td class="倍数10x">21.6x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>688519.SH</td><td>南亚新材</td><td class="倍数10x">21.6x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>688313.SH</td><td>仕佳光子</td><td class="倍数10x">21.5x</td><td>20240918</td><td>20260515</td></tr>
+<tr><td>688048.SH</td><td>长光华芯</td><td class="倍数10x">20.1x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>300972.SZ</td><td>万辰集团</td><td class="倍数10x">19.6x</td><td>20230116</td><td>20260515</td></tr>
+<tr><td>688498.SH</td><td>源杰科技</td><td class="倍数10x">19.6x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>301217.SZ</td><td>铜冠铜箔</td><td class="倍数10x">19.5x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>600105.SH</td><td>永鼎股份</td><td class="倍数10x">19.4x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>300570.SZ</td><td>太辰光</td><td class="倍数10x">19.3x</td><td>20220516</td><td>20260701</td></tr>
+<tr><td>688195.SH</td><td>腾景科技</td><td class="倍数10x">19.2x</td><td>20220516</td><td>20260515</td></tr>
+<tr><td>300857.SZ</td><td>协创数据</td><td class="倍数10x">19.1x</td><td>20220915</td><td>20260701</td></tr>
+<tr><td>000506.SZ</td><td>招金黄金</td><td class="倍数10x">18.1x</td><td>20240715</td><td>20260316</td></tr>
+<tr><td>603226.SH</td><td>菲林格尔</td><td class="倍数10x">18.1x</td><td>20240918</td><td>20260701</td></tr>
+<tr><td>002289.SZ</td><td>宇顺电子</td><td class="倍数10x">18.0x</td><td>20240715</td><td>20260701</td></tr>
+<tr><td>300779.SZ</td><td>惠城环保</td><td class="倍数10x">17.9x</td><td>20220516</td><td>20250715</td></tr>
+<tr><td>001309.SZ</td><td>德明利</td><td class="倍数10x">17.8x</td><td>20220715</td><td>20260701</td></tr>
+</tbody></table></div>
+<h2>官方指数证据</h2>
+<h1>A股候选的官方指数调整证据（第一批）</h1>
+<p>
+本文件不等同于完整历史成员表，仅记录中证指数公司公开调整公告能够直接证明的“调入/调出/备选”事件。价格倍数见 <code>a_coarse_candidates_ge6x_named.csv</code>，其为双月未复权收盘价粗筛。
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>代码</th><th>公司</th><th>公告生效批次</th><th>官方证据</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>300502.SZ</td><td>新易盛</td><td>2024-12</td><td>沪深300调入；中证500调出</td><td>确认自该次调整生效后进入沪深300</td></tr>
+<tr><td>300476.SZ</td><td>胜宏科技</td><td>2024-12；2025-12</td><td>2024-12中证500调入；2025-12沪深300调入、同时中证500调出；2025-12中证A50/A100调入</td><td>确认曾为中证500，并随后进入沪深300及多个大盘指数</td></tr>
+<tr><td>300972.SZ</td><td>万辰集团</td><td>2025-12</td><td>中证500调入；中证A500调入</td><td>确认自该次调整生效后进入中证500及中证A500</td></tr>
+<tr><td>300570.SZ</td><td>太辰光</td><td>2025-12</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>688256.SH</td><td>寒武纪</td><td>2024-12</td><td>中证A100调入；中证A500调入</td><td>确认自该次调整生效后进入中证A100及中证A500</td></tr>
+<tr><td>300308.SZ</td><td>中际旭创</td><td>2025-12</td><td>中证A50调入</td><td>确认自该次调整生效后进入中证A50</td></tr>
+<tr><td>000506.SZ</td><td>招金黄金</td><td>2026-06</td><td>中证1000调入</td><td>确认自该次调整生效后进入中证1000</td></tr>
+<tr><td>301377.SZ</td><td>鼎泰高科</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>600105.SH</td><td>永鼎股份</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>601869.SH</td><td>长飞光纤</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>603256.SH</td><td>宏和科技</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>688313.SH</td><td>仕佳光子</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>688498.SH</td><td>源杰科技</td><td>2026-06</td><td>中证500调入</td><td>确认自该次调整生效后进入中证500</td></tr>
+<tr><td>688525.SH</td><td>佰维存储</td><td>2026-06</td><td>中证500调出</td><td>确认在该次调整前为中证500成分</td></tr>
+<tr><td>688195.SH</td><td>腾景科技</td><td>2026-06</td><td>中证1000调入</td><td>确认自该次调整生效后进入中证1000</td></tr>
+<tr><td>000628.SZ</td><td>高新发展</td><td>2024-12</td><td>中证500备选名单第2位</td><td>仅证明备选，不能视作已入选</td></tr>
+</tbody></table></div>
+<p>
+<h2>官方来源</h2>
+<p>
+<li>2024-12调整附件：<code>data/official_index_notices/csi_2024_12_adjustments.pdf</code></li>
+<li>2025-12调整附件：<code>data/official_index_notices/csi_2025_12_adjustments.pdf</code></li>
+<li>2026-06调整附件：<code>data/official_index_notices/csi_2026_06_adjustments.pdf</code></li>
+<p>
+原始公告均来自中证指数公司公开附件。完整的“曾在五年内任一日成为成分股”仍须继续回放2021-2026年每次定期和临时调整，不能由本文件替代。
+<h2>全部输出文件</h2>
+<ul>
+<li>.gitkeep</li>
+<li>a_coarse_bimonthly_coverage.csv</li>
+<li>a_coarse_candidates_ge6x.csv</li>
+<li>a_coarse_candidates_ge6x_named.csv</li>
+<li>a_confirmed_daily_manifest.csv</li>
+<li>a_expansion_daily_manifest.csv</li>
+<li>official_index_evidence_expansion_candidates.md</li>
+<li>official_index_evidence_top_candidates.md</li>
+<li>us_candidates_fmp_manifest.csv</li>
+<li>us_tiingo_manifest.csv</li>
+<li>validation_fmp_manifest.csv</li>
+</ul>
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

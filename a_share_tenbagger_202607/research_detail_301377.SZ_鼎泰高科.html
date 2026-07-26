@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>研究：301377.SZ_鼎泰高科</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>301377.SZ 鼎泰高科：事件材料包与首轮归因</h1>
+<p>
+更新：2026-07-12。价格窗口来自本项目 Tushare <code>daily</code> 的未复权收盘价。公司 2022-11-22 上市，故上市至 2024 年初的大幅下跌不能和成熟公司“业绩周期回撤”简单等同；本轮将重点放在有公开财务和事件材料的 2025–2026 年。
+<p>
+<h2>价格阶段</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>阶段</th><th>窗口（交易日）</th><th>收盘价变化</th><th>时间关系</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---:</td><td>---</td></tr>
+<tr><td>上市后长回撤</td><td>2022-11-22 → 2024-02-05</td><td>33.78 → 12.78，-62.2%</td><td>缺少足以单独解释整个区间的公司公告；保留为新股估值/市场环境待验证项</td></tr>
+<tr><td>第一次加速</td><td>2025-06-20 → 2025-09-12</td><td>30.90 → 89.56，+189.8%（60 日）</td><td>7 月机器人合资、8 月中报均处于上涨途中</td></tr>
+<tr><td>第二次加速</td><td>2026-03-23 → 2026-06-22</td><td>166.03 → 659.60，+297.3%（60 日）</td><td>3 月年报和 4 月一季报在窗口内；5–6 月有 H 股推进和股东询价转让</td></tr>
+</tbody></table></div>
+<p>
+<h2>材料台账</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>发布日期</th><th>等级</th><th>材料</th><th>可核实事实</th><th>研究用途</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>2025-07-25</td><td>一级</td><td>[设立机器人控股子公司](https://static.cninfo.com.cn/finalpage/2025-07-25/1224299940.PDF)</td><td>公司子公司与中科硅纪设立注册资本 500 万元的控股子公司，鼎泰方认缴 350 万元、持股 70%；公告同时提示战略协同、市场和管理风险。</td><td>机器人叙事的正式起点之一，但规模小且公告未承诺收入，不能等同于业绩催化。</td></tr>
+<tr><td>2025-08-21</td><td>一级</td><td>[2025 年半年度报告摘要](https://static.cninfo.com.cn/finalpage/2025-08-21/1224524570.PDF)</td><td>H1 收入 9.04 亿元、同比 +26.90%；归母净利 1.60 亿元、同比 +79.78%。</td><td>第一次加速中途的主业增长验证。</td></tr>
+<tr><td>2025-09-12</td><td>一级</td><td>[股票交易异常波动公告](https://static.cninfo.com.cn/finalpage/2025-09-12/1224655879.PDF)</td><td>9 月 10–12 日涨幅偏离累计 31.92%；公司称经营环境未发生重大变化、无未披露重大事项。</td><td>限制证据：急涨后段不能归因为临时未披露利好。</td></tr>
+<tr><td>2026-03-27</td><td>一级</td><td>[2025 年年报摘要](https://static.cninfo.com.cn/finalpage/2026-03-27/1225036336.PDF)</td><td>2025 年收入 21.44 亿元、同比 +35.70%；归母净利 4.34 亿元、同比 +91.14%。PCB 钻针销售量口径的全球份额为 26.8%，精密刀具收入占比 81.17%。</td><td>第二次加速启动附近的已实现业绩锚；主业而非机器人仍是收入主体。</td></tr>
+<tr><td>2026-04-16</td><td>一级</td><td>[2026 年一季报](https://static.cninfo.com.cn/finalpage/2026-04-16/1225107645.PDF)</td><td>Q1 收入 8.14 亿元、同比 +92.33%；归母净利 2.61 亿元、同比 +259.00%；经营现金流为负。</td><td>强业绩确认，同时保留现金流风险事实。</td></tr>
+<tr><td>2026-05-25</td><td>二级（公告转载，待补巨潮原件）</td><td>[股票交易异常波动公告](https://stock.stockstar.com/notice/SN2026052500025965.shtml)</td><td>公告称公司正推进 H 股上市事项；异动期间未披露其他重大事项。</td><td>H 股事项是可交易事件线索，但不能自动视作盈利增长。</td></tr>
+<tr><td>2026-06-05</td><td>二级（公告转载，待补巨潮原件）</td><td>[股东询价转让结果](https://vip.stock.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12377966&stockid=301377)</td><td>实际控制人一致行动人相关主体询价转让 1,028.53 万股（总股本 2.5%），价格 270.55 元/股。</td><td>后期的股票供给/股权结构事件；发生在第二段加速中，不倒推解释早期上涨。</td></tr>
+</tbody></table></div>
+<p>
+<h2>分阶段分析</h2>
+<p>
+<h3>1. 2025 年第一次加速：主业增速确认与机器人新叙事共同出现</h3>
+<p>
+价格启动后，7 月公司设立机器人合资子公司；但其注册资本仅 500 万元，公告明确列出市场、协同和管理不确定性。该事件可以解释市场为何开始给予“机器人核心部件”预期，但不能支持“机器人业务已贡献利润”这一说法。
+<p>
+8 月中报则是更强的财务事实：收入同比 +26.90%、归母净利同比 +79.78%。因此，最稳妥的归因是：<strong>PCB 工具主业盈利改善为上涨提供基本面支撑；机器人布局可能扩大了估值叙事。</strong>9 月异动公告说明当时不存在新的未披露重大事项，故后段加速不能归结为内幕式新增基本面。
+<p>
+<h3>2. 2026 年第二次加速：主业业绩的证据更强，估值仍包含未来业务预期</h3>
+<p>
+年报显示精密刀具仍贡献 81.17% 的收入，2025 年归母净利同比 +91.14%；一季报又显示收入和归母净利同比 +92.33% 和 +259.00%。这些是第二段上涨中高置信度的基本面支撑，且公司把 PCB/AI 算力相关的高多层板加工需求列为业务机会。
+<p>
+不过，报告也有两项必须同时保留：功能性膜材料收入同比下降 52.51%，且一季度经营现金流为负。由此不能将公司描述成“所有业务线均爆发”。此外，机器人、H 股和海外扩张均属于未来布局；它们可影响预期和估值，尚不应计作已实现利润。
+<p>
+<h3>3. 估值与交易层：需要用事实描述，不以道德化语言替代分析</h3>
+<p>
+5 月异动、6 月询价转让均发生在第二段加速中。询价转让是实际股权供给变化，价格 270.55 元/股、数量占总股本 2.5%，但没有证据表明它是此前上涨的原因。它更适合成为峰值附近需要追踪的供给与锁定期事件。
+<p>
+<h2>当前结论与待办</h2>
+<p>
+<strong>当前最强结论</strong>：鼎泰高科的 2025–2026 年上涨有主业财务改善的明确支撑，核心仍是 PCB 相关精密刀具业务；机器人等新业务布局更像对远期可选性的定价。两者不可混为已实现业绩。对 2022–2024 年上市后大跌以及每一段的估值贡献，目前证据不足，不做伪因果归因。
+<p>
+下一轮优先补：
+<p>
+<li>PCB 钻针同行的订单、价格和盈利变化，用于分离公司 alpha 与行业 beta；</li>
+<li>各期估值、自由流通股和机构持仓，量化机器人叙事/小流通盘对价格的作用；</li>
+<li>H 股申请文件、询价转让后的受让方与锁定期信息，持续跟踪后期供给。</li>
+<p>
+<h2>LLM 使用约束</h2>
+<p>
+只有台账中的财务、股权和公告陈述可作为事实。机器人业务、H 股上市和海外扩张均不得写成已实现收入或利润；“估值叙事”只能作为中等置信度解释。
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

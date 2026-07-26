@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>研究：920438.BJ_戈碧迦</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>920438.BJ 戈碧迦：首轮价格—事件材料包</h1>
+<p>
+<h2>身份与数据边界</h2>
+<p>
+<li>北交所官方资料显示，公司于 2024-03-25 在北交所上市，发行价 10 元/股；北交所新旧代码表将旧代码 <code>835438</code> 对应为现代码 <code>920438</code>。</li>
+<li>Tushare <code>daily</code> 原始文件为 <code>data/a_expansion_daily/920438.BJ.csv</code>，覆盖 2021-07-12 至 2026-07-10，共 827 行。2024-03-25 前属于上市前的新三板交易记录，成交稀疏，不能把“20 个交易日”机械解释为连续 20 个自然日或北交所短期行情。</li>
+<li>为避免这一错误，上市后单独派生了 <code>data/a_expansion_daily_post_listing/920438.BJ.csv</code>，覆盖 2024-03-25 至 2026-07-10，共 556 个交易日。派生过程见 <code>scripts/filter_daily_window.py</code>，未改动原始数据。</li>
+<li>中证/北证官方指数成分证据：本轮尚未定位到包含该代码的官方样本调整附件。北交所上市、北交所代码映射及被纳入候选池均<strong>不能</strong>替代指数成分证明，状态保留为待补。</li>
+<p>
+<h2>价格核验</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>口径</th><th>最低→最高</th><th>倍数</th><th>解释</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---:</td><td>---</td></tr>
+<tr><td>全原始记录（含上市前新三板）</td><td>2021-07-22：3.08 → 2026-06-26：163.01</td><td>52.93×</td><td>存在稀疏成交与市场层级变化，不能直接作为可交易的北交所投资回报</td></tr>
+<tr><td>北交所上市后原始日收盘价</td><td>2024-09-23：9.99 → 2026-06-26：163.01</td><td>16.32×</td><td>仍为未复权价格路径，须再核对分红、送转及其他公司行动</td></tr>
+<tr><td>上市首日收盘→最新本地日线</td><td>2024-03-25：22.71 → 2026-07-10：140.80</td><td>6.20×</td><td>说明“低点到高点≥10×”不等于任意上市首日买入均实现十倍</td></tr>
+</tbody></table></div>
+<p>
+<h2>上市后关键区间（规则化标记）</h2>
+<p>
+规则：20 日涨幅 ≥30%、60 日涨幅 ≥60%，以及从新高到低点 ≥35%；均以未复权日收盘价计算。
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>类型</th><th>区间</th><th>收盘价变化</th><th>结果</th><th>归因状态</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---:</td><td>---:</td><td>---</td></tr>
+<tr><td>回调</td><td>2024-03-29 → 2024-09-23</td><td>29.29 → 9.99</td><td>-65.9%</td><td>需回放上市后公告与行业价格，尚未归因</td></tr>
+<tr><td>快速上涨</td><td>2024-09-24 → 2024-10-29（20日）</td><td>10.30 → 24.49</td><td>+137.8%</td><td>已有2024年三季报原件，待逐表抽取和公告映射</td></tr>
+<tr><td>快速上涨</td><td>2025-07-22 → 2025-08-19（20日）</td><td>19.13 → 51.61</td><td>+169.8%</td><td>对应2025年中报披露窗口，不能仅据时间邻近认定因果</td></tr>
+<tr><td>快速上涨</td><td>2025-06-24 → 2025-09-16（60日）</td><td>20.07 → 56.47</td><td>+181.4%</td><td>待逐日关联公告、行业与交易所公开交易信息</td></tr>
+<tr><td>回调</td><td>2025-09-16 → 2025-11-21</td><td>56.47 → 34.36</td><td>-39.2%</td><td>待补官方材料</td></tr>
+<tr><td>回调</td><td>2026-02-11 → 2026-04-07</td><td>57.47 → 35.12</td><td>-38.9%</td><td>待补官方材料</td></tr>
+<tr><td>快速上涨</td><td>2026-03-31 → 2026-06-30（60日）</td><td>35.85 → 158.86</td><td>+343.1%</td><td>本轮未找到足以支持归因的定期/临时公告，禁止臆测</td></tr>
+</tbody></table></div>
+<p>
+分析文件与图表：<code>output/a_expansion_price_analysis/920438.BJ_post_listing/</code>。
+<p>
+<h2>能够确认、不能确认的事项</h2>
+<p>
+<li>北交所上市公告确认：公司主营光学玻璃及特种功能玻璃，2023 年营收 8.08 亿元、净利润 1.04 亿元；这仅说明上市前业绩与业务，不足以解释 2026 年价格上升。</li>
+<li>2025 年半年度报告与 2024 年三季度报告已纳入官方材料台账，但本轮网页/PDF端未能稳定抽取完整财务表；因此不在此写入未经原件核验的同比数字。</li>
+<li>目前可靠结论是“存在上市后最低—最高 16.32× 的未复权价格路径”，而不是“经营利润驱动的十倍股”。尤其 2026 年二季度的 +343.1% 60 日段，需要先补齐公司公告和北交所交易公开信息。</li>
+<p>
+<h2>下一轮待补</h2>
+<p>
+<li>逐页提取2025年中报、2025年年报和2026年一季报的营收、归母净利、扣非净利、经营现金流及变化原因；保留原始页码。</li>
+<li>查询北证50及其他北交所/中证指数在2024—2026各次样本调整附件，取得“调入/调出”直接证据或记录未命中。</li>
+<li>对2025-06至2026-07每个异常交易日匹配北交所公告、公开交易信息与公司披露；将事实、公司表述与推断分栏。</li>
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

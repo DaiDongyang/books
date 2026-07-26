@@ -1,0 +1,192 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>共性分析与同业对比</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器">
+<h1>共性分析与同业对比</h1>
+
+<div class="提示 提示-警示">
+<strong>当前状态</strong>：同业对比方法论已制定，但逐只股票的 <code>peer_comparison.md</code> 尚未生成。
+以下为已识别到的可聚类组、对比方法论，以及各研究文件中包含的关联线索。<br>
+本项目仍在推进中。
+</div>
+
+<h2>已识别的自然聚类</h2>
+<p>基于主营业务和产业链位置，可以自然聚类的主要群体：</p>
+
+<div class="卡片网格">
+    <div class="卡片">
+        <h3>🔴 光模块/AI算力（4只核心）</h3>
+        <div class="元信息">中际旭创 · 新易盛 · 天孚通信 · 光迅科技<br>
+        加上：剑桥科技 · 太辰光 · 长芯博创 · 永鼎股份 · 长飞光纤 · 源杰科技 · 腾景科技<br>
+        核心驱动：全球AI资本开支 → 800G/1.6T光模块需求爆发 → 英伟达供应链</div>
+    </div>
+    <div class="卡片">
+        <h3>🔵 半导体/芯片（5只核心）</h3>
+        <div class="元信息">寒武纪 · 兆易创新 · 芯原股份 · 芯碁微装 · 普冉股份<br>
+        核心驱动：美国制裁 → 国产替代 → 指数基金被动资金</div>
+    </div>
+    <div class="卡片">
+        <h3>🟢 PCB/电子电路（3只核心）</h3>
+        <div class="元信息">沪电股份 · 胜宏科技 · 生益电子<br>
+        核心驱动：AI服务器PCB需求 · 消费电子周期</div>
+    </div>
+    <div class="卡片">
+        <h3>🟡 重组/借壳（~30只）</h3>
+        <div class="元信息">控制权变更、资产注入、借壳上市类事件<br>
+        特点：驱动因素与基本面关联较弱，更多是交易结构变化</div>
+    </div>
+</div>
+
+<h2>同业对照方法论</h2>
+<div class="提示 提示-信息">以下方法论来自项目文件 <code>research/PEER_COMPARISON_METHOD.md</code>。</div>
+<h1>十倍路径候选：同业对照研究方法</h1>
+<p>
+<h2>目的与结论边界</h2>
+<p>
+本层研究不重新把未复权低点—高点路径定义为投资回报，也不以同涨/同跌直接证明因果。目标是把每个候选的关键价格窗口放在 2—3 个可比公司的同日收益、回撤、公告和经营事实中检验，输出三个分层结论：
+<p>
+<li><strong>行业/主题共振</strong>：多数可比公司在相同交易日窗口出现方向和幅度相近的变动，且存在共同的可核实行业或政策材料。</li>
+<li><strong>公司特有驱动</strong>：候选显著跑赢或跑输同业，且公司在窗口前/中披露了可核实的订单、重组、控制权、业绩、产能或公司行动事项。</li>
+<li><strong>尚不可归因</strong>：时间上没有足够的共同公告或公司特有公告；保留为市场风险偏好、估值或待核验假设，不写成事实。</li>
+<p>
+<h2>可比公司的选择顺序</h2>
+<p>
+每家公司选择 2—3 家，依次满足以下标准并在映射表中记录依据：
+<p>
+<li>主营产品/技术路线和主要下游客户相同或高度重合；优先采用招股书、年报的“主营业务/产品/客户行业”表述。</li>
+<li>同一交易所行业或中证行业，且业务处于相同产业链环节。</li>
+<li>市场地位、上市板块、收入规模和业务阶段尽量相近。</li>
+<li>若没有两个直接同业，允许补充一个产业链上/下游验证对象，但必须标为“产业链对照”，不能伪称直接同业。</li>
+<p>
+排除纯概念关联、主营不相同、仅因同一地域或同一热门题材而加入的股票。北交所、ST、并购重组、控制权变更或上市未满一年的公司，须在对照中单独标注可比性限制。
+<p>
+<h2>价格对照的统一口径</h2>
+<p>
+<li>数据层：Tushare <code>daily</code> 原始/未复权收盘价；公司行动另列，不能与价格收益混为一谈。</li>
+<li>窗口层：复用候选研究包已有的快速上涨、快速回撤和窗口低高点日期；所有可比公司使用<strong>相同起止交易日</strong>。如停牌，则记录最近可交易日及缺口。</li>
+<li>指标层：区间收盘价收益、最大回撤、相对候选的超额收益、方向一致性（同涨/同跌）和事件日附近的变化。</li>
+<li>判定阈值：价格方向一致不低于 2/3 可比公司，且同窗口绝对变动达到 20% 以上，仅作为“价格共振候选”；是否存在共同因素必须再由一手公告/政策/行业材料验证。</li>
+<p>
+<h2>事件材料标准</h2>
+<p>
+每个价格窗口最少检索以下材料：公司定期报告、业绩预告、异常交易公告、重大合同/订单、重组/控制权/融资公告，以及可比公司的对应公告。优先级为交易所或公司原件、监管/政府原件、指数公司原件；媒体仅作线索，不能作为归因依据。
+<p>
+<h2>产出结构</h2>
+<p>
+每个公司目录新增 <code>peer_comparison.md</code> 和 <code>peer_material_log.csv</code>：
+<p>
+<li>可比公司映射与选择依据；</li>
+<li>与候选完全相同日期窗口的收益/回撤对照表；</li>
+<li>每个窗口的共同事实、公司特有事实、反证与不可归因部分；</li>
+<li>可比性限制及复权、停牌、上市时间差异。</li>
+<p>
+全局新增映射表和批量价格产物，保证选择、计算和结论均可复现。
+
+
+<h2>研究文件中提到的关联线索</h2>
+<p>37 份研究文件在 README 中提到了同行、同业或可比公司。其中代表性的关联：</p>
+<div class="表格容器">
+<table>
+<thead><tr><th>股票</th><th>建议对比对象</th><th>来源</th></tr></thead>
+<tbody>
+<tr><td>中际旭创 (300308)</td><td>新易盛、天孚通信、海外光模块同行</td><td>买入"下一轮可补"</td></tr>
+<tr><td>新易盛 (300502)</td><td>中际旭创、天孚通信、光模块同行</td><td>买入"下一轮补件"</td></tr>
+<tr><td>寒武纪 (688256)</td><td>海光信息、龙芯中科（国产芯片）</td><td>研究中提及</td></tr>
+<tr><td>沪电股份 (002463)</td><td>胜宏科技、鹏鼎控股（PCB同行）</td><td>材料台账中有参考</td></tr>
+<tr><td>剑桥科技 (603083)</td><td>光模块同行</td><td>行业对比需求</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>下一步计划</h2>
+<ol>
+    <li>为每个自然聚类生成 <code>peer_comparison.md</code>：同窗收益对照、共同事实、公司特有事实</li>
+    <li>全局共性提取：统计驱动因素类别（业绩增长 / 重组 / 概念炒作 / 行业β）</li>
+    <li>估值序列对比：同一行业中"涨得多"的与"涨得少"的，估值扩张 vs 盈利驱动的归因</li>
+</ol>
+
+<h2>当前可观察的初步共性</h2>
+<p>基于已完成的 118 份单一股票研究，可初步观察：</p>
+<div class="卡片网格">
+    <div class="卡片">
+        <h3>AI 板块特征</h3>
+        <div class="元信息">2023年首轮急涨均为"预期先行"——股价在业绩兑现前数月已大幅启动。<br>
+        2025-2026年的后几轮上涨有更强的财务验证支撑。<br>
+        大幅回撤阶段均不能用"业绩恶化"解释，需从估值、预期差、海外资本开支预期来找原因。</div>
+    </div>
+    <div class="卡片">
+        <h3>重组类特征</h3>
+        <div class="元信息">涨跌节奏高度依赖公告时序而非行业周期。<br>
+        常见模式：停牌前异动 → 复牌连续涨停 → 高位横盘或阴跌。<br>
+        风险在于：一旦重组失败或方案不及预期，回撤幅度极大。</div>
+    </div>
+    <div class="卡片">
+        <h3>周期反转类特征</h3>
+        <div class="元信息">有色金属、化工、电子周期品类的十倍路径往往伴随：<br>
+        行业深度亏损 → 产能出清 → 需求意外爆发 → 价格暴涨 → 利润数十倍跳升。<br>
+        典型如锂、钴、面板、存储芯片。</div>
+    </div>
+</div>
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>研究：603256.SH_宏和科技</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>603256.SH 宏和科技：事件材料包与首轮归因</h1>
+<p>
+更新：2026-07-11。此目录只研究宏和科技；价格窗口和日线数据来自项目内已下载的 Tushare <code>daily</code> 数据。公司事实优先采用上交所/公司公告；媒体只作线索或公告转载，不单独支撑因果结论。
+<p>
+<h2>研究对象与价格窗口</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>阶段</th><th>价格窗口（交易日）</th><th>收盘价变化</th><th>为何纳入</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---:</td><td>---</td></tr>
+<tr><td>复苏的可验证起点</td><td>2025-01-23 公告日前后</td><td>—</td><td>2024 年业绩由亏转盈的首次正式预告</td></tr>
+<tr><td>第一段加速</td><td>2025-05-27 至 2025-08-20</td><td>9.63 → 36.80，+282.1%</td><td>本项目 60 日快速上涨信号</td></tr>
+<tr><td>第一段回撤</td><td>2025-08-28 至 2025-11-21</td><td>44.89 → 28.15，-37.3%</td><td>高估值与交易风险提示后的显著回撤</td></tr>
+<tr><td>第二段加速</td><td>2026-03-27 至 2026-06-26</td><td>65.58 → 297.00，+352.9%</td><td>本项目 60 日快速上涨信号；期间披露一季度经营数据</td></tr>
+</tbody></table></div>
+<p>
+价格是未复权收盘价，不能据此直接计算含分红总回报。日线与全部机械标记见项目上级的 <code>output/a_confirmed_price_analysis/</code>。
+<p>
+<h2>材料台账</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>发布日期</th><th>证据等级</th><th>材料</th><th>可核实事实</th><th>对价格研究的作用</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>2025-01-23</td><td>一级</td><td>[2024 年年度业绩预盈公告](https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-01-23/603256_20250123_0W5F.pdf)</td><td>预计 2024 年归母净利 1,452–2,177 万元，较 2023 年亏损转盈；公司称终端需求和电子布售价上升，且黄石项目已全面投产。</td><td>基本面从亏损期转向复苏的可验证起点。</td></tr>
+<tr><td>2025-04-12</td><td>一级</td><td>[向特定对象发行 A 股预案](https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-04-12/603256_20250412_WUNB.pdf)</td><td>公司将 PCB 景气回升、AI 服务器/高频通信需求与高性能电子布需求作为扩产背景；文件同时是融资预案，不是业绩承诺。</td><td>说明市场可交易的长期产能/产业链叙事已在急涨前公开。</td></tr>
+<tr><td>2025-07-10</td><td>一级</td><td>[股票交易异常波动公告](https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-07-10/603256_20250710_X0NX.pdf)</td><td>7 月 8–9 日收盘涨幅偏离累计超 20%；公司称无应披露未披露重大信息，并提示“PCB 概念”炒作风险。</td><td>反证：第一段急涨不能归因为当时新披露的公司重大事项。</td></tr>
+<tr><td>2025-08-16</td><td>一级（指定披露媒体转载）</td><td>[股票交易风险提示公告](https://paper.cnstock.com/html/2025-08/16/content_2105540.htm)</td><td>5 月 29 日至 8 月 15 日累计上涨 205.96%；8 月 15 日收盘 32.86 元、滚动 PE 425.59 倍，行业为 41.02 倍；公司称主营未发生重大变化。</td><td>量化了第一段上涨中明显的估值/交易成分，也为随后回撤提供风险背景，但不是回撤的充分因果。</td></tr>
+<tr><td>2026-01-29</td><td>二级（公告转载，待补上交所原件）</td><td>[2025 年业绩预增公告](https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=11939312&stockid=603256)</td><td>预计 2025 年归母净利 19,270–22,550 万元，同比 +745%–889%；公告归因于 AI 需求、电子布需求和售价上升。</td><td>第二段急涨前的重要业绩预期材料；须以交易所原件/年报复核数字。</td></tr>
+<tr><td>2026-04-17</td><td>一级</td><td>[2026 年一季度主要经营数据](https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-17/603256_20260417_LL93.pdf)</td><td>电子布销量 4,449 万米、收入 4.35 亿元；平均售价同比 +116.85%，但电子纱平均进价同比 +206.55%。</td><td>证实收入与售价的快速变化，也明确成本端压力；不能只摘取“涨价”一面。</td></tr>
+<tr><td>2026-06-18</td><td>一级（指定披露媒体转载）</td><td>[股票交易异常波动暨风险提示](https://paper.cnstock.com/html/2026-06/18/content_2232744.htm)</td><td>6 月 15–17 日涨幅偏离累计超 20%；公告称无应披露未披露重大事项。</td><td>反证：第二段后期的连续拉升不能被简单归因为新公告。</td></tr>
+<tr><td>2026-06-27</td><td>一级（指定披露媒体转载）</td><td>[股票交易异常波动公告](https://paper.cnstock.com/html/2026-06/27/content_2236150.htm)</td><td>公告称 2025-05-29 至 2026-06-26 累计上涨 2665.36%，并提及 6 月 10 日股东拟减持计划。</td><td>确认涨幅的极端程度；减持计划是后期供给/风险线索，不应倒推为早期上涨原因。</td></tr>
+</tbody></table></div>
+<p>
+<h2>首轮分析：事实、推断和未知项分开</h2>
+<p>
+<h3>1. 2025 年第一段加速：已知的“基本面修复 + 产业叙事”，与无法用公告解释的估值扩张</h3>
+<p>
+<strong>高置信事实</strong>：在该段启动前，公司已披露 2024 年扭亏、终端需求/售价改善、黄石项目全面投产；4 月融资预案又把 AI 服务器、高频通信及高性能电子布的需求写入扩产背景。它们共同构成了可验证的基本面与产能叙事。
+<p>
+<strong>同样高置信的限制证据</strong>：7 月和 8 月公司在异常波动公告中均称无未披露重大事项，且明确提示“PCB 概念”与短期交易风险。8 月 15 日公司披露的滚动 PE 为行业的约 10.4 倍（425.59 / 41.02）。
+<p>
+<strong>审慎归因</strong>：这一段更符合“已有的业绩修复和 AI/PCB 产业预期，触发了远超短期已披露信息的估值重估与交易性放大”，而不是“某份 7、8 月公告带来的业绩突变”。后半句是推断，置信度为中等；需要补齐同期同行与板块收益率才能量化其中行业 beta 与公司 alpha。
+<p>
+<h3>2. 2025 年秋季回撤：可以识别风险背景，不能伪造单一原因</h3>
+<p>
+回撤前，公司已发出高估值和短期涨幅风险提示，并表示主营未发生重大变化。这个时间顺序支持“市场对高估值/交易热度重新定价”是合理解释之一；但现有一级材料没有给出单一、明确的回撤触发事件。因此本阶段结论应写作：<strong>高估值风险已被公司正式提示，回撤与其时间上相邻；因果尚未证明。</strong>
+<p>
+<h3>3. 2026 年第二段加速：业绩与价格的共同上升，但仍存在估值/交易放大</h3>
+<p>
+1 月业绩预增（待取得上交所原件）给出 2025 年利润快速增长的信息；4 月的一级经营数据进一步证实电子布收入和售价同比大增。售价同比 +116.85% 是支持盈利能力上修的重要事实，但电子纱平均进价同比 +206.55% 同时说明利润率不是无风险、单向改善。
+<p>
+到 6 月，公司再次在异动公告中称无未披露重大事项。故本段可更强地说“基本面改善已有公开数据支持”，但不能把 +352.9% 的 60 日股价变化等同于对应期间的已实现经营改善；价格仍可能包含对未来供需、产能和估值的预期放大。
+<p>
+<h2>当前结论与待办</h2>
+<p>
+<strong>当前最强结论</strong>：宏和科技的长期大幅上涨存在公开材料支持的经营拐点（扭亏、产能投产、需求/售价改善）和 2026 年一季度经营验证；但两个急涨窗口中，公司均多次否认存在未披露重大事项并提示高估值/概念交易风险。因此，研究结论必须同时写入“基本面改善”与“估值/交易放大”，不能输出单因子叙事。
+<p>
+下一轮仅需补三类材料即可显著提高质量：
+<p>
+<li>上交所原始的 2025 年年度业绩预增公告、2025 年年报、2026 年一季报；</li>
+<li>2025-05 至 2026-06 的行业价格、覆铜板/PCB 及同行公司事件，用于建立对照组；</li>
+<li>交易所公开交易信息、限售/减持执行情况，检验后期资金与供给因素。</li>
+<p>
+<h2>给后续 LLM 的约束</h2>
+<p>
+只允许把上表“可核实事实”作为事实陈述；“审慎归因”必须保留概率语言，并明确区分公告披露日与价格启动日。不得把融资预案、市场概念或媒体报道表述成已实现业绩或确定因果。
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

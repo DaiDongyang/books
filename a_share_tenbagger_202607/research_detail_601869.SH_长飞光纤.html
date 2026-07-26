@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>研究：601869.SH_长飞光纤</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>601869.SH 长飞光纤：事件材料包与首轮归因</h1>
+<p>
+更新：2026-07-12；价格采用项目内 Tushare <code>daily</code> 未复权收盘价。长飞光纤同时面向传统电信光纤光缆和智算网络/光互联，研究必须区分两种需求方向。
+<p>
+<h2>关键价格窗口</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>阶段</th><th>窗口</th><th>收盘价变化</th><th>初步解释</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---:</td><td>---</td></tr>
+<tr><td>第一段加速</td><td>2025-06-27 → 2025-09-19</td><td>39.78 → 120.62，+203.2%（60 日）</td><td>智算网络、光互联与产品结构预期待与季度业绩对照</td></tr>
+<tr><td>第二段加速</td><td>2026-01-15 → 2026-04-20</td><td>108.37 → 385.00，+255.3%（60 日）</td><td>年报和 Q1 均在窗口内，盈利/现金流提升可直接验证</td></tr>
+</tbody></table></div>
+<p>
+<h2>材料台账</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>日期</th><th>等级</th><th>材料</th><th>可核实事实</th><th>作用</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>2025-03-29</td><td>一级</td><td>[A 股回购方案](https://big5.sse.com.cn/site/cht/www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-04-12/601869_20250412_R866.pdf)</td><td>拟回购 1.6–3.2 亿元 A 股用于员工持股或激励。</td><td>资本/激励事件，不能当作经营收入证据。</td></tr>
+<tr><td>2026-03-28</td><td>一级</td><td>[2025 年报摘要](https://static.cninfo.com.cn/finalpage/2026-03-28/1225046910.PDF)</td><td>公司披露传统运营商资本开支总体下降、重点转向智算网络；AI 数据中心高速连接带来光互联机会。</td><td>解释行业结构变化和长期产品预期。</td></tr>
+<tr><td>2026-04-30</td><td>一级（公告转载）</td><td>[2026Q1 报告](https://money.finance.sina.com.cn/corp/view/vCB_AllBulletinDetail.php?id=12278933&stockid=601869)</td><td>收入同比 +27.70%，归母净利同比 +226.40%，扣非净利同比 +966.44%，经营现金流同比 +41.85%。</td><td>第二段上涨期的直接财务验证。</td></tr>
+<tr><td>2026-04-30</td><td>一级（上交所年报综述）</td><td>[高端技术与量产信息](https://big5.sse.com.cn/site/cht/www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260430_10817333.shtml)</td><td>上交所综述称公司完成空芯光纤公里级量产，并掌握三类主流预制棒工艺产业化。</td><td>技术/产品升级的外部官方线索；不直接量化利润贡献。</td></tr>
+</tbody></table></div>
+<p>
+<h2>首轮归因</h2>
+<p>
+2025 年夏季的第一段上涨与市场对 AI 智算网络和光互联需求的重估在时间上相符；但年报也明确传统电信运营商资本开支总体下降。故不能把公司描述成全部传统业务同步景气，更准确的解释是：<strong>市场可能在交易业务结构从传统光纤光缆向智算网络、高端光互联和新型光纤延展的预期。</strong>该判断仍须以 2025H1/H2 分产品收入和同行对照验证。
+<p>
+2026 年第一季度则有高质量的财务确认：收入、归母利润、扣非利润和经营现金流均同比改善，尤其利润增速高于收入。这支持盈利能力改善是第二段上涨的重要基础。Q1 本身不能解释 60 日 +255.3% 的全部涨幅，价格仍包含未来产品结构和行业需求预期。
+<p>
+<h2>当前结论与待办</h2>
+<p>
+<strong>当前最强结论</strong>：长飞光纤的两段上涨都与智算网络/高端光互联的业务重估相关；2026 年一季度已提供利润和现金流改善的直接证据。传统运营商资本开支下降是必须同时保留的反向背景。
+<p>
+下一轮补：2025 年各季按产品/地区收入、空芯光纤和光互联产品收入占比、与亨通/烽火等同行同窗收益、回购实际执行情况。
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>

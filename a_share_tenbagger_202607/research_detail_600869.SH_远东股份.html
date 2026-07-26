@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>研究：600869.SH_远东股份</title><style>
+:root{--bg:#fafaf9;--text:#1c1917;--accent:#92400e;--accent2:#b45309;--link:#2563eb;--border:#e7e5e4;--card-bg:#fff;--gold:#b8860b;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--green:#059669;--green-bg:#ecfdf5;--red:#dc2626;--red-bg:#fef2f2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-size:16px;min-height:100vh;display:flex;flex-direction:column}
+.导航{background:#fff;position:sticky;top:0;z-index:1000;border-bottom:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.导航内层{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;padding:12px 24px;gap:4px}
+.导航品牌{font-weight:800;font-size:1em;color:var(--accent);margin-right:20px;white-space:nowrap;text-decoration:none;letter-spacing:0.5px}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}.导航品牌{display:none}}
+.导航 a{color:#78716c;text-decoration:none;padding:5px 12px;border-radius:6px;font-size:0.82em;white-space:nowrap;transition:all 0.15s;font-weight:500}
+.导航 a:hover{background:#fafaf9;color:var(--accent)}
+.导航 .分隔符{color:#d6d3d1;font-size:0.65em;margin:0 4px;user-select:none}
+.主容器{max-width:1200px;margin:0 auto;padding:36px 24px 80px;flex:1}
+h1{font-size:1.8em;font-weight:700;color:#1c1917;margin-bottom:8px}
+h2{font-size:1.35em;font-weight:700;color:#44403c;margin-top:40px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:var(--accent);border-radius:2px}
+h3{font-size:1.1em;font-weight:700;color:#44403c;margin-top:24px;margin-bottom:10px}
+h4{font-size:1em;font-weight:600;color:#57534e;margin-top:16px;margin-bottom:8px}
+p{margin-bottom:12px}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+.页头{background:linear-gradient(160deg,#fffbeb 0%,#fafaf9 50%,#f0fdf4 100%);border:1px solid var(--border);border-radius:12px;padding:40px 32px;margin-bottom:32px;text-align:center}
+.页头 h1{font-size:2.1em;margin-bottom:8px;border:none;padding:0}
+.页头 .副标题{color:#78716c;font-size:1.05em;max-width:700px;margin:0 auto}
+.统计区{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:24px 0 36px}
+.统计卡片{text-align:center;padding:20px 12px;border-radius:10px;background:var(--card-bg);border:1px solid var(--border);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.统计数字{font-size:2em;font-weight:800;color:var(--accent);line-height:1.2}
+.统计标签{font-size:0.8em;color:#78716c;margin-top:4px}
+.卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,0.04);transition:all 0.2s}
+.卡片:hover{box-shadow:0 4px 12px rgba(0,0,0,0.08);transform:translateY(-2px)}
+.卡片网格{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;margin:18px 0}
+.卡片网格 a{text-decoration:none;color:inherit}
+.卡片 h3{margin:0 0 4px 0;font-size:1em;font-weight:700;color:#1c1917}
+.卡片 .元信息{font-size:0.82em;color:#78716c}
+.提示{padding:12px 16px;margin:14px 0;border-radius:8px;font-size:0.9em;line-height:1.7}
+.提示-信息{background:var(--blue-bg);border-left:4px solid #3b82f6}
+.提示-成功{background:var(--green-bg);border-left:4px solid var(--green)}
+.提示-警示{background:var(--gold-bg);border-left:4px solid #f59e0b}
+.表格容器{overflow-x:auto;margin:14px 0 22px;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85em;min-width:700px}
+table thead{background:#fafaf9}
+table thead th{color:#57534e;padding:9px 12px;text-align:left;font-weight:600;font-size:0.82em;border-bottom:2px solid var(--border);white-space:nowrap}
+table tbody td{padding:8px 12px;border-bottom:1px solid #f5f5f4}
+table tbody tr:nth-child(even){background:#fafaf9}
+table tbody tr:hover{background:var(--gold-bg)}
+.倍数{font-weight:700;color:var(--accent)}
+.倍数10x{color:var(--red);font-weight:800}
+.徽章{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.75em;font-weight:600;color:#fff}
+.徽章-确认{background:var(--green)}.徽章-待核{background:#d97706}.徽章-排除{background:var(--red)}
+.页脚{text-align:center;color:#a8a29e;font-size:0.8em;margin-top:64px;padding-top:20px;border-top:1px solid var(--border)}
+.研究格{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin:16px 0}
+.研究卡片{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.研究卡片:hover{border-color:var(--accent);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.研究卡片 .代码{font-weight:700;font-size:0.9em;color:var(--accent)}
+.研究卡片 .名称{font-size:0.95em;color:#1c1917;margin:2px 0}
+.研究卡片 .倍数{font-size:0.85em}
+.指数表 td:nth-child(1){font-weight:600;white-space:nowrap}
+.指数表 td:nth-child(2){font-weight:600}
+.标签页{display:flex;border-bottom:2px solid var(--border);margin:22px 0;gap:0;flex-wrap:wrap}
+.标签按钮{padding:10px 20px;cursor:pointer;border:none;background:none;font-size:0.9em;font-weight:500;color:#78716c;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.15s;font-family:inherit}
+.标签按钮:hover{color:var(--accent)}
+.标签按钮.活跃{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+.标签面板{display:none}.标签面板.活跃{display:block}
+.链块{border-left:3px solid var(--accent);padding:10px 16px;margin:10px 0;background:#fafaf9;border-radius:0 6px 6px 0}
+.链块 h4{color:var(--accent);margin-top:0}
+blockquote{border-left:4px solid var(--accent);margin:12px 0;padding:8px 16px;background:#fafaf9;color:#78716c;font-size:0.9em}
+@media(max-width:768px){.主容器{padding:20px 14px 60px}.统计区{grid-template-columns:repeat(2,1fr)}.卡片网格{grid-template-columns:1fr}table{font-size:0.78em}.指数表 td:nth-child(1){white-space:normal}}
+</style></head><body><nav class="导航"><div class="导航内层"><a href="index.html" class="导航品牌">◆ A股五年十倍股审计</a><a href="index.html">首页</a><a href="candidates.html">候选股</a><a href="research.html">研究文档</a><a href="patterns.html">共性分析</a><a href="methodology.html">方法论</a><a href="data.html">数据</a></div></nav><div class="主容器"><h1>600869.SH 远东股份：首轮价格—事件材料包</h1>
+<p>
+<h2>核验状态</h2>
+<p>
+<li>本包以 Tushare <code>daily</code> 未复权日收盘价进行筛选与区间定位。未复权数据不包含分红再投资，且公司行动尚未完全复核，<strong>不能单独认定实际十倍回报</strong>。</li>
+<li>日频窗口为 2021-07-12 至 2026-07-10，共 1,211 个交易日；最低收盘价为 2024-07-16 的 2.68 元，最高为 2026-06-24 的 37.77 元，低点至高点未复权比值为 14.09 倍。</li>
+<li>起点（2021-07-12，5.80 元）至终点（2026-07-10，22.38 元）为 3.86 倍。候选名称中“XD”只是除息日交易简称标记；本包不以此推定收益，需要权益分派与复权价格另行验证。</li>
+<li>已扫描本地保存的中证 2024-12、2025-12、2026-06 调整公告，未命中该代码；指数成分证据待补。</li>
+<p>
+<h2>关键价格区间（未复权日收盘价）</h2>
+<p>
+<div class="表格容器"><table>
+<thead><tr><th>区间/时点</th><th>价格变化</th><th>研究标记</th></tr></thead>
+<tbody>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>2021-12-03 → 2024-07-16</td><td>7.92 → 2.68（-66.16%）</td><td>长期下行至窗口低点。</td></tr>
+<tr><td>2024-09-20 → 2024-10-25</td><td>3.52 → 6.04（+71.59%，20 个交易日）</td><td>快速反弹，待补同期公告。</td></tr>
+<tr><td>2025-11-24 → 2026-02-26</td><td>6.84 → 15.24（+122.81%，60 个交易日）</td><td>第一段明显加速；2026-01 异常波动公告未发现未披露重大事项。</td></tr>
+<tr><td>2026-03-23 → 2026-06-22</td><td>12.10 → 36.15（+198.76%，60 个交易日）</td><td>最陡峭上行段；定增预案与一季度业绩披露仅为时间相邻材料。</td></tr>
+<tr><td>2026-05-26 → 2026-06-24</td><td>20.70 → 37.77（+82.46%，20 个交易日）</td><td>加速末段，随后截至窗口终点回撤 40.75%。</td></tr>
+</tbody></table></div>
+<p>
+<h2>官方材料支持的事实与审慎归因</h2>
+<p>
+<li>2026-01-08 的异常波动公告称，公司、控股股东及实控人不存在其他应披露未披露的重大事项，亦未发现需澄清的媒体传闻或热点概念。该公告限制了将当次短期涨幅归因于未披露重大事项的说法，但不能解释整个上涨阶段。</li>
+<li>2026-04-22 的一季度报告披露一季度营收同比增长 9.26%、归母净利润同比增长 110.36%、扣非归母净利润同比增长 177.47%。这是已披露的经营结果，不能据此推定其后每一交易日的价格变化由该结果导致。</li>
+<li>同日公司披露向特定对象发行 A 股预案，拟募资不超过 20 亿元。预案说明其目的包括业务扩张、增强盈利能力及优化较高负债水平，并涉及光通信相关项目；该事项需要后续核查进度、审批和实际发行结果，且存在潜在摊薄/复权影响。</li>
+<li>2024 年半年报摘要未有利润分配或资本公积转增预案，但不足以证明整个窗口无权益分派或其他公司行动；“XD”标记正提示必须逐项补核。</li>
+<p>
+<h2>后续待补</h2>
+<p>
+<li>按除权除息日逐项核对现金分红、送转、定增、回购与限售变动，并以统一复权口径复算回报。</li>
+<li>汇集 2026-04—07 的发行进展公告、交易所审核文件、订单和定期报告，建立逐日事件时间线。</li>
+<li>补取历史中证/交易所指数名单或调整公告，确认是否实际成为相关指数成分股。</li>
+</div><footer class="页脚"><p>A股主要股票指数五年十倍股全量审计 · 估值区间 2021.06.30 – 2026.07.24</p><p>当前聚焦A股 · 数据来源：中证指数公司官方公告 · 深交所/上交所/北交所公开数据 · 数据等级严格分级</p></footer></body></html>
